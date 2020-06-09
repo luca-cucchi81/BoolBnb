@@ -10,7 +10,8 @@ class InfoUser extends Model
     'user_id', 'name', 'lastname', 'birthday', 'photo'
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 }
