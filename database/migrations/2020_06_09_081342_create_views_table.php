@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfoUserTable extends Migration
+class CreateViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateInfoUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('info_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
-            $table->string('name', 50);
-            $table->string('lastname', 50);
-            $table->date('birthday')->nullable();
-            $table->string('photo')->nullable();
+        Schema::create('views', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('apartment_id')->constrained();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateInfoUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('info_user');
+        Schema::dropIfExists('views');
     }
 }
