@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Seeder;
@@ -20,8 +19,6 @@ class UsersTableSeeder extends Seeder
             $user->email = $faker->email();
             $user->password = Hash::make('admin');
             $user->save();
-        }
-        
+        } 
     }
 }
-

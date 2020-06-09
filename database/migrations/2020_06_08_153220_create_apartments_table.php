@@ -27,6 +27,7 @@ class CreateApartmentsTable extends Migration
             $table->decimal('longitude', 10, 7)->nullable();
             $table->string('main_img')->nullable();
             $table->boolean('visibility')->default(1);
+            $table->string('slug', 150);
             $table->timestamps();
         });
     }
