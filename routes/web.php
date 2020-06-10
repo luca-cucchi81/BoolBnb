@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
+Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search');
 
 Route::prefix('admin')
 ->namespace('Admin')

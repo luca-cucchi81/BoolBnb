@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Sponsorship;
 
 
 class ApartmentController extends Controller
@@ -16,8 +17,18 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
+        $maxPrice = Sponsorship::max('price');
+        return view('guest.apartments.index', compact('apartments', 'maxPrice'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
         
-        return view('guest.apartments.index', compact('apartments'));
     }
 
     /**
