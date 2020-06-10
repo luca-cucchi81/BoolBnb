@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
+
+Route::prefix('admin')
+->namespace('Admin')
+->name('admin.')
+->middleware('auth')
+->group(function(){
+    Route::resource('apartments', 'ApartmentController');
+    Route::resource('users', 'UserController');
 });
 
 Auth::routes();

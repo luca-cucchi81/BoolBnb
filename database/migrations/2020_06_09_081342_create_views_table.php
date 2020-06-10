@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApartmentSponsorshipTable extends Migration
+class CreateViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateApartmentSponsorshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_sponsorship', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('sponsorship_id')->constrained();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateApartmentSponsorshipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_sponsorship');
+        Schema::dropIfExists('views');
     }
 }
