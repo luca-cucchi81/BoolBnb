@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Sponsorship;
+use Spatie\Geocoder\Facades\Geocoder;
 
 
 class ApartmentController extends Controller
@@ -24,11 +25,14 @@ class ApartmentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function search()
+    public function search(Request $request)
     {
-        
+        $data = $request->all();
+
+        return view('guest.apartments.search', compact('data'));
     }
 
     /**
