@@ -31,8 +31,9 @@ class ApartmentController extends Controller
     public function search(Request $request)
     {
         $data = $request->all();
+        $apartments = Apartment::all();
 
-        return view('guest.apartments.search', compact('data'));
+        return view('guest.apartments.search', compact('data', 'apartments'));
     }
 
     /**

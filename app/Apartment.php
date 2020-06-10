@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Apartment extends Model
 {
     protected $fillable = [
-        'user_id', 'title', 'description', 'rooms', 'beds', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude',  'main_img', 'visibility'
+        'user_id', 'title', 'description', 'rooms', 'beds', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude',  'main_img', 'visibility', 'slug'
     ];
 
     public function user() {
@@ -33,7 +33,5 @@ class Apartment extends Model
     public function sponsorships() {
         return $this->belongsToMany('App\Sponsorship')->withPivot('start_date', 'end_date');
     }
-    
+
 }
-
-
