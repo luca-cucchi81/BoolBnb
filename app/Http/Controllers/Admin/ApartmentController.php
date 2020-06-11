@@ -49,6 +49,9 @@ class ApartmentController extends Controller
         $data['user_id'] = Auth::id();
         $now = Carbon::now()->format('Y-m-d-H-i-s');
         $data['slug'] = Str::slug($data['title'] , '-') . $now;
+        if (isset($data['main_img'])) {
+            $path = Storage::disk('public')->put('images', $data['main_img']);
+        }
 
         if (!isset($data['visibility'])){
             $data['visibility'] = 0;
