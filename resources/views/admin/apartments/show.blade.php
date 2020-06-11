@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <h2>{{$apartment->title}}</h2>
-            <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
+            <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
         </div>
     </div>
 @endsection

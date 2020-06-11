@@ -88,9 +88,21 @@
                         </div>
                         <div class="form-group">
                             <fieldset>
+                                <legend>Modifica Foto di Copertina</legend>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01" name="main_img">
+                                    <label class="custom-file-label" for="inputGroupFile01"></label>
+                                </div>
+                                @error('main_img')
+                                    <span class="alert alert-danger">{{$message}}</span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <fieldset>
                                 <legend>Seleziona Foto</legend>
                                     @foreach ($images as $image)
-                                        <label class="checked" for="images-{{$image->id}}"><img src="{{$image->path}}" alt="{{$image->title}}"></label> 
+                                        <label class="checked" for="images-{{$image->id}}"><img src="{{$image->path}}" alt="{{$image->title}}"></label>
                                         <input type="checkbox" class="hidden" name="images[]" id="images-{{$image->id}}" value="{{$image->id}}" {{((is_array(old('images')) && in_array($image->id, old('images')))) || (!is_array(old('images'))) ? 'checked' : ''}}>
                                     @endforeach
                             </fieldset>

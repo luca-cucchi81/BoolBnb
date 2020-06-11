@@ -46,15 +46,15 @@
                             @endif
                         @endforeach
                     </tbody>
-                </table> 
+                </table>
             @else
                 <div class="row">
                     <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Inserisci il tuo primo Appartamento</a>
                 </div>
-            @endif  
+            @endif
         </div>
-        <div class="row">
+        {{-- <div class="row">
             {{$apartments->links()}}
-        </div>
+        </div> --}}
     </div>
 @endsection

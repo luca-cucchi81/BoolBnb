@@ -21,7 +21,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::paginate(20);
+        $apartments = Apartment::orderBy('updated_at', 'desc')->get();
         $userId = Auth::id();
 
         return view('admin.apartments.index', compact('apartments', 'userId'));
@@ -51,6 +51,7 @@ class ApartmentController extends Controller
         $data['slug'] = Str::slug($data['title'] , '-') . $now;
         if (isset($data['main_img'])) {
             $path = Storage::disk('public')->put('images', $data['main_img']);
+            $data['main_img'] = $path;
         }
 
         if (!isset($data['visibility'])){
@@ -112,7 +113,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         $images = Image::where('apartment_id', $apartment->id)->get();
         return view('admin.apartments.edit', compact('apartment', 'images'));
-    
+
     }
 
     /**
@@ -127,10 +128,24 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         $data = $request->all();
 
+        $userId = Auth::id();
+        $author = $apartment->user_id;
+
+        if($userId != $author) {
+            return redirect()->route('admin.apartments.index')
+                ->with('failure', 'Non puoi modificare un appartamento che non hai inserito tu');
+        }
+
         if (!isset($data['visibility'])){
             $data['visibility'] = 0;
         } else {
             $data['visibility'] = 1;
+        }
+
+        if (isset($data['main_img'])) {
+            $deleted = Storage::disk('public')->delete($apartment->main_img);
+            $path = Storage::disk('public')->put('images', $data['main_img']);
+            $data['main_img'] = $path;
         }
 
         $validator = Validator::make($data, [
@@ -153,7 +168,7 @@ class ApartmentController extends Controller
         $apartment->images()->delete();
 
         if($request->get('images')){
-            foreach($request->get('images') as $image) {   
+            foreach($request->get('images') as $image) {
                 $image = new Image();
                 $image->apartment_id = $apartment->id;
                 $image->path = 'https://i.picsum.photos/id/88/200/300.jpg';
@@ -185,6 +200,7 @@ class ApartmentController extends Controller
         $apartment->images()->delete();
         $apartment->messages()->delete();
         $apartment->views()->delete();
+        $deleted = Storage::disk('public')->delete($apartment->main_img);
 
         $deleted = $apartment->delete();
 
