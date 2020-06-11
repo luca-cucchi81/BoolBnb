@@ -212,4 +212,26 @@ class ApartmentController extends Controller
         return redirect()->route('admin.apartments.index')
             ->with('success', 'Appartamento ' . $apartment->id . ' eliminato correttamente.');
     }
+
+    public function toggleVisibility($id)
+    {
+        dd('ciao');
+        $apartment = Apartment::findOrFail($id);
+
+        if ($apartment->visibility == 1) {
+            $apartment->visibility == 0;
+        } elseif ($apartment->visibility == 0) {
+            $apartment->visibility == 1;
+        }
+
+        $updated = $apartment->update();
+
+        if(!$updated){
+            return redirect()->route('admin.apartments.index')
+                ->with('failure', 'Visibilità non modificata.');
+        }
+
+        return redirect()->route('admin.apartments.index')
+            ->with('success', 'Visibilità modificata.');
+    }
 }

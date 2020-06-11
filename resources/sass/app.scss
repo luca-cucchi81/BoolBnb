@@ -17,3 +17,11 @@
     position: absolute;
 }
  */
+
+.sponsor {
+    display: none;
+}
+
+.sponsor.visible {
+    display: block;
+}

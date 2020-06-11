@@ -10939,3 +10939,11 @@ a.text-dark:focus {
 }
  */
 
+.sponsor {
+  display: none;
+}
+
+.sponsor.visible {
+  display: block;
+}
+

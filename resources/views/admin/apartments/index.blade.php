@@ -22,7 +22,8 @@
                             <th>ID</th>
                             <th>TITOLO</th>
                             <th>INDIRIZZO</th>
-                            <th colspan="4">AZIONI</th>
+                            <th colspan="3">AZIONI</th>
+                            <th>VISIBILITA'</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,15 +34,29 @@
                                 <td>{{$apartment->title}}</td>
                                 <td>{{$apartment->address}}</td>
                                 <td><a class="btn btn-primary" href="{{route('admin.apartments.show', $apartment->id)}}">VISUALIZZA</a></td>
-                            <td><a class="btn btn-primary" href="{{route('admin.apartments.edit', $apartment->id)}}">MODIFICA</a></td>
-                                    <td><a class="btn btn-primary" href="#">DISATTIVA</a></td>
-                                    <td>
-                                        <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="post">
+                                <td><a class="btn btn-primary" href="{{route('admin.apartments.edit', $apartment->id)}}">MODIFICA</a></td>
+                                <td>
+                                    <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">ELIMINA</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    @if ($apartment->visibility == 1)
+                                        <form action="" method="post">
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">ELIMINA</button>
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-secondary">NASCONDI</button>
                                         </form>
-                                    </td>
+                                    @else
+                                        <form action="" method="post">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-warning">MOSTRA</button>
+                                        </form>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                         @endforeach
