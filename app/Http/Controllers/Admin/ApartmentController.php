@@ -145,14 +145,17 @@ class ApartmentController extends Controller
                 ->withInput();
         }
 
-        dd($data);
         $apartment->fill($data);
         $updated = $apartment->update();
         $apartment->images()->delete();
-        
 
-        if ($request->get()) {
-
+        if($request->get('images')){
+            foreach($request->get('images') as $image) {   
+                $image = new Image();
+                $image->apartment_id = $apartment->id;
+                $image->path = 'https://i.picsum.photos/id/88/200/300.jpg';
+                $image->save();
+            }
         }
 
         if (!$updated) {
@@ -162,8 +165,6 @@ class ApartmentController extends Controller
 
         return redirect()->route('admin.apartments.show', $apartment->id)
             ->with('success', 'Appartamento ' . $apartment->id . ' modificato correttamente.');
-        
-
     }
 
     /**
