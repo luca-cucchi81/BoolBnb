@@ -145,7 +145,7 @@ class ApartmentController extends Controller
                 ->withInput();
         }
 
-        dd($apartment->images);
+        dd($data);
         $apartment->fill($data);
         $updated = $apartment->update();
         $apartment->images()->delete();

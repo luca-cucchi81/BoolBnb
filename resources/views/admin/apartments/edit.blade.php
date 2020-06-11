@@ -91,7 +91,7 @@
                                 <legend>Seleziona Foto</legend>
                                     @foreach ($images as $image)
                                         <label class="checked" for="images-{{$image->id}}"><img src="{{$image->path}}" alt="{{$image->title}}"></label> 
-                                        <input type="checkbox" class="hidden" name="images[]" id="images-{{$image->id}}" value="{{$image->id}}" {{((is_array(old('images')) && in_array($image->id, old('images'))) ||  $apartment->images->contains($image->id)) ? 'checked' : ''}}>
+                                        <input type="checkbox" class="hidden" name="images[]" id="images-{{$image->id}}" value="{{$image->id}}" {{((is_array(old('images')) && in_array($image->id, old('images')))) || (!is_array(old('images'))) ? 'checked' : ''}}>
                                     @endforeach
                             </fieldset>
                         </div>
