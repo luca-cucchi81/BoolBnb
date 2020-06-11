@@ -12,44 +12,46 @@
             </div>
         </div>
         <div class="row">
-            <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Inserisci un nuovo Appartamento</a>
-        </div>
-        <div class="row">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>TITOLO</th>
-                        <th>INDIRIZZO</th>
-                        <th colspan="4">AZIONI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($apartments as $apartment)
+            @if ($apartments->contains('user_id', $userId))
+                <div class="row">
+                    <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Inserisci un nuovo Appartamento</a>
+                </div>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{$apartment->id}}</td>
-                            <td>{{$apartment->title}}</td>
-                            <td>{{$apartment->address}}</td>
-                            <td><a class="btn btn-primary" href="{{route('admin.apartments.show', $apartment->id)}}">VISUALIZZA</a></td>
-                            @if (Auth::id() == $apartment->user_id)
-                                <td><a class="btn btn-primary" href="#">MODIFICA</a></td>
-                            @endif
-                            @if (Auth::id() == $apartment->user_id)
-                                <td><a class="btn btn-primary" href="#">DISATTIVA</a></td>
-                            @endif
-                            @if (Auth::id() == $apartment->user_id)
-                                <td>
-                                    <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">ELIMINA</button>
-                                    </form>
-                                </td>
-                            @endif
+                            <th>ID</th>
+                            <th>TITOLO</th>
+                            <th>INDIRIZZO</th>
+                            <th colspan="4">AZIONI</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($apartments as $apartment)
+                            @if (Auth::id() == $apartment->user_id)
+                            <tr>
+                                <td>{{$apartment->id}}</td>
+                                <td>{{$apartment->title}}</td>
+                                <td>{{$apartment->address}}</td>
+                                <td><a class="btn btn-primary" href="{{route('admin.apartments.show', $apartment->id)}}">VISUALIZZA</a></td>
+                            <td><a class="btn btn-primary" href="{{route('admin.apartments.edit', $apartment->id)}}">MODIFICA</a></td>
+                                    <td><a class="btn btn-primary" href="#">DISATTIVA</a></td>
+                                    <td>
+                                        <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">ELIMINA</button>
+                                        </form>
+                                    </td>
+                            </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table> 
+            @else
+                <div class="row">
+                    <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Inserisci il tuo primo Appartamento</a>
+                </div>
+            @endif  
         </div>
         <div class="row">
             {{$apartments->links()}}

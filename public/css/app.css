@@ -10928,3 +10928,14 @@ a.text-dark:focus {
   }
 }
 
+/* .hidden {
+    display: none;
+    position: relative;
+}
+
+.checked::before {
+    content: '\00A7';
+    position: absolute;
+}
+ */
+

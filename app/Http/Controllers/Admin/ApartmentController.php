@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Apartment;
+use App\Image;
 
 class ApartmentController extends Controller
 {
@@ -21,8 +22,9 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::paginate(20);
+        $userId = Auth::id();
 
-        return view('admin.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments', 'userId'));
     }
 
     /**
@@ -104,7 +106,10 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $images = Image::where('apartment_id', $apartment->id)->get();
+        return view('admin.apartments.edit', compact('apartment', 'images'));
+    
     }
 
     /**
@@ -116,7 +121,49 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $data = $request->all();
+
+        if (!isset($data['visibility'])){
+            $data['visibility'] = 0;
+        } else {
+            $data['visibility'] = 1;
+        }
+
+        $validator = Validator::make($data, [
+            'title' => 'max:100',
+            'rooms' => 'integer',
+            'beds' => 'integer',
+            'bathrooms' => 'integer',
+            'square_meters' => 'integer',
+            'address' => 'max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admin.apartmets.edit')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        dd($apartment->images);
+        $apartment->fill($data);
+        $updated = $apartment->update();
+        $apartment->images()->delete();
+        
+
+        if ($request->get()) {
+
+        }
+
+        if (!$updated) {
+            return redirect()->route('admin.apartments.edit')
+                ->with('failure', 'Appartamento non modificato.');
+        }
+
+        return redirect()->route('admin.apartments.show', $apartment->id)
+            ->with('success', 'Appartamento ' . $apartment->id . ' modificato correttamente.');
+        
+
     }
 
     /**
