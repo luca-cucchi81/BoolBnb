@@ -224,6 +224,13 @@ class ApartmentController extends Controller
     public function pivot(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        $sponsorship = Sponsorship::findOrFail($data['sponsorship']);
+        $startDate = Carbon::now()->format('Y-m-d');
+        $endDate = Carbon::now()->addDays($sponsorship->duration)->format('Y-m-d');
+        $apartment = $data['apartment'];
+        $attached = $sponsorship->apartments()->attach($apartment, ['start_date' => $startDate, 'end_date' => $endDate]);
+
+        return redirect()->route('admin.apartments.show', $apartment)
+            ->with('success', 'Appartamento ' . $apartment . ' sponsorizzato correttamente.');
     }
 }
