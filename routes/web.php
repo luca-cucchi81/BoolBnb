@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
+Route::get('/payment/make', 'PaymentController@make')->name('payment.make');
 
 Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
 Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search');
@@ -26,7 +26,7 @@ Route::prefix('admin')
     Route::resource('apartments', 'ApartmentController');
     Route::resource('users', 'UserController');
     Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor');
-    Route::get('apartments/process','ApartmentController@process')->name('apartments.process');
+    Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot');
 });
 
 Auth::routes();

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Apartment;
 use App\Image;
 use App\Sponsorship;
-use Braintree\Transaction;
+
 
 class ApartmentController extends Controller
 {
@@ -221,18 +221,9 @@ class ApartmentController extends Controller
         return view('admin.apartments.sponsor', compact('apartment','sponsorships'));
     }
 
-    public function process(Request $request)
+    public function pivot(Request $request)
     {
-       $payload = $request->input('payload', false);
-       $nonce = $payload['nonce'];
-
-       $status = Transaction::sale([
-           'amount' => '10.00',
-           'paymentMethodNonce' => $nonce,
-           'options' => [
-               'submitForSettlement' => True
-           ]
-       ]);
-       return response()->json($status);
+        $data = $request->all();
+        dd($data);
     }
 }
