@@ -23,7 +23,6 @@
                             <th>TITOLO</th>
                             <th>INDIRIZZO</th>
                             <th colspan="3">AZIONI</th>
-                            <th>VISIBILITA'</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,21 +40,6 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">ELIMINA</button>
                                     </form>
-                                </td>
-                                <td>
-                                    @if ($apartment->visibility == 1)
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('POST')
-                                            <button type="submit" class="btn btn-secondary">NASCONDI</button>
-                                        </form>
-                                    @else
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('POST')
-                                            <button type="submit" class="btn btn-warning">MOSTRA</button>
-                                        </form>
-                                    @endif
                                 </td>
                             </tr>
                             @endif

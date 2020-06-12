@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Apartment;
 use App\Image;
+use App\Sponsorship;
+use Braintree\Transaction;
 
 class ApartmentController extends Controller
 {
@@ -213,25 +215,24 @@ class ApartmentController extends Controller
             ->with('success', 'Appartamento ' . $apartment->id . ' eliminato correttamente.');
     }
 
-    public function toggleVisibility($id)
-    {
-        dd('ciao');
+    public function sponsor($id) {
         $apartment = Apartment::findOrFail($id);
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.sponsor', compact('apartment','sponsorships'));
+    }
 
-        if ($apartment->visibility == 1) {
-            $apartment->visibility == 0;
-        } elseif ($apartment->visibility == 0) {
-            $apartment->visibility == 1;
-        }
+    public function process(Request $request)
+    {
+       $payload = $request->input('payload', false);
+       $nonce = $payload['nonce'];
 
-        $updated = $apartment->update();
-
-        if(!$updated){
-            return redirect()->route('admin.apartments.index')
-                ->with('failure', 'Visibilità non modificata.');
-        }
-
-        return redirect()->route('admin.apartments.index')
-            ->with('success', 'Visibilità modificata.');
+       $status = Transaction::sale([
+           'amount' => '10.00',
+           'paymentMethodNonce' => $nonce,
+           'options' => [
+               'submitForSettlement' => True
+           ]
+       ]);
+       return response()->json($status);
     }
 }
