@@ -38,7 +38,10 @@
                                 console.log("longitudine: ", $('#lng').val());
                             });
                             placesAutocomplete.on('clear', function() {
-                                $address.textContent = 'none';
+                                //$address.textContent = 'none';
+                                $('#address').val('');
+                                $('#lat').val('');
+                                $('#lng').val('');
                             });
                         })();
                     </script>
