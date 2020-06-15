@@ -1,26 +1,37 @@
 @extends('layouts.app')
 @section('content')
-    <form method="post">
+    <form>
         <div class="form-group">
             <fieldset>
                 <legend>Aggiungi Criteri di Ricerca</legend>
-                <input type="text" name="rooms" placeholder="Numero Minimo di Stanze">
-                <input type="text" name="beds" placeholder="Numero Minimo di Posti Letto">
-                <input type="text" name="radius" placeholder="Modifica raggio di ricerca">
-                <input type="checkbox" id="wifi" name="services[]" value="wifi">
-                <label for="wifi">wi-fi</label>
-                <input type="checkbox" id="posto-auto" name="services[]" value="posto auto">
-                <label for="posto-auto">posto auto</label>
-                <input type="checkbox" id="piscina" name="services[]" value="piscina">
-                <label for="piscina">piscina</label>
-                <input type="checkbox" id="sauna" name="services[]" value="sauna">
-                <label for="sauna">sauna</label>
-                <input type="checkbox" id="vista-mare" name="services[]" value="vista mare">
-                <label for="vista-mare">vista mare</label>
-                <input type="checkbox" id="reception" name="services[]" value="portineria">
-                <label for="reception">portineria</label>
-                <button class="btn btn-primary m-3" type="submit">Vai</button>
+                <label for="rooms">N° minimo di Stanze</label>
+                <input type="number" id="rooms" min="1" max="9" name="rooms" value="1">
+                <label for="beds">N° minimo di Posti Letto</label>
+                <input type="number" id="beds" min="1" max="9" name="beds" value="1">
+                <label for="radius">Modifica raggio di ricerca</label>
+                <input type="number" id="radius" min="20" max="50" name="radius" value="20">
             </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend>Filtra per Servizi</legend>
+                <input type="checkbox" id="wifi" class="check-filter" name="services[]" value="wifi">
+                <label for="wifi">wi-fi</label>
+                <input type="checkbox" id="posto-auto" class="check-filter" name="services[]" value="posto auto">
+                <label for="posto-auto">posto auto</label>
+                <input type="checkbox" id="piscina" class="check-filter" name="services[]" value="piscina">
+                <label for="piscina">piscina</label>
+                <input type="checkbox" id="sauna" class="check-filter" name="services[]" value="sauna">
+                <label for="sauna">sauna</label>
+                <input type="checkbox" id="vista-mare" class="check-filter" name="services[]" value="vista mare">
+                <label for="vista-mare">vista mare</label>
+                <input type="checkbox" id="reception" class="check-filter" name="services[]" value="portineria">
+                <label for="reception">portineria</label>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <button id="filtra" class="btn btn-primary m-3" type="button">Vai</button>
+            <button id="clear" class="btn btn-primary m-3" type="button">Pulisci</button>
         </div>
     </form>
     @foreach ($sponsoredApartments as $sponsored)
@@ -29,6 +40,11 @@
             <img src="{{asset('storage/'. $sponsored->main_img)}}" alt="{{$sponsored->title}}">
             <div class="mark-lat d-none">{{$sponsored->lat}}</div>
             <div class="mark-lng d-none">{{$sponsored->lng}}</div>
+            <div class="rooms">{{$sponsored->rooms}}</div>
+            <div class="beds">{{$sponsored->beds}}</div>
+            @foreach ($sponsored->services as $service)
+                <p data-service="{{$service->id}}">{{$service->name}}</p>
+            @endforeach
         </div>
     @endforeach
     @foreach ($filteredApartments as $filtered)
@@ -37,6 +53,11 @@
             <img src="{{asset('storage/'. $filtered->main_img)}}" alt="{{$filtered->title}}">
             <div class="mark-lat d-none">{{$filtered->lat}}</div>
             <div class="mark-lng d-none">{{$filtered->lng}}</div>
+            <div class="rooms">{{$filtered->rooms}}</div>
+            <div class="beds">{{$filtered->beds}}</div>
+            @foreach ($filtered->services as $service)
+                <p data-service="{{$service->id}}">{{$service->name}}</p>
+            @endforeach
         </div>
     @endforeach
 
@@ -116,5 +137,33 @@
                 markers.push(marker);
             }
         })();
+    </script>
+    <script>
+        $(document).ready(function () {
+            clear();
+            $('#filtra').click(function () {
+                var rooms = parseInt($('#rooms').val());
+                var beds = parseInt($('#beds').val());
+                $('.result').addClass('d-none');
+                $('.result').each(function(){
+                    var apartmentRooms = parseInt($(this).find('.rooms').text());
+                    var apartmentBeds = parseInt($(this).find('.beds').text());
+                    if ((rooms <= apartmentRooms) && (beds <= apartmentBeds)) {
+                        $(this).removeClass('d-none');
+                    }
+                });
+            });
+
+            $('#clear').click(function () {
+                clear();
+            })
+
+            function clear() {
+                $('#beds').val(1);
+                $('#rooms').val(1);
+                $('#radius').val(20);
+                $('.check-filter').prop('checked', false);
+            }
+        });
     </script>
 @endsection
