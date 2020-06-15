@@ -30,69 +30,57 @@ class ApartmentController extends Controller
      */
     public function search(Request $request)
     {
+        function distanceResults($lat1, $lon1, $latitude, $longitude, $unit)
+        {
+            $theta = $lon1 - $longitude;
+            $dist = sin(deg2rad($lat1)) * sin(deg2rad($latitude)) + cos(deg2rad($lat1)) * cos(deg2rad($latitude)) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $unit = strtoupper($unit);
+            if ($unit == "K") {
+                return ($miles * 1.609344);
+            } else if ($unit == "N") {
+                return ($miles * 0.8684);
+            } else {
+                return $miles;
+            }
+        };
 
-         function distanceResults($lat1, $lon1, $latitude, $longitude, $unit)
-         {
-             $theta = $lon1 - $longitude;
-             $dist = sin(deg2rad($lat1)) * sin(deg2rad($latitude)) + cos(deg2rad($lat1)) * cos(deg2rad($latitude)) * cos(deg2rad($theta));
-             $dist = acos($dist);
-             $dist = rad2deg($dist);
-             $miles = $dist * 60 * 1.1515;
-             $unit = strtoupper($unit);
-             if ($unit == "K") {
-                 return ($miles * 1.609344);
-             } else if ($unit == "N") {
-                 return ($miles * 0.8684);
-             } else {
-                 return $miles;
-             }
-         };
+        $apartments = Apartment::where('visibility', 1)->get();
+        $filteredApartments = [];
+        $sponsoredApartments = [];
 
+        $data = $request->all();
+        $dataLat = floatval($data['lat']);
+        $dataLng = floatval($data['lng']);
 
-         $apartments = Apartment::where('visibility', 1)->get();
-         $filterApartments = [];
-         $sponsoredApartments = [];
-         foreach ($apartments as $apartment) {
-             foreach ($apartment->sponsorships as $sponsorship) {
-                 $now = Carbon::now();
-                 $endDate = $sponsorship->pivot->end_date;
-                 if ($now < $endDate && !in_array($apartment, $sponsoredApartments)) {
-                     $sponsoredApartments[] = $apartment;
-                 }
-             }
-         }
+        foreach ($apartments as $apartment) {
+            $apartmentLat = $apartment->lat;
+            $apartmentLng = $apartment->lng;
 
-         $data = $request->all();
-         $dataLat = floatval($data['lat']);
-         $dataLng = floatval($data['lng']);
+            $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k');
+            if ($result <= 20) {
+                foreach ($apartment->sponsorships as $sponsorship) {
+                    $now = Carbon::now();
+                    $endDate = $sponsorship->pivot->end_date;
+                    if ($now < $endDate && !in_array($apartment, $sponsoredApartments)) {
+                        $sponsoredApartments[] = $apartment;
+                    }
+                }
+                if (!in_array($apartment, $sponsoredApartments)) {
+                    $filteredApartments[] = $apartment;
+                }
+            }
+        }
 
+        if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) {
+            return redirect()->route('guest.apartments.index')
+                ->with('failure', 'Nessun Appartamento disponibile in zona');
+        }
 
-         foreach ($apartments as $key => $apartment) {
-             $apartmentLat = $apartment->lat;
-             $apartmentLng = $apartment->lng;
-
-             $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k');
-             if ($result <= 20) {
-                 $filterApartments[] = $apartment;
-             }
-         }
-
-
-         $apartments = $filterApartments;
-
-         if (count($filterApartments) == 0) {
-             $data = [
-                 'houses' => $houses,
-                 'sponsoredHouses' => $sponsoredHouses
-             ];
-             return view('search', $data)->withErrors(['Nessun appartamento trovato nel raggio di 20km', 'The Message']);;
-         }
-         $data = [
-             'houses' => $houses,
-             'sponsoredHouses' => $sponsoredHouses
-         ];
-         return view('search', $data);
-     }
+        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments'));
+    }
 
     /**
      * Show the form for creating a new resource.

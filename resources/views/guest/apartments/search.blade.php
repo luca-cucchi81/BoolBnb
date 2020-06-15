@@ -24,8 +24,6 @@
         </div>
     </form>
     @php
-        var_dump($data['address']);
-        var_dump('latitudine: ' . $data['lat']);
-        var_dump('longitudine: ' . $data['lng']);
+        dd($sponsoredApartments, $filteredApartments);
     @endphp
 @endsection
