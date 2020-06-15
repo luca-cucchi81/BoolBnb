@@ -28,12 +28,12 @@
                                 apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
                                 container: document.querySelector('#address')
                             });
-                            var $address = document.querySelector('#address-value')
+                            var address = document.querySelector('#address-value')
                             placesAutocomplete.on('change', function(e) {
                                 $('#address').val(e.suggestion.value);  //ora è scritto bene
                                 $('#lat').val(e.suggestion.latlng.lat);
                                 $('#lng').val(e.suggestion.latlng.lng);
-                                
+
                                 console.log("latitudine: ", $('#lat').val());
                                 console.log("longitudine: ", $('#lng').val());
                             });

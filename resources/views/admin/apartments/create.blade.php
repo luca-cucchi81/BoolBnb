@@ -80,10 +80,37 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Indirizzo</legend>
-                                <input type="text" name="address" class="form-control" value="{{old('address')}}">
+                                <input type="text" id="address" name="address" class="form-control" value="{{old('address')}}">
                                 @error('address')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
+                                <input type="hidden" id="lat" name="lat" class="form-control">
+                                <input type="hidden" id="lng" name="lng" class="form-control">
+                                <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+                                <script>
+                                    (function() {
+                                        var placesAutocomplete = places({
+                                            appId: 'plLSMIJCIUJH',
+                                            apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
+                                            container: document.querySelector('#address')
+                                        });
+                                        var $address = document.querySelector('#address-value')
+                                        placesAutocomplete.on('change', function(e) {
+                                            $('#address').val(e.suggestion.value);  //ora è scritto bene
+                                            $('#lat').val(e.suggestion.latlng.lat);
+                                            $('#lng').val(e.suggestion.latlng.lng);
+
+                                            console.log("latitudine: ", $('#lat').val());
+                                            console.log("longitudine: ", $('#lng').val());
+                                        });
+                                        placesAutocomplete.on('clear', function() {
+                                            //$address.textContent = 'none';
+                                            $('#address').val('');
+                                            $('#lat').val('');
+                                            $('#lng').val('');
+                                        });
+                                    })();
+                                </script>
                             </fieldset>
                         </div>
                         <div class="form-group">

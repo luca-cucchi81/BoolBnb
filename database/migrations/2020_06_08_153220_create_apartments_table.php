@@ -23,8 +23,8 @@ class CreateApartmentsTable extends Migration
             $table->unsignedTinyInteger('bathrooms');
             $table->smallInteger('square_meters');
             $table->string('address');
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('lat', 10, 7)->nullable();
+            $table->decimal('lng', 10, 7)->nullable();
             $table->string('main_img')->nullable();
             $table->boolean('visibility')->default(1);
             $table->string('slug', 150);
