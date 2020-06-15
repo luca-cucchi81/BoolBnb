@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

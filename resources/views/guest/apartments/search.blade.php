@@ -23,7 +23,16 @@
             </fieldset>
         </div>
     </form>
-    @php
-        dd($sponsoredApartments, $filteredApartments);
-    @endphp
+    @foreach ($sponsoredApartments as $sponsored)
+        <div>
+            <h2>{{$sponsored->title}}</h2>
+            <img src="{{asset('storage/'. $sponsored->main_img)}}" alt="{{$sponsored->title}}">
+        </div>
+    @endforeach
+    @foreach ($filteredApartments as $filtered)
+        <div>
+            <h4>{{$filtered->title}}</h4>
+            <img src="{{asset('storage/'. $filtered->main_img)}}" alt="{{$filtered->title}}">
+        </div>
+    @endforeach
 @endsection
