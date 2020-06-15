@@ -79,7 +79,7 @@ class ApartmentController extends Controller
                 ->with('failure', 'Nessun Appartamento disponibile in zona');
         }
 
-        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments'));
+        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng'));
     }
 
     /**
