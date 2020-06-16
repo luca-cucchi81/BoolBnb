@@ -59,7 +59,7 @@
         <input type="hidden" id="input-map" class="form-control">
     </div>
 
-    <div class="row">
+    <div class="row" id="tmp">
         <div id="map"></div>
     </div>
 
@@ -77,63 +77,70 @@
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script>
-        (function() {
-            var latlng = {
-                lat: $('.coord-lat').val(),
-                lng: $('.coord-lng').val()
+        $(document).ready(function () {
+            generateMap();
+            function generateMap(){
+                (function() {
+                    var latlng = {
+                        lat: $('.coord-lat').val(),
+                        lng: $('.coord-lng').val()
+                    };
+
+                    var apartments = [];
+
+                    $('.result[class="result"]').each(function(){
+                        var apartment = {};
+                        apartment.lat = $(this).find('.mark-lat').text();
+                        apartment.lng = $(this).find('.mark-lng').text();
+                        apartments.push(apartment);
+                    });
+
+                    var placesAutocomplete = places({
+                        appId: 'plLSMIJCIUJH',
+                        apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
+                        container: document.querySelector('#input-map')
+                    }).configure({
+                        aroundLatLng: latlng.lat + ',' + latlng.lng,
+                        type: 'address'
+                    });
+
+
+                    var map = L.map('map', {
+                        scrollWheelZoom: false,
+                        zoomControl: true
+                    });
+
+
+                    var osmLayer = new L.TileLayer(
+                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            minZoom: 1,
+                            maxZoom: 19
+                        }
+                    );
+
+                    var markers = [];
+
+                    for (var i = 0; i < apartments.length; i++) {
+                        var apartment = apartments[i];
+                        addApartmentToMap(apartment);
+                    }
+
+                    map.setView(new L.LatLng(latlng.lat, latlng.lng), 13);
+
+                    map.addLayer(osmLayer);
+
+
+                    function addApartmentToMap(apartment) {
+                        var marker = L.marker({'lat': apartment.lat, 'lng': apartment.lng})
+                        marker.addTo(map);
+                        markers.push(marker);
+                    }
+                })();
             };
 
-            var apartments = [];
 
-            $('.result').each(function(){
-                var apartment = {};
-                apartment.lat = $(this).find('.mark-lat').text();
-                apartment.lng = $(this).find('.mark-lng').text();
-                apartments.push(apartment);
-            });
-
-            var placesAutocomplete = places({
-                appId: 'plLSMIJCIUJH',
-                apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
-                container: document.querySelector('#input-map')
-            }).configure({
-                aroundLatLng: latlng.lat + ',' + latlng.lng,
-                type: 'address'
-            });
-
-            var map = L.map('map', {
-                scrollWheelZoom: false,
-                zoomControl: true
-            });
-
-            var osmLayer = new L.TileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    minZoom: 1,
-                    maxZoom: 19
-                }
-            );
-
-            var markers = [];
-
-            for (var i = 0; i < apartments.length; i++) {
-                var apartment = apartments[i];
-                addApartmentToMap(apartment);
-            }
-
-            map.setView(new L.LatLng(latlng.lat, latlng.lng), 13);
-            map.addLayer(osmLayer);
-
-            function addApartmentToMap(apartment) {
-                var marker = L.marker({'lat': apartment.lat, 'lng': apartment.lng})
-                marker.addTo(map);
-                markers.push(marker);
-            }
-        })();
-    </script>
-    <script>
-        $(document).ready(function () {
             clear();
-            
+
             $('#filtra').click(function () {
                 search();
             });
@@ -185,7 +192,11 @@
                         $(this).removeClass('d-none');
                     };
                 });
-            }
+                $('#map').remove();
+                $('#tmp').html('<div id="map"></div>');
+                generateMap();
+            };
+
         });
     </script>
 @endsection
