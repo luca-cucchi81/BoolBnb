@@ -53,17 +53,36 @@ class ApartmentController extends Controller
         $sponsoredApartments = [];
 
         $services = Service::all();
-
         $data = $request->all();
+
+        if (isset($data['address'])) {
+            $oldAddress = $data['address'];
+            $oldLat = floatval($data['lat']);
+            $oldLng = floatval($data['lng']);
+        } else {
+            $data['address'] = $data['oldAddress'];
+            $data['lat'] = $data['oldLat'];
+            $data['lng'] = $data['oldLng'];
+            $oldAddress = $data['address'];
+            $oldLat = floatval($data['lat']);
+            $oldLng = floatval($data['lng']);
+        }
+
         $dataLat = floatval($data['lat']);
         $dataLng = floatval($data['lng']);
+
+        if (isset($data['radius'])) {
+            $radius = $data['radius'];
+        } else {
+            $radius = 20;
+        }
 
         foreach ($apartments as $apartment) {
             $apartmentLat = $apartment->lat;
             $apartmentLng = $apartment->lng;
 
             $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k');
-            if ($result <= 20) {
+            if ($result <= $radius) {
                 foreach ($apartment->sponsorships as $sponsorship) {
                     $now = Carbon::now();
                     $endDate = $sponsorship->pivot->end_date;
@@ -82,7 +101,7 @@ class ApartmentController extends Controller
                 ->with('failure', 'Nessun Appartamento disponibile in zona');
         }
 
-        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services'));
+        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services', 'oldAddress', 'oldLat', 'oldLng'));
     }
 
     /**

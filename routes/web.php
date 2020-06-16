@@ -17,6 +17,7 @@ Route::get('/payment/make', 'PaymentController@make')->name('payment.make');
 
 Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
 Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search');
+// Route::get('/filter', 'ApartmentController@filter')->name('guest.apartments.filter');
 
 Route::prefix('admin')
 ->namespace('Admin')

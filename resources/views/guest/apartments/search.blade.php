@@ -1,5 +1,49 @@
 @extends('layouts.app')
 @section('content')
+    <form action="{{route('guest.apartments.search')}}" method="post">
+        @csrf
+        @method('GET')
+        <div class="form-group">
+            <input type="search" id="address" name="address" class="form-control" placeholder="Cambia destinazione">
+            <input type="hidden" id="lat" name="lat" class="form-control">
+            <input type="hidden" id="lng" name="lng" class="form-control">
+            <input type="hidden" id="old-address" name="oldAddress" class="form-control" value="{{$oldAddress}}">
+            <input type="hidden" id="old-lat" name="oldLat" class="form-control" value="{{$oldLat}}">
+            <input type="hidden" id="old-lng" name="oldLng" class="form-control" value="{{$oldLng}}">
+        </div>
+        <div class="form-group">
+            <label for="radius">Modifica raggio di ricerca</label>
+            <input type="number" id="radius" min="20" max="50" name="radius" value="20">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Vai</button>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    <script>
+        (function() {
+            var placesAutocomplete = places({
+                appId: 'plLSMIJCIUJH',
+                apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
+                container: document.querySelector('#address')
+            });
+            var address = document.querySelector('#address-value')
+            placesAutocomplete.on('change', function(e) {
+                $('#address').val(e.suggestion.value);  //ora è scritto bene
+                $('#lat').val(e.suggestion.latlng.lat);
+                $('#lng').val(e.suggestion.latlng.lng);
+
+                console.log("latitudine: ", $('#lat').val());
+                console.log("longitudine: ", $('#lng').val());
+            });
+            placesAutocomplete.on('clear', function() {
+                //$address.textContent = 'none';
+                $('#address').val('');
+                $('#lat').val('');
+                $('#lng').val('');
+            });
+        })();
+    </script>
     <form>
         <div class="form-group">
             <fieldset>
@@ -8,8 +52,6 @@
                 <input type="number" id="rooms" min="1" max="9" name="rooms" value="1">
                 <label for="beds">N° minimo di Posti Letto</label>
                 <input type="number" id="beds" min="1" max="9" name="beds" value="1">
-                <label for="radius">Modifica raggio di ricerca</label>
-                <input type="number" id="radius" min="20" max="50" name="radius" value="20">
             </fieldset>
         </div>
         <div class="form-group">
@@ -59,7 +101,7 @@
         <input type="hidden" id="input-map" class="form-control">
     </div>
 
-    <div class="row" id="tmp">
+    <div class="row" id="map-container">
         <div id="map"></div>
     </div>
 
@@ -78,7 +120,52 @@
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script>
         $(document).ready(function () {
+
             generateMap();
+            clear();
+
+            $('#filtra').click(function () {
+                search();
+            });
+
+            $('#clear').click(function () {
+                clear();
+                search();
+            });
+
+            function clear() {
+                $('#beds').val(1);
+                $('#rooms').val(1);
+                $('#radius').val(20);
+                $('.check-filter').prop('checked', false);
+            };
+
+            function search(){
+                var filters = filterscreate();
+
+                var rooms = parseInt($('#rooms').val());
+                var beds = parseInt($('#beds').val());
+                $('.result').addClass('d-none');
+
+                $('.result').each(function(){
+                    var apartmentRooms = parseInt($(this).find('.rooms').text());
+                    var apartmentBeds = parseInt($(this).find('.beds').text());
+                    var services = [];
+                    $(this).find('.services').each(function(){
+                        var service = $(this).data('service');
+                        services.push(service);
+                    });
+                    var check = isTrue(filters, services);
+
+                    if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) {
+                        $(this).removeClass('d-none');
+                    };
+                });
+                $('#map').remove();
+                $('#map-container').html('<div id="map"></div>');
+                generateMap();
+            };
+
             function generateMap(){
                 (function() {
                     var latlng = {
@@ -138,26 +225,7 @@
                 })();
             };
 
-
-            clear();
-
-            $('#filtra').click(function () {
-                search();
-            });
-
-            $('#clear').click(function () {
-                clear();
-                search();
-            });
-
-            function clear() {
-                $('#beds').val(1);
-                $('#rooms').val(1);
-                $('#radius').val(20);
-                $('.check-filter').prop('checked', false);
-            };
-
-            function creafiltri() {
+            function filterscreate() {
                 var filters = [];
                 $('.check-filter').each(function(){
                     if ($(this).prop('checked') == true) {
@@ -170,33 +238,6 @@
             function isTrue(arr, arr2){
                 return arr.every(i => arr2.includes(i));
             };
-
-            function search(){
-                var filters = creafiltri();
-
-                var rooms = parseInt($('#rooms').val());
-                var beds = parseInt($('#beds').val());
-                $('.result').addClass('d-none');
-
-                $('.result').each(function(){
-                    var apartmentRooms = parseInt($(this).find('.rooms').text());
-                    var apartmentBeds = parseInt($(this).find('.beds').text());
-                    var services = [];
-                    $(this).find('.services').each(function(){
-                        var service = $(this).data('service');
-                        services.push(service);
-                    });
-                    var check = isTrue(filters, services);
-
-                    if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) {
-                        $(this).removeClass('d-none');
-                    };
-                });
-                $('#map').remove();
-                $('#tmp').html('<div id="map"></div>');
-                generateMap();
-            };
-
         });
     </script>
 @endsection
