@@ -18,6 +18,7 @@ Route::get('/payment/make', 'PaymentController@make')->name('payment.make');
 Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
 Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search');
 // Route::get('/filter', 'ApartmentController@filter')->name('guest.apartments.filter');
+// Route::get('/message', 'MessageController@create')->name('guest.messages.create');
 
 Route::prefix('admin')
 ->namespace('Admin')
@@ -28,6 +29,12 @@ Route::prefix('admin')
     Route::resource('users', 'UserController');
     Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor');
     Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot');
+});
+
+Route::prefix('guest')
+->name('guest.')
+->group(function(){
+    Route::resource('apartments', 'ApartmentController');
 });
 
 Auth::routes();

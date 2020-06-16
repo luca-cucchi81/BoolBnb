@@ -7,6 +7,9 @@ use App\Apartment;
 use App\Sponsorship;
 use Carbon\Carbon;
 use App\Service;
+use App\Message;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class ApartmentController extends Controller
@@ -111,7 +114,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -122,7 +125,31 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'sender' => 'required|email',
+            'body' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('guest.apartments.show', $data['apartment_id'])
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $message = new Message;
+
+        $message->fill($data);
+        $saved = $message->save();
+
+        if (!$saved) {
+            return redirect()->route('guest.apartments.show')
+                ->with('failure', 'Messaggio non inviato.');
+        }
+
+        return redirect()->route('guest.apartments.show', $data['apartment_id'])
+            ->with('success', 'Messaggio inviato correttamente.');
     }
 
     /**
@@ -133,7 +160,13 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        if (isset(Auth::user()->email)) {
+            $userEmail = Auth::user()->email;
+        } else {
+            $userEmail = '';
+        }
+        return view('guest.apartments.show', compact('apartment', 'userEmail'));
     }
 
     /**
