@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\Sponsorship;
 use Carbon\Carbon;
+use App\Service;
 
 
 class ApartmentController extends Controller
@@ -51,6 +52,8 @@ class ApartmentController extends Controller
         $filteredApartments = [];
         $sponsoredApartments = [];
 
+        $services = Service::all();
+
         $data = $request->all();
         $dataLat = floatval($data['lat']);
         $dataLng = floatval($data['lng']);
@@ -79,7 +82,7 @@ class ApartmentController extends Controller
                 ->with('failure', 'Nessun Appartamento disponibile in zona');
         }
 
-        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng'));
+        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services'));
     }
 
     /**

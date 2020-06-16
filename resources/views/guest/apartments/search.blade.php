@@ -15,18 +15,10 @@
         <div class="form-group">
             <fieldset>
                 <legend>Filtra per Servizi</legend>
-                <input type="checkbox" id="wifi" class="check-filter" name="services[]" value="wifi">
-                <label for="wifi">wi-fi</label>
-                <input type="checkbox" id="posto-auto" class="check-filter" name="services[]" value="posto auto">
-                <label for="posto-auto">posto auto</label>
-                <input type="checkbox" id="piscina" class="check-filter" name="services[]" value="piscina">
-                <label for="piscina">piscina</label>
-                <input type="checkbox" id="sauna" class="check-filter" name="services[]" value="sauna">
-                <label for="sauna">sauna</label>
-                <input type="checkbox" id="vista-mare" class="check-filter" name="services[]" value="vista mare">
-                <label for="vista-mare">vista mare</label>
-                <input type="checkbox" id="reception" class="check-filter" name="services[]" value="portineria">
-                <label for="reception">portineria</label>
+                @foreach ($services as $service)
+                    <input type="checkbox" id='service-{{$service->id}}' class="check-filter" value="{{$service->id}}">
+                    <label for="service-{{$service->id}}">{{$service->name}}</label>
+                @endforeach
             </fieldset>
         </div>
         <div class="form-group">
@@ -43,7 +35,7 @@
             <div class="rooms">{{$sponsored->rooms}}</div>
             <div class="beds">{{$sponsored->beds}}</div>
             @foreach ($sponsored->services as $service)
-                <p data-service="{{$service->id}}">{{$service->name}}</p>
+                <p class="services" data-service="{{$service->id}}">{{$service->name}}</p>
             @endforeach
         </div>
     @endforeach
@@ -56,7 +48,7 @@
             <div class="rooms">{{$filtered->rooms}}</div>
             <div class="beds">{{$filtered->beds}}</div>
             @foreach ($filtered->services as $service)
-                <p data-service="{{$service->id}}">{{$service->name}}</p>
+                <p class="services" data-service="{{$service->id}}">{{$service->name}}</p>
             @endforeach
         </div>
     @endforeach
@@ -110,7 +102,7 @@
             });
 
             var map = L.map('map', {
-                scrollWheelZoom: true,
+                scrollWheelZoom: false,
                 zoomControl: true
             });
 
@@ -141,28 +133,58 @@
     <script>
         $(document).ready(function () {
             clear();
+            
             $('#filtra').click(function () {
-                var rooms = parseInt($('#rooms').val());
-                var beds = parseInt($('#beds').val());
-                $('.result').addClass('d-none');
-                $('.result').each(function(){
-                    var apartmentRooms = parseInt($(this).find('.rooms').text());
-                    var apartmentBeds = parseInt($(this).find('.beds').text());
-                    if ((rooms <= apartmentRooms) && (beds <= apartmentBeds)) {
-                        $(this).removeClass('d-none');
-                    }
-                });
+                search();
             });
 
             $('#clear').click(function () {
                 clear();
-            })
+                search();
+            });
 
             function clear() {
                 $('#beds').val(1);
                 $('#rooms').val(1);
                 $('#radius').val(20);
                 $('.check-filter').prop('checked', false);
+            };
+
+            function creafiltri() {
+                var filters = [];
+                $('.check-filter').each(function(){
+                    if ($(this).prop('checked') == true) {
+                        filters.push(parseInt($(this).val()));
+                    }
+                });
+                return filters;
+            };
+
+            function isTrue(arr, arr2){
+                return arr.every(i => arr2.includes(i));
+            };
+
+            function search(){
+                var filters = creafiltri();
+
+                var rooms = parseInt($('#rooms').val());
+                var beds = parseInt($('#beds').val());
+                $('.result').addClass('d-none');
+
+                $('.result').each(function(){
+                    var apartmentRooms = parseInt($(this).find('.rooms').text());
+                    var apartmentBeds = parseInt($(this).find('.beds').text());
+                    var services = [];
+                    $(this).find('.services').each(function(){
+                        var service = $(this).data('service');
+                        services.push(service);
+                    });
+                    var check = isTrue(filters, services);
+
+                    if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) {
+                        $(this).removeClass('d-none');
+                    };
+                });
             }
         });
     </script>

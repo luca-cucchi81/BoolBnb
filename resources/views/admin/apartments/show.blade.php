@@ -61,7 +61,7 @@
             });
 
             var map = L.map('map', {
-                scrollWheelZoom: true,
+                scrollWheelZoom: false,
                 zoomControl: true
             });
 
