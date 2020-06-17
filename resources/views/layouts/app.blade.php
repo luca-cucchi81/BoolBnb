@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
 </head>
 <body>
     <div id="app">
