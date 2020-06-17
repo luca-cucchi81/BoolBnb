@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Apartment;
 use App\Message;
 
@@ -19,6 +20,16 @@ class MessageController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where('user_id', $userId)->get();
+        foreach ($apartments as $apartment){
+            foreach($apartment->messages as $message){
+                $messages = Message::where('apartment_id', $apartment->id)->get();
+                foreach ($messages as $singleMessage){
+                    $singleMessage->read = 1;
+                    $singleMessage->save();
+                }
+            }
+        }
+        
      
         return view('admin.messages.index', compact('apartments'));
 
@@ -42,7 +53,7 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

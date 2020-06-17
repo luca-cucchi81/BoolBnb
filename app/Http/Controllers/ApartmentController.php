@@ -129,6 +129,7 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($data, [
             'sender' => 'required|email',
+
             'body' => 'required'
         ]);
 
