@@ -158,6 +158,16 @@ class ApartmentController extends Controller
             $data['main_img'] = $path;
         }
 
+        if (isset($data['images'])){
+            foreach ($data['images'] as $image){
+                $path = Storage::disk('public')->put('images', $image);
+                $newImage = new Image;
+                $newImage->path = $path;
+                $newImage->apartment_id = $apartment->id;
+                $newImage->save();
+            }
+        }
+
         $validator = Validator::make($data, [
             'title' => 'max:100',
             'rooms' => 'integer',
@@ -166,7 +176,8 @@ class ApartmentController extends Controller
             'square_meters' => 'integer',
             'address' => 'max:255',
             'services' => 'required|array',
-            'services.*' => 'exists:services,id'
+            'services.*' => 'exists:services,id',
+            'images' => 'required|array'
         ]);
 
         if ($validator->fails()) {
@@ -177,17 +188,7 @@ class ApartmentController extends Controller
 
         $apartment->fill($data);
         $updated = $apartment->update();
-        $apartment->images()->delete();
-
-        if($request->get('images')){
-            foreach($request->get('images') as $image) {
-                $image = new Image();
-                $image->apartment_id = $apartment->id;
-                $image->path = 'https://i.picsum.photos/id/88/200/300.jpg';
-                $image->save();
-            }
-        }
-
+       
         $apartment->services()->sync($data['services']);
 
         if (!$updated) {

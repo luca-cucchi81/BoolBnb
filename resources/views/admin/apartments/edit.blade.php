@@ -98,18 +98,24 @@
                                 @enderror
                             </fieldset>
                         </div>
+
+                        @if ($images->isEmpty())
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Carica ulteriori foto</legend>
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" for="secondary-photo-{{$i}}"></label>
+                                            <input type="file" class="custom-file-input" id="secondary-photo-{{$i}}" name="images[]">
+                                        </div>
+                                    @endfor
+                                </fieldset>
+                            </div>
+                        @endif
+                    
                         <div class="form-group">
                             <fieldset>
-                                <legend>Seleziona Foto</legend>
-                                    @foreach ($images as $image)
-                                        <label class="checked" for="images-{{$image->id}}"><img src="{{$image->path}}" alt="{{$image->title}}"></label>
-                                        <input type="checkbox" class="hidden" name="images[]" id="images-{{$image->id}}" value="{{$image->id}}" {{((is_array(old('images')) && in_array($image->id, old('images')))) || (!is_array(old('images'))) ? 'checked' : ''}}>
-                                    @endforeach
-                            </fieldset>
-                        </div>
-                        <div class="form-group">
-                            <fieldset>
-                                <legend>Tags</legend>
+                                <legend>Servizi</legend>
                                 @foreach ($services as $service)
                                     <label for="services-{{$service->id}}">{{$service->name}}</label>
                                     <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{((is_array(old('services')) && in_array($service->id, old('services'))) ||  $apartment->services->contains($service->id)) ? 'checked' : ''}}>
