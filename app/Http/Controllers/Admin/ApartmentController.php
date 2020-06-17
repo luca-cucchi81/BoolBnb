@@ -38,7 +38,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        
+
         return view('admin.apartments.create', compact('services'));
     }
 
@@ -73,6 +73,7 @@ class ApartmentController extends Controller
             'bathrooms' => 'required|integer',
             'square_meters' => 'required|integer',
             'address' => 'required|max:255',
+            'services' => 'required|array',
             'services.*' => 'exists:services,id'
         ]);
 
@@ -163,11 +164,13 @@ class ApartmentController extends Controller
             'beds' => 'integer',
             'bathrooms' => 'integer',
             'square_meters' => 'integer',
-            'address' => 'max:255'
+            'address' => 'max:255',
+            'services' => 'required|array',
+            'services.*' => 'exists:services,id'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.apartments.edit')
+            return redirect()->route('admin.apartments.edit', $apartment->id)
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -185,8 +188,10 @@ class ApartmentController extends Controller
             }
         }
 
+        $apartment->services()->sync($data['services']);
+
         if (!$updated) {
-            return redirect()->route('admin.apartments.edit')
+            return redirect()->route('admin.apartments.edit', $apartment->id)
                 ->with('failure', 'Appartamento non modificato.');
         }
 
