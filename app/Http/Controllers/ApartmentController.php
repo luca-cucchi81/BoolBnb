@@ -144,7 +144,7 @@ class ApartmentController extends Controller
         $saved = $message->save();
 
         if (!$saved) {
-            return redirect()->route('guest.apartments.show')
+            return redirect()->route('guest.apartments.show', $data['apartment_id'])
                 ->with('failure', 'Messaggio non inviato.');
         }
 

@@ -27,6 +27,7 @@ Route::prefix('admin')
 ->group(function(){
     Route::resource('apartments', 'ApartmentController');
     Route::resource('users', 'UserController');
+    Route::resource('messages', 'MessageController');
     Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor');
     Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot');
 });

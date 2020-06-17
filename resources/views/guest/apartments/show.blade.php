@@ -2,32 +2,35 @@
 @section('content')
     <h1>{{$apartment->title}}</h1>
     <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
-    <form class="form" action="{{route('guest.apartments.store')}}" method="post">
-        @csrf
-        @method('POST')
-        <div class="form-group">
-            <fieldset>
-                <legend>Mittente</legend>
-                <input type="email" name="sender" value="{{$userEmail}}" placeholder="Inserisci la tua e-mail">
-                @error('sender')
-                    <span class="alert alert-danger">{{$message}}</span>
-                @enderror
-            </fieldset>
-        </div>
-        <div class="form-group">
-            <fieldset>
-                <legend>Testo del messaggio</legend>
-                <textarea name="body" rows="8">Inserisci il testo del messaggio</textarea>
-                @error('body')
-                    <span class="alert alert-danger">{{$message}}</span>
-                @enderror
-            </fieldset>
-        </div>
-        <div class="form-group">
-            <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
-            <button type="submit">CREA</button>
-        </div>
-    </form>
+    @if (Auth::id() != $apartment->user_id)
+        <form class="form" action="{{route('guest.apartments.store')}}" method="post">
+            @csrf
+            @method('POST')
+            <div class="form-group">
+                <fieldset>
+                    <legend>Mittente</legend>
+                    <input type="email" name="sender" value="{{$userEmail}}" placeholder="Inserisci la tua e-mail">
+                    @error('sender')
+                        <span class="alert alert-danger">{{$message}}</span>
+                    @enderror
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>Testo del messaggio</legend>
+                    <textarea name="body" rows="8"></textarea>
+                    @error('body')
+                        <span class="alert alert-danger">{{$message}}</span>
+                    @enderror
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
+                <button type="submit">CREA</button>
+            </div>
+        </form>
+    @endif
+
     <div class="row">
         <input type="hidden" class='coord-lat' value="{{$apartment->lat}}">
         <input type="hidden" class='coord-lng' value="{{$apartment->lng}}">

@@ -20,6 +20,7 @@ class MessagesTableSeeder extends Seeder
             $message->apartment_id = $apartment->id;
             $message->sender = $faker->email();
             $message->body = $faker->paragraph(3, true);
+            $message->read = 0;
             $message->save();
         } 
     }

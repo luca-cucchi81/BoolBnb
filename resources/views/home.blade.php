@@ -23,6 +23,8 @@
                     @endif
 
                     <a class="btn btn-primary" href="{{route('admin.apartments.index')}}">Vai agli Appartamenti</a>
+                    <a class="btn btn-primary" href="{{route('admin.messages.index')}}">Vai ai messaggi</a>
+        
                 </div>
             </div>
         </div>
