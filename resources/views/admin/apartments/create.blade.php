@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Numero Stanze</legend>
-                                <input type="text" name="rooms" class="form-control" value="{{old('rooms')}}">
+                                <input type="number" min='1' max='9' name="rooms" class="form-control" value="{{old('rooms')}}">
                                 @error('rooms')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Numero Letti</legend>
-                                <input type="text" name="beds" class="form-control" value="{{old('beds')}}">
+                                <input type="number" min='1' max='9' name="beds" class="form-control" value="{{old('beds')}}">
                                 @error('beds')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Numero Bagni</legend>
-                                <input type="text" name="bathrooms" class="form-control" value="{{old('bathrooms')}}">
+                                <input type="number" min='1' max='9' name="bathrooms" class="form-control" value="{{old('bathrooms')}}">
                                 @error('bathrooms')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
@@ -71,7 +71,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Metri Quadrati</legend>
-                                <input type="text" name="square_meters" class="form-control" value="{{old('square_meters')}}">
+                                <input type="number" min='30' max='999' name="square_meters" class="form-control" value="{{old('square_meters')}}">
                                 @error('square_meters')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
@@ -123,6 +123,15 @@
                                 @error('main_img')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Servizi</legend>
+                                @foreach ($services as $service)
+                                    <label for="services-{{$service->id}}">{{$service->name}}</label>
+                                    <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+                                @endforeach
                             </fieldset>
                         </div>
                         <div class="form-group">

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Service;
 use App\Apartment;
 use App\Image;
 use App\Sponsorship;
@@ -36,7 +37,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $services = Service::all();
+        
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -69,11 +72,12 @@ class ApartmentController extends Controller
             'beds' => 'required|integer',
             'bathrooms' => 'required|integer',
             'square_meters' => 'required|integer',
-            'address' => 'required|max:255'
+            'address' => 'required|max:255',
+            'services.*' => 'exists:services,id'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.apartmets.create')
+            return redirect()->route('admin.apartments.create')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -82,6 +86,8 @@ class ApartmentController extends Controller
 
         $apartment->fill($data);
         $saved = $apartment->save();
+
+        $apartment->services()->attach($data['services']);
 
         if (!$saved) {
             return redirect()->route('admin.apartments.create')
@@ -160,7 +166,7 @@ class ApartmentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.apartmets.edit')
+            return redirect()->route('admin.apartments.edit')
                 ->withErrors($validator)
                 ->withInput();
         }
