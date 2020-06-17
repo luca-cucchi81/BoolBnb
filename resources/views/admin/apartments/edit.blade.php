@@ -108,6 +108,15 @@
                             </fieldset>
                         </div>
                         <div class="form-group">
+                            <fieldset>
+                                <legend>Tags</legend>
+                                @foreach ($services as $service)
+                                    <label for="services-{{$service->id}}">{{$service->name}}</label>
+                                    <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{((is_array(old('services')) && in_array($service->id, old('services'))) ||  $apartment->services->contains($service->id)) ? 'checked' : ''}}>
+                                @endforeach
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
                             <div class="custom-control custom-switch">
                                 <input name="visibility" type="checkbox" class="custom-control-input" id="customSwitch1" checked>
                                 <label class="custom-control-label" for="customSwitch1">Visibile a tutti</label>

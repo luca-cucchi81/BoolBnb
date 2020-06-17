@@ -118,9 +118,10 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
+        $services = Service::all();
         $apartment = Apartment::findOrFail($id);
         $images = Image::where('apartment_id', $apartment->id)->get();
-        return view('admin.apartments.edit', compact('apartment', 'images'));
+        return view('admin.apartments.edit', compact('apartment', 'images', 'services'));
 
     }
 
