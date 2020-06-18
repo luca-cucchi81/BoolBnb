@@ -166,6 +166,10 @@ class ApartmentController extends Controller
         } else {
             $userEmail = '';
         }
+        
+        $apartment->vzt()->increment();
+        $apartment->vzt()->count();
+
         return view('guest.apartments.show', compact('apartment', 'userEmail'));
     }
 

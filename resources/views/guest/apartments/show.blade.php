@@ -39,7 +39,10 @@
     <div class="row">
         <div id="map"></div>
     </div>
-
+    <div>Visite del giorno: {{visits($apartment)->period('day')->count()}}</div>
+    <div>Visite del mese: {{visits($apartment)->period('month')->count()}}</div>
+    <div>Visite dell'anno: {{visits($apartment)->period('year')->count()}}</div>
+    <div>Visite totali: {{visits($apartment)->count()}}</div>
     <style>
         #map {
             height: 400px;

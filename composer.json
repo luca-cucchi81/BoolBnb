@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "algolia/algoliasearch-client-php": "^2.2",
+        "awssat/laravel-visits": "^2.2",
         "braintree/braintree_php": "^5.1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
@@ -17,7 +18,8 @@
         "laravel/framework": "^7.0",
         "laravel/scout": "^8.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0"
+        "laravel/ui": "^2.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

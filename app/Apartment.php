@@ -34,4 +34,11 @@ class Apartment extends Model
         return $this->belongsToMany('App\Sponsorship')->withPivot('start_date', 'end_date');
     }
 
+    public function vzt()
+    {
+      return visits($this);
+    }
+
+
+
 }

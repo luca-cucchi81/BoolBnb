@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'boolbnb'),
+    'driver' => env('SESSION_DRIVER', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -72,6 +72,7 @@ return [
     |
     */
 
+    // 'connection' => 'default',
     'connection' => env('SESSION_CONNECTION', null),
 
     /*
