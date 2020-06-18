@@ -43,5 +43,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('session/get','SessionController@accessSessionData');
-Route::get('session/set','SessionController@storeSessionData');
+Route::get('/session/set','SessionController@storeSessionData');
 Route::get('session/remove','SessionController@deleteSessionData');

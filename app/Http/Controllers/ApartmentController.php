@@ -11,7 +11,6 @@ use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-
 class ApartmentController extends Controller
 {
     /**
