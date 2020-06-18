@@ -24,7 +24,7 @@
 
                     <a class="btn btn-primary" href="{{route('admin.apartments.index')}}">Vai agli Appartamenti</a>
                     <a class="btn btn-primary" href="{{route('admin.messages.index')}}">Vai ai messaggi</a>
-        
+
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
 
     var messagesUrl = "http://127.0.0.1:8000/api/messages";
     var apartmentsUrl = "http://127.0.0.1:8000/api/apartments";
-    
+
     apiCallMessagesChart();
- 
+
     function apiCallMessagesChart() {
         $.ajax({
             url: messagesUrl,
@@ -62,15 +62,12 @@
                    }
                    messages[apartmentId] += 1;
                 }
-
                 var apartments = [];
                 var messagesCount = [];
                 for (var key in messages) {
                     apartments.push(key);
                     messagesCount.push(messages[key]);
                 }
-                console.log(apartments);
-                console.log(messagesCount);
                 createMessagesChart('#line-chart', apartments, messagesCount);
             },
             error: function (err) {
@@ -154,16 +151,25 @@
     function createMessagesChart(id, labels, data) { // Funzione che crea un grafico tipo line dato un id di destinazione e due array labels e data
         var ctx = $(id);
         var chart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 datasets: [{
-                    label: 'Messaggi Ricevuti per ogni appartamento',
-                    borderColor: 'darkblue',
-                    lineTension: 0.5,
+                    label: 'Numero di Messaggi relativi all\'appartamento',
+                    backgroundColor: '#ff6666',
                     data: data,
                 }],
                 labels: labels,
             },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
         });
     };
 });

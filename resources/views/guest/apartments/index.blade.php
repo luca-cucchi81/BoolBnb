@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 @foreach ($apartments as $apartment)
                     @foreach ($apartment->sponsorships as $sponsorship)
                             @if($sponsorship->price == $maxPrice)
