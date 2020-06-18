@@ -13,4 +13,17 @@ class ApartmentController extends Controller
 
         return response()->json($apartments);
     }
+
+    public function visitDay(){
+
+        $apartments = visits('App\Apartment')->top(10);
+        $visitsDay = [];
+        foreach ($apartments as $apartment) {
+            $visitApartment = [];
+            $visitApartment['apartment_id'] = $apartment->id;
+            $visitApartment['visitDay'] = visits($apartment)->period('day')->count();
+            $visitsDay[] = $visitApartment;
+        }
+        return response()->json($visitsDay);
+    }
 }

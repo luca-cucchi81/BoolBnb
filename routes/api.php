@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('messages', 'Api\MessageController@getAll');
 Route::get('apartments', 'Api\ApartmentController@getAll');
+Route::get('visitday', 'Api\ApartmentController@visitDay');

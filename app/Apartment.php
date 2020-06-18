@@ -38,7 +38,4 @@ class Apartment extends Model
     {
       return visits($this);
     }
-
-
-
 }
