@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Service;
 use App\Apartment;
 use App\Image;
+use App\Message;
 use App\Sponsorship;
 
 
@@ -108,6 +109,13 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
+            foreach($apartment->messages as $message){
+                $messages = Message::where('apartment_id', $apartment->id)->get();
+                foreach ($messages as $singleMessage){
+                    $singleMessage->read = 1;
+                    $singleMessage->save();
+                }
+            }
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -188,7 +196,7 @@ class ApartmentController extends Controller
 
         $apartment->fill($data);
         $updated = $apartment->update();
-       
+
         $apartment->services()->sync($data['services']);
 
         if (!$updated) {

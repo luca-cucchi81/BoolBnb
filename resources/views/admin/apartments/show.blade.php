@@ -30,7 +30,17 @@
     <div class="row">
         <div id="map"></div>
     </div>
-
+    <button type="button" class="btn btn-primary" id="show-message">MOSTRA MESSAGGI</button>
+    <button type="button" class="btn btn-primary d-none" id="hide-message">NASCONDI MESSAGGI</button>
+    <div class="d-none" id="message-container">
+        @foreach ($apartment->messages as $message)
+            <div>
+                <p>{{$apartment->title}}</p>
+                <p>{{$message->sender}}</p>
+                <p>{{$message->body}}</p>
+            </div>
+        @endforeach
+    </div>
     <style>
         #map {
             height: 400px;
@@ -80,5 +90,16 @@
             map.setView(new L.LatLng(latlng.lat, latlng.lng), 16);
             map.addLayer(osmLayer);
         })();
+
+        $('#show-message').click(function(){
+            $('#message-container').removeClass('d-none');
+            $('#show-message').addClass('d-none');
+            $('#hide-message').removeClass('d-none');
+        });
+        $('#hide-message').click(function(){
+            $('#message-container').addClass('d-none');
+            $('#show-message').removeClass('d-none');
+            $('#hide-message').addClass('d-none');
+        });
     </script>
 @endsection

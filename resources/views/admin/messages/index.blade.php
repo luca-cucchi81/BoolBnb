@@ -7,7 +7,6 @@
             <p>{{$message->sender}}</p>
             <p>{{$message->body}}</p>
         </div>
-            
         @endforeach
     @endforeach
 
