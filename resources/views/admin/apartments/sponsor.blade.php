@@ -40,16 +40,18 @@
         container: '#dropin-container'
     }, function (createErr, instance) {
         button.addEventListener('click', function () {
+            $('#invia').removeClass('d-none');
+            $('#submit-button').addClass('d-none');
+            $('.braintree-toggle').click(function(){
+                $('#submit-button').removeClass('d-none');
+                $('#invia').addClass('d-none');
+            });
             instance.requestPaymentMethod(function (err, payload) {
-                $.get('{{ route('payment.make') }}', {payload}, function (response) {
+                $.get('{{route('payment.make')}}', {payload}, function (response) {
                     if (response.success) {
-                        $('#invia').removeClass('d-none');
-                        $('#submit-button').addClass('d-none');
-                        $('.braintree-toggle').click(function(){
-                            $('#submit-button').removeClass('d-none');
-                            $('#invia').addClass('d-none');
-                        });
-                    } else {alert('Payment failed');
+
+                    } else {
+                        alert('Payment failed');
                     }
                 }, 'json');
             });

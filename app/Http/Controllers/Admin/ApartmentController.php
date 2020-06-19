@@ -113,14 +113,23 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
-            foreach($apartment->messages as $message){
-                $messages = Message::where('apartment_id', $apartment->id)->get();
-                foreach ($messages as $singleMessage){
-                    $singleMessage->read = 1;
-                    $singleMessage->save();
-                }
+        $now = Carbon::now();
+        $hide = false;
+        $sponsorships = $apartment->sponsorships;
+        foreach ($sponsorships as $sponsorship) {
+            if ($sponsorship->pivot->end_date > $now) {
+                $hide = true;
             }
-        return view('admin.apartments.show', compact('apartment'));
+        }
+        foreach($apartment->messages as $message){
+            $messages = Message::where('apartment_id', $apartment->id)->get();
+            foreach ($messages as $singleMessage){
+                $singleMessage->read = 1;
+                $singleMessage->save();
+            }
+        }
+
+        return view('admin.apartments.show', compact('apartment', 'hide'));
     }
 
     /**
@@ -251,10 +260,16 @@ class ApartmentController extends Controller
     public function pivot(Request $request)
     {
         $data = $request->all();
+        $apartment = $data['apartment'];
+
+        if (!isset($data['sponsorship'])) {
+            return redirect()->route('admin.apartments.sponsor', $apartment)
+                ->with('failure', 'Seleziona piano di sponsorizzazione');
+        }
+
         $sponsorship = Sponsorship::findOrFail($data['sponsorship']);
         $startDate = Carbon::now()->format('Y-m-d');
         $endDate = Carbon::now()->addDays($sponsorship->duration)->format('Y-m-d');
-        $apartment = $data['apartment'];
         $attached = $sponsorship->apartments()->attach($apartment, ['start_date' => $startDate, 'end_date' => $endDate]);
 
         return redirect()->route('admin.apartments.show', $apartment)

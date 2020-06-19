@@ -18,13 +18,16 @@
             <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
         </div>
         <div class="row">
-            <a class="btn btn-primary" href="{{route('admin.apartments.sponsor', $apartment->id)}}">SPONSORIZZA</a>
+            @if ($hide == false)
+                <a class="btn btn-primary" href="{{route('admin.apartments.sponsor', $apartment->id)}}">SPONSORIZZA</a>
+            @endif
             <a class="btn btn-primary" href="{{route('admin.apartments.edit', $apartment->id)}}">MODIFICA</a>
         </div>
         <div class="row">
             <input type="hidden" class='coord-lat' value="{{$apartment->lat}}">
             <input type="hidden" class='coord-lng' value="{{$apartment->lng}}">
             <input type="hidden" id="input-map" class="form-control">
+            <input type="hidden" id="apartment_id" class='apartment' value="{{$apartment->id}}">
         </div>
     </div>
     <div class="row">
@@ -41,6 +44,10 @@
             </div>
         @endforeach
     </div>
+    <div class="chart col-4">
+        <h2 class="text-center">Statistiche Visualizzazioni</h2>
+        <canvas id="visits-chart"></canvas>
+    </div>
     <style>
         #map {
             height: 400px;
@@ -51,10 +58,60 @@
         }
     </style>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/it.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script>
+
+        var apartmentId = $('#apartment_id').val();
+        var visitsUrl = "http://127.0.0.1:8000/api/visits/apartment/" + apartmentId;
+
+        $.ajax({
+            url: visitsUrl,
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+                var apartments = [];
+                var visitsCount = [];
+                for (var key in data) {
+                    apartments.push(key);
+                    visitsCount.push(data[key]);
+                }
+                createVisitsChart('#visits-chart', apartments, visitsCount);
+            },
+            error: function (err) {
+                alert('errore API');
+            }
+        });
+
+        function createVisitsChart(id, labels, data) { // Funzione che crea un grafico tipo line dato un id di destinazione e due array labels e data
+            var ctx = $(id);
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: 'Analisi Visite',
+                        backgroundColor: 'lightgreen',
+                        data: data,
+                    }],
+                    labels: labels,
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                }
+            });
+        };
+
         (function() {
             var latlng = {
                 lat: $('.coord-lat').val(),
