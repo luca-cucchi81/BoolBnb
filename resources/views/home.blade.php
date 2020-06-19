@@ -35,6 +35,7 @@
      <h2>Messaggi Ricevuti</h2>
      <canvas id="line-chart"></canvas>
  </div>
+ <input type="hidden" id="user-id" value="{{$userId}}">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -45,6 +46,24 @@
 
     var messagesUrl = "http://127.0.0.1:8000/api/messages";
     var apartmentsUrl = "http://127.0.0.1:8000/api/apartments";
+    var apartmentsApi = [];
+
+    $.ajax({
+        url: apartmentsUrl,
+        method: 'GET',
+        success: function (data) {
+            var userId = $('#user-id').val();
+            for (var i = 0; i < data.length; i++) {
+                var apartment = data[i];
+                if (apartment.user_id == userId) {
+                    apartmentsApi.push(apartment.id);
+                }
+            }
+        },
+        error: function (err) {
+            alert('errore API');
+        }
+    });
 
     apiCallMessagesChart();
 
@@ -55,12 +74,14 @@
             success: function (data) {
                 var messages = {};
                  for (var i = 0; i < data.length; i++){
-                   var message = data[i];
-                   var apartmentId = message.apartment_id;
-                   if (messages[apartmentId] === undefined){
-                       messages[apartmentId] = 0;
-                   }
-                   messages[apartmentId] += 1;
+                     if (apartmentsApi.includes(data[i].apartment_id)) {
+                         var message = data[i];
+                         var apartmentId = message.apartment_id;
+                         if (messages[apartmentId] === undefined){
+                             messages[apartmentId] = 0;
+                         }
+                         messages[apartmentId] += 1;
+                     }
                 }
                 var apartments = [];
                 var messagesCount = [];

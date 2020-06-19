@@ -25,6 +25,7 @@
                 </fieldset>
             </div>
             <div class="form-group">
+                <input name="slug" type="hidden" class='slug' value="{{$apartment->slug}}">
                 <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
                 <button class="btn btn-primary" type="submit">CREA</button>
             </div>

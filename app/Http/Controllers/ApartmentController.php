@@ -128,12 +128,11 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($data, [
             'sender' => 'required|email',
-
             'body' => 'required'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('guest.apartments.show', $data['apartment_id'])
+            return redirect()->route('guest.apartments.show', $data['slug'])
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -144,11 +143,11 @@ class ApartmentController extends Controller
         $saved = $message->save();
 
         if (!$saved) {
-            return redirect()->route('guest.apartments.show', $data['apartment_id'])
+            return redirect()->route('guest.apartments.show', $data['slug'])
                 ->with('failure', 'Messaggio non inviato.');
         }
 
-        return redirect()->route('guest.apartments.show', $data['apartment_id'])
+        return redirect()->route('guest.apartments.show', $data['slug'])
             ->with('success', 'Messaggio inviato correttamente.');
     }
 

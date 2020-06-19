@@ -66,6 +66,10 @@ class ApartmentController extends Controller
             $data['visibility'] = 1;
         }
 
+        if (!isset($data['services'])){
+            $data['services'] = [];
+        }
+
         $validator = Validator::make($data, [
             'title' => 'required|max:100',
             'description' => 'required',
