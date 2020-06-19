@@ -158,17 +158,20 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $apartment = Apartment::findOrFail($id);
+        $apartment = Apartment::where('slug', $slug)->first();
+
         if (isset(Auth::user()->email)) {
             $userEmail = Auth::user()->email;
         } else {
             $userEmail = '';
         }
-        
-        $apartment->vzt()->increment();
-        $apartment->vzt()->count();
+
+        $userId = Auth::id();
+        if ($apartment->user_id != $userId) {
+            visits($apartment)->increment();
+        }
 
         return view('guest.apartments.show', compact('apartment', 'userEmail'));
     }

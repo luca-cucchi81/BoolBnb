@@ -99,9 +99,6 @@
                                             $('#address').val(e.suggestion.value);  //ora è scritto bene
                                             $('#lat').val(e.suggestion.latlng.lat);
                                             $('#lng').val(e.suggestion.latlng.lng);
-
-                                            console.log("latitudine: ", $('#lat').val());
-                                            console.log("longitudine: ", $('#lng').val());
                                         });
                                         placesAutocomplete.on('clear', function() {
                                             //$address.textContent = 'none';

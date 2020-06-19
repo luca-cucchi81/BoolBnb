@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
-                <button type="submit">CREA</button>
+                <button class="btn btn-primary" type="submit">CREA</button>
             </div>
         </form>
     @endif

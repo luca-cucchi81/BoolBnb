@@ -54,7 +54,7 @@ class ApartmentController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::id();
         $now = Carbon::now()->format('Y-m-d-H-i-s');
-        $data['slug'] = Str::slug($data['title'] , '-') . $now;
+        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now;
         if (isset($data['main_img'])) {
             $path = Storage::disk('public')->put('images', $data['main_img']);
             $data['main_img'] = $path;
@@ -74,7 +74,7 @@ class ApartmentController extends Controller
             'bathrooms' => 'required|integer',
             'square_meters' => 'required|integer',
             'address' => 'required|max:255',
-            'services' => 'required|array',
+            'services' => 'array',
             'services.*' => 'exists:services,id'
         ]);
 
@@ -154,6 +154,8 @@ class ApartmentController extends Controller
                 ->with('failure', 'Non puoi modificare un appartamento che non hai inserito tu');
         }
 
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now;
         if (!isset($data['visibility'])){
             $data['visibility'] = 0;
         } else {
@@ -183,9 +185,9 @@ class ApartmentController extends Controller
             'bathrooms' => 'integer',
             'square_meters' => 'integer',
             'address' => 'max:255',
-            'services' => 'required|array',
+            'services' => 'array',
             'services.*' => 'exists:services,id',
-            'images' => 'required|array'
+            'images' => 'array'
         ]);
 
         if ($validator->fails()) {
