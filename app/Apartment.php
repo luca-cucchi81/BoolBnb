@@ -18,10 +18,6 @@ class Apartment extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function views() {
-        return $this->hasMany('App\View');
-    }
-
     public function images() {
         return $this->hasMany('App\Image');
     }
@@ -34,7 +30,7 @@ class Apartment extends Model
         return $this->belongsToMany('App\Sponsorship')->withPivot('start_date', 'end_date');
     }
 
-    public function visits()
+    public function visits() // Funzione di richiamo Framework Awssat per gestione visite
     {
         return visits($this)->relation();
     }

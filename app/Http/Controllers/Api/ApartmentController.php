@@ -10,7 +10,6 @@ class ApartmentController extends Controller
 {
     public function getAll(){
         $apartments = Apartment::all();
-
         return response()->json($apartments);
     }
 }

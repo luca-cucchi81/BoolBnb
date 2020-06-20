@@ -13,35 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/payment/make', 'PaymentController@make')->name('payment.make');
 
-Route::get('/', 'ApartmentController@index')->name('guest.apartments.index');
-Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search');
-// Route::get('/filter', 'ApartmentController@filter')->name('guest.apartments.filter');
-// Route::get('/message', 'MessageController@create')->name('guest.messages.create');
+Route::get('/', 'ApartmentController@index')->name('guest.apartments.index'); // Rotta Home page del sito
+Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search'); // Rotta alla pagina di ricerca
+Route::get('/home', 'HomeController@index')->name('home'); // Rotta alla Home di un Utente Loggato
 
-Route::prefix('admin')
+Route::prefix('admin') // Insieme di rotte di un Utente Loggato
 ->namespace('Admin')
 ->name('admin.')
 ->middleware('auth')
 ->group(function(){
-    Route::resource('apartments', 'ApartmentController');
-    Route::resource('users', 'UserController');
-    Route::resource('messages', 'MessageController');
-    Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor');
-    Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot');
+    Route::resource('apartments', 'ApartmentController'); // CRUD Appartamenti
+    Route::resource('users', 'UserController'); // CRUD Utenti
+    Route::resource('messages', 'MessageController'); // CRUD Messaggi
+    Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor'); // Rotta per la sponsorizzazione
+    Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot'); // Rotta creazione sponsorizzazione
+    Route::get('/payment/make', 'PaymentController@make')->name('payment.make'); // Rotta pagamento sponsorizzazione
 });
 
-Route::prefix('guest')
+Route::prefix('guest') // Rotte Guest
 ->name('guest.')
 ->group(function(){
     Route::resource('apartments', 'ApartmentController');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('session/get','SessionController@accessSessionData');
-Route::get('/session/set','SessionController@storeSessionData');
-Route::get('session/remove','SessionController@deleteSessionData');
+Auth::routes(); // CRUD Rotte autenticazione
