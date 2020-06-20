@@ -1,4 +1,8 @@
 {
+    "/js/admin/show.js": "/js/admin/show.js",
+    "/js/admin/sponsor.js": "/js/admin/sponsor.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/guest/search.js": "/js/guest/search.js",
+    "/js/guest/show.js": "/js/guest/show.js"
 }

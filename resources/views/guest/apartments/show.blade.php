@@ -50,41 +50,5 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-    <script>
-        (function() {
-            var latlng = {
-                lat: $('.coord-lat').val(),
-                lng: $('.coord-lng').val()
-            };
-
-            var placesAutocomplete = places({
-                appId: 'plLSMIJCIUJH',
-                apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
-                container: document.querySelector('#input-map')
-            }).configure({
-                aroundLatLng: latlng.lat + ',' + latlng.lng,
-                type: 'address'
-            });
-
-            var map = L.map('map', {
-                scrollWheelZoom: false,
-                zoomControl: true
-            });
-
-            var osmLayer = new L.TileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    minZoom: 1,
-                    maxZoom: 19
-                }
-            );
-
-            var markers = [];
-            var marker = L.marker(latlng);
-            marker.addTo(map);
-            markers.push(marker);
-
-            map.setView(new L.LatLng(latlng.lat, latlng.lng), 16);
-            map.addLayer(osmLayer);
-        })();
-    </script>
+    <script src="{{asset('js/guest/show.js')}}" charset="utf-8"></script>
 @endsection
