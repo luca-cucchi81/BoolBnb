@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Service;
+
 use Faker\Generator as Faker;
+
+use App\Service;
+
 
 class ServicesTableSeeder extends Seeder
 {
@@ -14,10 +17,10 @@ class ServicesTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $servizi = ['WiFi', 'Posto Auto', 'Piscina', 'Portineria', 'Sauna', 'Vista Mare'];
-        foreach ($servizi as $servizietto){
+        foreach ($servizi as $servizio){
             $service = new Service;
-            $service->name = $servizietto;
+            $service->name = $servizio;
             $service->save();
-        }  
-    }       
+        }
+    }
 }

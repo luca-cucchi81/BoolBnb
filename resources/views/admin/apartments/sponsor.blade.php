@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action={{route('admin.apartments.pivot')}} method="post">
+    <form action={{route('admin.sponsorships.store')}} method="post">
         @csrf
         @method("POST")
         <div class="container plan-container">

@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
+use App\Sponsorship;
+use App\Apartment;
+
 class SponsorshipController extends Controller
 {
     /**
@@ -35,7 +40,21 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $apartment = $data['apartment'];
+
+        if (!isset($data['sponsorship'])) { // Check se hai selezionato nel form il tipo di sponsorizzazione
+            return redirect()->route('admin.apartments.sponsor', $apartment)
+                ->with('failure', 'Seleziona piano di sponsorizzazione');
+        }
+
+        $sponsorship = Sponsorship::findOrFail($data['sponsorship']);
+        $startDate = Carbon::now()->format('Y-m-d');
+        $endDate = Carbon::now()->addDays($sponsorship->duration)->format('Y-m-d'); // Aggiungo giorni alla data odierna in base al tipo di sponsorizzazione
+        $attached = $sponsorship->apartments()->attach($apartment, ['start_date' => $startDate, 'end_date' => $endDate]); // Creazione del campo nella tabella pivot con data di inizio e fine della sponsorizzazione
+
+        return redirect()->route('admin.apartments.show', $apartment)
+            ->with('success', 'Appartamento ' . $apartment . ' sponsorizzato correttamente.');
     }
 
     /**
@@ -46,7 +65,10 @@ class SponsorshipController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $sponsorships = Sponsorship::all();
+
+        return view('admin.apartments.sponsor', compact('apartment', 'sponsorships'));
     }
 
     /**

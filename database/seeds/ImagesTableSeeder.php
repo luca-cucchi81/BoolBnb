@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
+use Faker\Generator as Faker;
+
 use App\Image;
 use App\Apartment;
-use Faker\Generator as Faker;
 
 class ImagesTableSeeder extends Seeder
 {
@@ -14,13 +16,13 @@ class ImagesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 120; $i++) { 
+        for ($i=0; $i < 120; $i++) {
             $image = new Image;
             $apartment = Apartment::inRandomOrder()->first();
             $image->apartment_id = $apartment->id;
             $image->path = 'https://picsum.photos/200/300';
             $image->save();
-        } 
+        }
 
     }
 }

@@ -24,10 +24,8 @@ Route::prefix('admin') // Insieme di rotte di un Utente Loggato
 ->middleware('auth')
 ->group(function(){
     Route::resource('apartments', 'ApartmentController'); // CRUD Appartamenti
-    Route::resource('users', 'UserController'); // CRUD Utenti
     Route::resource('messages', 'MessageController'); // CRUD Messaggi
-    Route::get('sponsor/{apartment}','ApartmentController@sponsor')->name('apartments.sponsor'); // Rotta per la sponsorizzazione
-    Route::post('apartments/sponsorships', 'ApartmentController@pivot')->name('apartments.pivot'); // Rotta creazione sponsorizzazione
+    Route::resource('sponsorships', 'SponsorshipController'); // CRUD Sponsorizzazioni
     Route::get('/payment/make', 'PaymentController@make')->name('payment.make'); // Rotta pagamento sponsorizzazione
 });
 

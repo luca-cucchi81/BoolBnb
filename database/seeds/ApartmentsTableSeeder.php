@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
+use Carbon\Carbon;
+use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+
 use App\Apartment;
 use App\User;
 use App\Service;
 use App\Sponsorship;
-use Faker\Generator as Faker;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
 
 class ApartmentsTableSeeder extends Seeder
 {
@@ -20,8 +22,8 @@ class ApartmentsTableSeeder extends Seeder
     {
         for ($i=0; $i < 30; $i++) {
             $apartment = new Apartment;
-            $user = User::inRandomOrder()->first(); //abbiamo selezionato uno user random
-            $apartment->user_id = $user->id; //a user_id abbioamo assegnato l'id dello user random
+            $user = User::inRandomOrder()->first(); // Selezione di uno user casuale
+            $apartment->user_id = $user->id;
             $apartment->title = $faker->sentence(6, true);
             $apartment->description = $faker->paragraph(3, true);
             $apartment->rooms = $faker->randomDigitNotNull();
@@ -33,11 +35,15 @@ class ApartmentsTableSeeder extends Seeder
             $apartment->lng = $faker->longitude($min = -180, $max = 180);
             $apartment->main_img = 'https://picsum.photos/200/300';
             $apartment->visibility = 1;
+
             $now = Carbon::now()->format('Y-m-d-H-i-s');
             $apartment->slug = Str::slug($apartment->title, '-') . $now;
+
             $apartment->save();
-            $services = Service::inRandomOrder()->limit(rand(1, 6))->get(); // abbiamo preso un numero random di servizi
-            $apartment->services()->attach($services); //all'appartamento gli abbiamo assegnato il numero random di servizi
+
+            $services = Service::inRandomOrder()->limit(rand(1, 6))->get(); // Numero casuale di servizi da 1 a 6
+            $apartment->services()->attach($services); // Attach nella tabella pivot
+
             $sponsorship = Sponsorship::inRandomOrder()->first();
             $apartment->sponsorships()->attach($sponsorship);
         }

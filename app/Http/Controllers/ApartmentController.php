@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Apartment;
-use App\Sponsorship;
-use Carbon\Carbon;
-use App\Service;
-use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
+use Carbon\Carbon;
+
+use App\Apartment;
+use App\Sponsorship;
+use App\Service;
+use App\Message;
 
 class ApartmentController extends Controller
 {
@@ -33,7 +35,7 @@ class ApartmentController extends Controller
      */
     public function search(Request $request)
     {
-        function distanceResults($lat1, $lon1, $latitude, $longitude, $unit)
+        function distanceResults($lat1, $lon1, $latitude, $longitude, $unit) // Funzione che confronta due coppie di latitudine e longitudine per trovare la distanza tra esse
         {
             $theta = $lon1 - $longitude;
             $dist = sin(deg2rad($lat1)) * sin(deg2rad($latitude)) + cos(deg2rad($lat1)) * cos(deg2rad($latitude)) * cos(deg2rad($theta));
@@ -57,15 +59,15 @@ class ApartmentController extends Controller
         $services = Service::all();
         $data = $request->all();
 
-        if (isset($data['address'])) {
-            $oldAddress = $data['address'];
-            $oldLat = floatval($data['lat']);
+        if (isset($data['address'])) { // Se dal form arriva l'indirizzo
+            $oldAddress = $data['address']; // Assegno a una variabile l'indirizzo
+            $oldLat = floatval($data['lat']); // Assegno a due variabili lat e lgn che arrivano dai due input nascosti
             $oldLng = floatval($data['lng']);
-        } else {
+        } else { // Se dal form non arriva l'indirizzo popolo indirizzo, lat e lng con i valori vecchi
             $data['address'] = $data['oldAddress'];
             $data['lat'] = $data['oldLat'];
             $data['lng'] = $data['oldLng'];
-            $oldAddress = $data['address'];
+            $oldAddress = $data['address']; // Aggiorno queste variabili
             $oldLat = floatval($data['lat']);
             $oldLng = floatval($data['lng']);
         }
@@ -73,7 +75,7 @@ class ApartmentController extends Controller
         $dataLat = floatval($data['lat']);
         $dataLng = floatval($data['lng']);
 
-        if (isset($data['radius'])) {
+        if (isset($data['radius'])) { // Se dal form arriva il radius la variabile prenderà quel valore altrimenti gli diamo 20 di default
             $radius = $data['radius'];
         } else {
             $radius = 20;
@@ -83,22 +85,22 @@ class ApartmentController extends Controller
             $apartmentLat = $apartment->lat;
             $apartmentLng = $apartment->lng;
 
-            $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k');
-            if ($result <= $radius) {
+            $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k'); // Assegno a una variabile il risultato della funzione di distanza che darà un numero intero
+            if ($result <= $radius) { // Se questo numero è minore del radius vado avanti
                 foreach ($apartment->sponsorships as $sponsorship) {
                     $now = Carbon::now();
-                    $endDate = $sponsorship->pivot->end_date;
-                    if ($now < $endDate && !in_array($apartment, $sponsoredApartments)) {
+                    $endDate = $sponsorship->pivot->end_date; // Faccio un check per ogni appartamento se è sposnsorizzato attualmente o no
+                    if ($now < $endDate && !in_array($apartment, $sponsoredApartments)) { // Se lo è lo metto nell'array sponsorizzati
                         $sponsoredApartments[] = $apartment;
                     }
                 }
-                if (!in_array($apartment, $sponsoredApartments)) {
+                if (!in_array($apartment, $sponsoredApartments)) { // Altrimenti lo metto nell'array normale
                     $filteredApartments[] = $apartment;
                 }
             }
         }
 
-        if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) {
+        if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) { // Se tutti e due questi array risultano vuoti la ricerca fallisce
             return redirect()->route('guest.apartments.index')
                 ->with('failure', 'Nessun Appartamento disponibile in zona');
         }
@@ -161,14 +163,14 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::where('slug', $slug)->first();
 
-        if (isset(Auth::user()->email)) {
+        if (isset(Auth::user()->email)) { // Se l'utente è loggato assegno a una variabile la sue email altrimenti è vuota
             $userEmail = Auth::user()->email;
         } else {
             $userEmail = '';
         }
 
         $userId = Auth::id();
-        if ($apartment->user_id != $userId) {
+        if ($apartment->user_id != $userId) { // Se non sei il proprietario dell'appartamento aumento di uno le visualizzazioni
             visits($apartment)->increment();
         }
 

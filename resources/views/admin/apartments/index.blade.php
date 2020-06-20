@@ -52,8 +52,5 @@
                 </div>
             @endif
         </div>
-        {{-- <div class="row">
-            {{$apartments->links()}}
-        </div> --}}
     </div>
 @endsection

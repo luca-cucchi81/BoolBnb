@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
+
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,11 +16,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
             $user = new User;
             $user->email = $faker->email();
-            $user->password = Hash::make('admin');
+            $user->password = Hash::make('admin'); // Nascondo la password con Hash
             $user->save();
-        } 
+        }
     }
 }

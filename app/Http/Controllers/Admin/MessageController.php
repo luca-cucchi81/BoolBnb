@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 use App\Apartment;
 use App\Message;
 
@@ -20,7 +21,8 @@ class MessageController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where('user_id', $userId)->get();
-        foreach ($apartments as $apartment){
+
+        foreach ($apartments as $apartment){ // Ciclo su ogni messaggio di ogni appartamento e cambio il campo read di ognuno in 1 per capire che è stato letto
             foreach($apartment->messages as $message){
                 $messages = Message::where('apartment_id', $apartment->id)->get();
                 foreach ($messages as $singleMessage){
@@ -29,8 +31,7 @@ class MessageController extends Controller
                 }
             }
         }
-        
-     
+
         return view('admin.messages.index', compact('apartments'));
 
     }
@@ -53,7 +54,7 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**

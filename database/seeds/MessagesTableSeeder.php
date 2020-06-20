@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
+use Faker\Generator as Faker;
+
 use App\Message;
 use App\Apartment;
-use Faker\Generator as Faker;
 
 class MessagesTableSeeder extends Seeder
 {
@@ -14,7 +16,7 @@ class MessagesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 200; $i++) { 
+        for ($i=0; $i < 200; $i++) {
             $message = new Message;
             $apartment = Apartment::inRandomOrder()->first();
             $message->apartment_id = $apartment->id;

@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use App\Service;
+
 use App\Apartment;
+use App\Service;
 use App\Image;
 use App\Message;
 use App\Sponsorship;
@@ -25,7 +27,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::orderBy('updated_at', 'desc')->get();
+        $apartments = Apartment::orderBy('updated_at', 'desc')->get(); // Tutti gli appartamenti in ordine decrescente
         $userId = Auth::id();
 
         return view('admin.apartments.index', compact('apartments', 'userId'));
@@ -52,21 +54,22 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['user_id'] = Auth::id();
+        $data['user_id'] = Auth::id(); // Creo il campo user_id
         $now = Carbon::now()->format('Y-m-d-H-i-s');
-        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now;
-        if (isset($data['main_img'])) {
+        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now; // Creo il campo slug
+
+        if (isset($data['main_img'])) { // Se dal form arriva l'immagine la carico con Storage e creo il campo con il path
             $path = Storage::disk('public')->put('images', $data['main_img']);
             $data['main_img'] = $path;
         }
 
-        if (!isset($data['visibility'])){
+        if (!isset($data['visibility'])){ // Se dal form non arriva la visibilità la rendo zero altrimenti uno
             $data['visibility'] = 0;
         } else {
             $data['visibility'] = 1;
         }
 
-        if (!isset($data['services'])){
+        if (!isset($data['services'])){ // se dal form non arrivano i servizi creo un array vuoto di servizi per non avere problemi di validazione
             $data['services'] = [];
         }
 
@@ -114,16 +117,18 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
         $now = Carbon::now();
-        $hide = false;
+        $hide = false; // Variabile sentinella
         $sponsorships = $apartment->sponsorships;
-        foreach ($sponsorships as $sponsorship) {
+
+        foreach ($sponsorships as $sponsorship) { // Check su ogni sponsorizzazione dell'appartmento, se una sola è vera la variabile sentinella diventa true
             if ($sponsorship->pivot->end_date > $now) {
                 $hide = true;
             }
         }
-        foreach($apartment->messages as $message){
+
+        foreach($apartment->messages as $message){ // Ciclo su ogni messaggio dell'appartmento
             $messages = Message::where('apartment_id', $apartment->id)->get();
-            foreach ($messages as $singleMessage){
+            foreach ($messages as $singleMessage){ // Ad ogni messaggio cambio il campo read in 1 per capire che è stato letto dall'utente
                 $singleMessage->read = 1;
                 $singleMessage->save();
             }
@@ -143,8 +148,8 @@ class ApartmentController extends Controller
         $services = Service::all();
         $apartment = Apartment::findOrFail($id);
         $images = Image::where('apartment_id', $apartment->id)->get();
-        return view('admin.apartments.edit', compact('apartment', 'images', 'services'));
 
+        return view('admin.apartments.edit', compact('apartment', 'images', 'services'));
     }
 
     /**
@@ -159,6 +164,8 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         $data = $request->all();
 
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now;
         $userId = Auth::id();
         $author = $apartment->user_id;
 
@@ -167,21 +174,19 @@ class ApartmentController extends Controller
                 ->with('failure', 'Non puoi modificare un appartamento che non hai inserito tu');
         }
 
-        $now = Carbon::now()->format('Y-m-d-H-i-s');
-        $data['slug'] = Str::slug($data['title'] , '-') . '-' . $now;
-        if (!isset($data['visibility'])){
+        if (!isset($data['visibility'])){ // Solito check sulla visibilità
             $data['visibility'] = 0;
         } else {
             $data['visibility'] = 1;
         }
 
-        if (isset($data['main_img'])) {
+        if (isset($data['main_img'])) { // Se dal form arriva l'immagine cancello la vecchia dallo storage e salvo la nuova
             $deleted = Storage::disk('public')->delete($apartment->main_img);
             $path = Storage::disk('public')->put('images', $data['main_img']);
             $data['main_img'] = $path;
         }
 
-        if (isset($data['images'])){
+        if (isset($data['images'])){ // Se dal form arriva l'array delle immagini secondarie per ognuna creo un'istanza nella tabella images
             foreach ($data['images'] as $image){
                 $path = Storage::disk('public')->put('images', $image);
                 $newImage = new Image;
@@ -233,7 +238,7 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
-        $apartment->sponsorships()->detach();
+        $apartment->sponsorships()->detach(); // Quando cancello un appartamento detacho tutte le relative relazioni e le immagini collegate
         $apartment->services()->detach();
         $apartment->images()->delete();
         $apartment->messages()->delete();
@@ -249,30 +254,5 @@ class ApartmentController extends Controller
 
         return redirect()->route('admin.apartments.index')
             ->with('success', 'Appartamento ' . $apartment->id . ' eliminato correttamente.');
-    }
-
-    public function sponsor($id) {
-        $apartment = Apartment::findOrFail($id);
-        $sponsorships = Sponsorship::all();
-        return view('admin.apartments.sponsor', compact('apartment','sponsorships'));
-    }
-
-    public function pivot(Request $request)
-    {
-        $data = $request->all();
-        $apartment = $data['apartment'];
-
-        if (!isset($data['sponsorship'])) {
-            return redirect()->route('admin.apartments.sponsor', $apartment)
-                ->with('failure', 'Seleziona piano di sponsorizzazione');
-        }
-
-        $sponsorship = Sponsorship::findOrFail($data['sponsorship']);
-        $startDate = Carbon::now()->format('Y-m-d');
-        $endDate = Carbon::now()->addDays($sponsorship->duration)->format('Y-m-d');
-        $attached = $sponsorship->apartments()->attach($apartment, ['start_date' => $startDate, 'end_date' => $endDate]);
-
-        return redirect()->route('admin.apartments.show', $apartment)
-            ->with('success', 'Appartamento ' . $apartment . ' sponsorizzato correttamente.');
     }
 }
