@@ -3,16 +3,16 @@ $(document).ready(function () {
     generateMap();
     clear();
 
-    $('#filtra').click(function () {
+    $('#filtra').click(function () { // Al click del bottone di invio filtri parte la funzione di ricerca
         search();
     });
 
-    $('#clear').click(function () {
+    $('#clear').click(function () { // Al click del bottone di pulizia filtri prima resetto tutto e poi faccio una ricerca
         clear();
         search();
     });
 
-    function clear() {
+    function clear() { // Funzione di pulizia che riporta tutti gli input ai valori di default
         $('#beds').val(1);
         $('#rooms').val(1);
         $('#radius').val(20);
@@ -20,32 +20,32 @@ $(document).ready(function () {
     };
 
     function search(){
-        var filters = filterscreate();
+        var filters = filterscreate(); // Richiamo di funzione di creazione array filtri
 
-        var rooms = parseInt($('#rooms').val());
+        var rooms = parseInt($('#rooms').val()); // Prendo i valori degli input per letti e stanze
         var beds = parseInt($('#beds').val());
-        $('.result').addClass('d-none');
+        $('.result').addClass('d-none'); // Nascondo tutti gli appartamenti
 
-        $('.result').each(function(){
-            var apartmentRooms = parseInt($(this).find('.rooms').text());
+        $('.result').each(function(){ // Per ogni appartamento
+            var apartmentRooms = parseInt($(this).find('.rooms').text()); // Prendo i suoi valori di letti e stanze
             var apartmentBeds = parseInt($(this).find('.beds').text());
-            var services = [];
+            var services = []; // Creo un array con i suoi servizi
             $(this).find('.services').each(function(){
                 var service = $(this).data('service');
                 services.push(service);
             });
-            var check = isTrue(filters, services);
+            var check = isTrue(filters, services); // Richiamo funzione di intersezione tra due array
 
-            if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) {
+            if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) { // Se l'appartamento soddisfa tutti i criteri della ricerca lo visualizzo
                 $(this).removeClass('d-none');
             };
         });
-        $('#map').remove();
+        $('#map').remove(); // Rimuovo e reinserisco la mappa per aggiornare tutti i markers
         $('#map-container').html('<div id="map"></div>');
         generateMap();
     };
 
-    function generateMap(){
+    function generateMap(){ // Solita funzione di generazione mappa con markerr, epicentro e controllo zoom
         (function() {
             var latlng = {
                 lat: $('.coord-lat').val(),
@@ -54,8 +54,8 @@ $(document).ready(function () {
 
             var apartments = [];
 
-            $('.result[class="result"]').each(function(){
-                var apartment = {};
+            $('.result[class="result"]').each(function(){ // Ciclo su ogni appartamento che sia visibile quindi con una sola classe
+                var apartment = {}; // Popolazione oggetto con lat e lng per ogni appartamento
                 apartment.lat = $(this).find('.mark-lat').text();
                 apartment.lng = $(this).find('.mark-lng').text();
                 apartments.push(apartment);
@@ -96,7 +96,7 @@ $(document).ready(function () {
             map.addLayer(osmLayer);
 
 
-            function addApartmentToMap(apartment) {
+            function addApartmentToMap(apartment) { // Aggiungo tutti i markers alla Mappa
                 var marker = L.marker({'lat': apartment.lat, 'lng': apartment.lng})
                 marker.addTo(map);
                 markers.push(marker);
@@ -104,7 +104,7 @@ $(document).ready(function () {
         })();
     };
 
-    function filterscreate() {
+    function filterscreate() { // Funzione che crea un array filters inserendo i valori delle checkbox che sono stati cliccati dall'utente
         var filters = [];
         $('.check-filter').each(function(){
             if ($(this).prop('checked') == true) {
@@ -114,7 +114,7 @@ $(document).ready(function () {
         return filters;
     };
 
-    function isTrue(arr, arr2){
-        return arr.every(i => arr2.includes(i));
+    function isTrue(arr, arr2){ // Funzione che dati due array in ingresso controlla se il secondo array ha almeno un valore in comune con il primo array
+        return arr.every(i => arr2.includes(i)); // Restituisce un booleano
     };
 });

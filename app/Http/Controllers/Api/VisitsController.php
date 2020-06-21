@@ -26,20 +26,26 @@ class VisitsController extends Controller
 
     public function getPeriods($apartment_id)
     {
-        $arrayVisits = [];
+        $arrayVisits = [ // Inizializzo un Array dando come valori di default alle chiavi zero per poi aggiornarle con le visite reali corrispondenti
+            'Totali' => 0,
+            'Anno' => 0,
+            'Mese' => 0,
+            'Settimana' => 0,
+            'Oggi' => 0
+        ];
         $apartment = DB::table('apartments')->where('id', $apartment_id)->first(); // Appartamento con id in ingresso
         $visits = Visit::where('secondary_key', $apartment->id)->get(); // Visite relative a questo appartamento
         foreach ($visits as $visit) { // Per ogni visita pusho nell'array il valore corrispondente a ogni singola chiave
             if ($visit->primary_key == 'visits:apartments_visits') { // Visite totali
-                $arrayVisits['Totale Visite'] = $visit->score;
+                $arrayVisits['Totali'] = $visit->score;
             } elseif ($visit->primary_key == 'visits:apartments_visits_year') { // Visite ultimo anno
-                $arrayVisits['Visite ultimo anno'] = $visit->score;
+                $arrayVisits['Anno'] = $visit->score;
             } elseif ($visit->primary_key == 'visits:apartments_visits_month') { // Visite ultimo mese
-                $arrayVisits['Visite questo mese'] = $visit->score;
+                $arrayVisits['Mese'] = $visit->score;
             } elseif ($visit->primary_key == 'visits:apartments_visits_week') { // Visite ultima settimana
-                $arrayVisits['Visite questa settimana'] = $visit->score;
+                $arrayVisits['Settimana'] = $visit->score;
             } elseif ($visit->primary_key == 'visits:apartments_visits_day') { // Visite oggi
-                $arrayVisits['Visite oggi'] = $visit->score;
+                $arrayVisits['Oggi'] = $visit->score;
             }
         }
         return response()->json($arrayVisits);

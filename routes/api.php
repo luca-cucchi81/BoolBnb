@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// Rotte alle API utilizzate per creare i Json dei grafici
 Route::get('messages/{user_id}', 'Api\MessageController@getAll');
 Route::get('visits/{user_id}', 'Api\VisitsController@getAll');
 Route::get('visits/apartment/{apartment_id}', 'Api\VisitsController@getPeriods');

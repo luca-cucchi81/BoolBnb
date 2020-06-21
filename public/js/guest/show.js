@@ -94,6 +94,7 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  // Solita funzione di creazione Mappa del singolo appartamento con Epicentro, Controllo Zoom e Marker
   (function () {
     var latlng = {
       lat: $('.coord-lat').val(),
