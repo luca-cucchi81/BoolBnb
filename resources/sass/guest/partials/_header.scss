@@ -8,6 +8,8 @@ header {
     right: 0;
     bottom: 0;
     left: 0;
+    box-shadow: 0 0 10px 0 black;
+    // border-bottom: 1px solid $color1;
     .container {
         max-width: 1200px;
         margin: 0 auto;

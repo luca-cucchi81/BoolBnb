@@ -13,3 +13,25 @@ a {
 ul {
     list-style: none;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
+.alert {
+    position: fixed;
+    z-index: 99;
+    top: 75px;
+    left: 5px;
+    opacity: 0.8;
+    border-radius: 5px;
+    padding: 10px;
+}
+.alert-success {
+    background-color: green;
+}
+.alert-danger {
+    background-color: #660000;
+    color: $color1;
+    font-weight: bold;
+}

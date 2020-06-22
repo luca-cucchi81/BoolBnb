@@ -12,14 +12,14 @@
     @include('layouts.guest.partials.header')
 
         @if (session('success'))
-            <div class="alert alert-success">
+            <span class="alert alert-success">
                 {{session('success')}}
-            </div>
+            </span>
         @endif
         @if (session('failure'))
-            <div class="alert alert-danger">
+            <span class="alert alert-danger">
                 {{session('failure')}}
-            </div>
+            </span>
         @endif
     @yield('main')
     @include('layouts.guest.partials.footer')

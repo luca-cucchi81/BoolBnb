@@ -1,5 +1,45 @@
 main {
     margin-top: 70px;
     background-color: $color5;
-    padding: 100px;
+    .section-one {
+        width: 100%;
+        position: relative;
+        background-image: url('../../../img/travel.jpg');
+        background-size: cover;
+        height: calc(100vh - 70px);
+        filter: saturate(50%);
+        .search-bar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            form {
+                display: flex;
+                .form-group {
+                    position: relative;
+                    #address {
+                        width: 50vw;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 0 0 10px 0 black;
+                    }
+                    .form-button{
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        .btn-search {
+                            padding: 8px 30px;
+                            bottom: 0;
+                            background-color: $color4;
+                            color: $color1;
+                            border: none;
+                            font-size: 20px;
+                            border-top-right-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
