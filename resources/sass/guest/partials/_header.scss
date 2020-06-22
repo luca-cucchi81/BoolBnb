@@ -1,0 +1,76 @@
+header {
+    background-color: $color2;
+    height: 70px;
+    margin-bottom: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .header-left {
+            #logo {
+                img {
+                    height: 50px;
+                }
+            }
+        }
+        .header-right {
+            nav {
+                ul {
+                    list-style: none;
+                    li {
+                        display: inline;
+                        position: relative;
+                        .fa-caret-left {
+                            display: none;
+                        }
+                        button {
+                            padding: 7px 15px;
+                            border-radius: 10px;
+                            border: none;
+                            background-color: $color4;
+                            margin-left: 10px;
+                            a {
+                                color: $color1;
+                            }
+                            i {
+                                color: $color1;
+                            }
+                            &:focus {
+                                outline: none; 
+                            }
+                        }
+                        .dropdown {
+                            position: absolute;
+                            right: 5px;
+                            display: none;
+                            background-color: rgb(226, 224, 224);
+                            box-shadow: 0 0 3px 0 black;
+                            border-radius: 2px;
+                            padding: 5px;
+                            margin-top: 5px;
+                            width: 105px;
+                            ul {
+                                li {
+                                    display: block;
+                                    padding: 5px;
+                                    a {
+                                        color: $color4;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

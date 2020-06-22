@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background-color: #84a9ac;
+  height: 70px;
+  margin-bottom: 100px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container .header-left #logo img {
+  height: 50px;
+}
+
+header .container .header-right nav ul {
+  list-style: none;
+}
+
+header .container .header-right nav ul li {
+  display: inline;
+  position: relative;
+}
+
+header .container .header-right nav ul li .fa-caret-left {
+  display: none;
+}
+
+header .container .header-right nav ul li button {
+  padding: 7px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #204051;
+  margin-left: 10px;
+}
+
+header .container .header-right nav ul li button a {
+  color: #e7dfd5;
+}
+
+header .container .header-right nav ul li button i {
+  color: #e7dfd5;
+}
+
+header .container .header-right nav ul li button:focus {
+  outline: none;
+}
+
+header .container .header-right nav ul li .dropdown {
+  position: absolute;
+  right: 5px;
+  display: none;
+  background-color: #e2e0e0;
+  box-shadow: 0 0 3px 0 black;
+  border-radius: 2px;
+  padding: 5px;
+  margin-top: 5px;
+  width: 105px;
+}
+
+header .container .header-right nav ul li .dropdown ul li {
+  display: block;
+  padding: 5px;
+}
+
+header .container .header-right nav ul li .dropdown ul li a {
+  color: #204051;
+  font-size: 14px;
+}
+
+main {
+  margin-top: 70px;
+  background-color: #e7dfd5;
+  padding: 100px;
+}
+

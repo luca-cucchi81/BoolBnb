@@ -1,5 +1,6 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.guest.app')
+@section('main')
+<main>
     <div class="container">
         <div class="row">
             <div class="col-8">
@@ -52,4 +53,5 @@
             </form>
         </div>
     </div>
+</main>
 @endsection
