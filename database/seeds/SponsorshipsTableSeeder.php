@@ -15,10 +15,11 @@ class SponsorshipsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 3; $i++) {
+        $sponsorizzazioni = ['2.99' => 1, '5.99' => 3, '9.99' => 6];
+        foreach ($sponsorizzazioni as $key => $sponsorizzazione){
             $sponsorship = new Sponsorship;
-            $sponsorship->duration = $faker->randomDigitNotNull();
-            $sponsorship->price = $faker->randomNumber(2, true);
+            $sponsorship->price = $key;
+            $sponsorship->duration = $sponsorizzazione;
             $sponsorship->save();
         }
     }

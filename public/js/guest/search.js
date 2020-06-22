@@ -240,7 +240,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\js\guest\search.js */"./resources/js/guest/search.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/js/guest/search.js */"./resources/js/guest/search.js");
 
 
 /***/ })

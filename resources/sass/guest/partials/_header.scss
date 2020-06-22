@@ -1,4 +1,5 @@
 header {
+    z-index: 1;
     background-color: $color2;
     height: 70px;
     margin-bottom: 100px;
@@ -44,19 +45,19 @@ header {
                                 color: $color1;
                             }
                             &:focus {
-                                outline: none; 
+                                outline: none;
                             }
                         }
                         .dropdown {
                             position: absolute;
                             right: 5px;
                             display: none;
-                            background-color: rgb(226, 224, 224);
+                            background-color: $color1;
                             box-shadow: 0 0 3px 0 black;
                             border-radius: 2px;
                             padding: 5px;
                             margin-top: 5px;
-                            width: 105px;
+                            width: 115px;
                             ul {
                                 li {
                                     display: block;

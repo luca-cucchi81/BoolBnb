@@ -31,7 +31,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="{{route('home')}}">Area Admin</a>
+                                        <a href="{{route('home')}}">Admin Area</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -57,7 +57,7 @@
         $('#btn-username').click(function(){
             $('.dropdown').slideToggle();
             $('.fa-caret-left').toggle();
-            $('.fa-caret-down').toggle(); 
+            $('.fa-caret-down').toggle();
         });
     });
 </script>

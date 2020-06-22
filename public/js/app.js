@@ -37314,10 +37314,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\sass\admin\app.scss */"./resources/sass/admin/app.scss");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\sass\guest\app.scss */"./resources/sass/guest/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/sass/guest/app.scss */"./resources/sass/guest/app.scss");
 
 
 /***/ })

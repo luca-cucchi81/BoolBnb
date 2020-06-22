@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Builder;
 
 use Carbon\Carbon;
 
@@ -22,9 +23,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
-        $maxPrice = Sponsorship::max('price');
-        return view('guest.apartments.index', compact('apartments', 'maxPrice'));
+        $apartments = Apartment::whereHas('sponsorships', function (Builder $query) {
+            $query->where('price', '9.99');
+        })->inRandomOrder()->limit(6)->get();
+        return view('guest.apartments.index', compact('apartments'));
     }
 
     /**

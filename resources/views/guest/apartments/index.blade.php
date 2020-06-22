@@ -5,11 +5,7 @@
         <div class="row">
             <div class="col-8">
                 @foreach ($apartments as $apartment)
-                    @foreach ($apartment->sponsorships as $sponsorship)
-                            @if($sponsorship->price == $maxPrice)
-                                <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
-                            @endif
-                    @endforeach
+                    <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
                 @endforeach
             </div>
         </div>

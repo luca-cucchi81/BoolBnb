@@ -1,7 +1,15 @@
 a {
     text-decoration: none;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 * {
     font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+ul {
+    list-style: none;
 }

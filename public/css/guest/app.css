@@ -8,11 +8,21 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 * {
   font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+}
+
+ul {
+  list-style: none;
 }
 
 header {
+  z-index: 1;
   background-color: #84a9ac;
   height: 70px;
   margin-bottom: 100px;
@@ -58,11 +68,11 @@ header .container .header-right nav ul li button {
 }
 
 header .container .header-right nav ul li button a {
-  color: #e7dfd5;
+  color: #e2e0e0;
 }
 
 header .container .header-right nav ul li button i {
-  color: #e7dfd5;
+  color: #e2e0e0;
 }
 
 header .container .header-right nav ul li button:focus {
@@ -78,7 +88,7 @@ header .container .header-right nav ul li .dropdown {
   border-radius: 2px;
   padding: 5px;
   margin-top: 5px;
-  width: 105px;
+  width: 115px;
 }
 
 header .container .header-right nav ul li .dropdown ul li {
@@ -95,5 +105,65 @@ main {
   margin-top: 70px;
   background-color: #e7dfd5;
   padding: 100px;
+}
+
+footer {
+  background-color: #204051;
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer .container .tools {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+}
+
+footer .container .tools .tls h4 {
+  font-size: 13px;
+  padding-bottom: 10px;
+  color: #e2e0e0;
+}
+
+footer .container .tools .tls ul li a {
+  color: #e2e0e0;
+  font-size: 11px;
+}
+
+footer .container .tools .tls ul li a:hover {
+  color: #84a9ac;
+}
+
+footer .container .end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #e2e0e0;
+}
+
+footer .container .end .end-logo img {
+  height: 50px;
+}
+
+footer .container .end .end-logo p {
+  font-size: 10px;
+}
+
+footer .container .end .contact {
+  display: flex;
+}
+
+footer .container .end .contact i {
+  color: #e2e0e0;
+  padding: 0 10px;
+  font-size: 19px;
+}
+
+footer .container .end .contact i:hover {
+  color: #84a9ac;
 }
 
