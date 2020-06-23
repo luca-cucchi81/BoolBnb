@@ -130,7 +130,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean/progetto_finale/BoolBnb/resources/js/admin/sponsor.js */"./resources/js/admin/sponsor.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team_1\BoolBnb\resources\js\admin\sponsor.js */"./resources/js/admin/sponsor.js");
 
 
 /***/ })

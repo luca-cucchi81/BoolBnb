@@ -44,31 +44,28 @@
     </div>
     <div class="section-two">
         <div class="container">
-          <div class="box">
-            <div class="owl-carousel owl-theme">
-              {{-- <div class="item"> --}}
-                  @foreach ($apartments as $apartment)
-                      <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
-                  @endforeach
-              {{-- </div> --}}
+            <div class="title">
+                <h2>Dream your next trip</h2>
             </div>
-          </div>
-         </div>
-
-        {{-- <div class="row">
-            <div class="col-8">
-                @foreach ($apartments as $apartment)
-                    <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
-                @endforeach
+            <div class="box">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($apartments as $apartment)
+                        <div class="card">
+                            <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
+                            <h3>{{$apartment->title}}</h3>
+                            {{-- <p>{{$apartment->address}}</p> --}}
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
 
 
 
 
- 
+
     <script src="{{asset('js/guest/owl.carousel.js')}}" type="text/javascript" src="" charset="utf-8"></script>
     <script src="{{asset('js/guest/main.js')}}" charset="utf-8"></script>
 </main>

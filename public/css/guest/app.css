@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   margin: 0;
   padding: 0;
@@ -46,8 +48,7 @@ button:hover {
 }
 
 header {
-  z-index: 1;
-  background-color: #84a9ac;
+  background: linear-gradient(270deg, #84a9ac 0%, #204051 75%);
   height: 70px;
   margin-bottom: 100px;
   position: fixed;
@@ -56,6 +57,7 @@ header {
   bottom: 0;
   left: 0;
   box-shadow: 0 0 10px 0 black;
+  z-index: 999;
 }
 
 header .container {
@@ -178,6 +180,102 @@ main .section-one .search-bar form .form-group .form-button .btn-search {
   font-size: 20px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+main .section-two {
+  height: calc(100vh - 70px);
+}
+
+main .section-two .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main .section-two .container .title {
+  padding: 100px 0 20px 0;
+  margin-bottom: 30px;
+}
+
+main .section-two .container .title h2 {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin: 0 10px;
+  color: #204051;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+main .section-two .container .title h2:before,
+main .section-two .container .title h2:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 1px;
+  content: "\A0";
+  background-color: #204051;
+}
+
+main .section-two .container .title h2:before {
+  margin-left: -52%;
+  text-align: right;
+}
+
+main .section-two .container .title h2:after {
+  margin-left: 2%;
+}
+
+main .section-two .container .box .owl-stage-outer {
+  position: relative;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item {
+  transition-duration: 0.3s;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item .card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item .card h3 {
+  font-size: 15px;
+  text-align: center;
+  color: #204051;
+  padding: 40px 20px 0;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item .card img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 3px 0 black;
+}
+
+main .section-two .container .box .owl-nav {
+  display: none;
+}
+
+main .section-two .container .box .owl-dots {
+  padding-top: 50px;
+}
+
+main .section-two .container .box .owl-nav button {
+  position: absolute;
+  bottom: 200px;
+}
+
+main .section-two .container .box .owl-nav button .owl-next {
+  left: 200px;
+}
+
+main .section-two .container .box .owl-nav button .owl-prev {
+  right: 200px;
 }
 
 footer {

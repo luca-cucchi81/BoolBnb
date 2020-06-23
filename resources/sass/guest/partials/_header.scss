@@ -1,6 +1,5 @@
 header {
-    z-index: 1;
-    background-color: $color2;
+    background: linear-gradient(270deg, rgba(132,169,172,1) 0%, rgba(32,64,81,1) 75%);
     height: 70px;
     margin-bottom: 100px;
     position: fixed;
@@ -9,7 +8,7 @@ header {
     bottom: 0;
     left: 0;
     box-shadow: 0 0 10px 0 black;
-    // border-bottom: 1px solid $color1;
+    z-index: 999;
     .container {
         max-width: 1200px;
         margin: 0 auto;

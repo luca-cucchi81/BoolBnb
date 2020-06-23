@@ -24,7 +24,8 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::whereHas('sponsorships', function (Builder $query) {
-            $query->where('price', '9.99');
+            $query->where('price', '=', '9.99')
+            ->where('end_date', '>=', Carbon::now());
         })->inRandomOrder()->limit(6)->get();
         return view('guest.apartments.index', compact('apartments'));
     }

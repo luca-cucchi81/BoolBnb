@@ -43,7 +43,7 @@
        </div>
        <div class="end clearfix">
            <div class="end-logo">
-               <a href="{{ url('/') }}"><img src="{{asset('img/logo.png')}}" alt="logo"></a>
+               <a href="{{ url('/') }}"><img src="{{asset('img/logo-color1.png')}}" alt="logo"></a>
                <p>Copyright © 2020 BoolBnb, Inc.</p>
            </div>
            <div class="contact">
