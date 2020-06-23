@@ -67,6 +67,7 @@ header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 10px;
 }
 
 header .container .header-left #logo img {
@@ -192,8 +193,7 @@ main .section-two .container {
 }
 
 main .section-two .container .title {
-  padding: 100px 0 20px 0;
-  margin-bottom: 30px;
+  padding: 100px 0;
 }
 
 main .section-two .container .title h2 {
@@ -228,10 +228,6 @@ main .section-two .container .title h2:after {
   margin-left: 2%;
 }
 
-main .section-two .container .box .owl-stage-outer {
-  position: relative;
-}
-
 main .section-two .container .box .owl-stage-outer .owl-item {
   transition-duration: 0.3s;
 }
@@ -262,20 +258,13 @@ main .section-two .container .box .owl-nav {
 }
 
 main .section-two .container .box .owl-dots {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
-main .section-two .container .box .owl-nav button {
-  position: absolute;
-  bottom: 200px;
-}
-
-main .section-two .container .box .owl-nav button .owl-next {
-  left: 200px;
-}
-
-main .section-two .container .box .owl-nav button .owl-prev {
-  right: 200px;
+main .section-two .container .box .owl-dots span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 footer {
@@ -285,6 +274,7 @@ footer {
 footer .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 footer .container .tools {
