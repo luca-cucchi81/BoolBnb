@@ -47,6 +47,20 @@ button:hover {
   font-weight: bold;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.hidden {
+  display: none;
+}
+
 header {
   background: linear-gradient(270deg, #84a9ac 0%, #204051 75%);
   height: 70px;
@@ -265,6 +279,140 @@ main .section-two .container .box .owl-dots span {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+}
+
+main .section-four {
+  background-image: url(/images/city.jpg?b998202d68c88f8e95adfe9eb7a848a2);
+  background-size: cover;
+  height: 300px;
+  -webkit-filter: saturate(50%);
+          filter: saturate(50%);
+}
+
+main .section-four .search-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .section-four .search-bar form {
+  display: flex;
+}
+
+main .section-four .search-bar form .form-group {
+  position: relative;
+}
+
+main .section-four .search-bar form .form-group #address {
+  width: 50vw;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px 0 black;
+}
+
+main .section-four .search-bar form .form-group .form-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-left: 10px;
+  background: linear-gradient(90deg, white 0%, #204051 50%);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+main .section-four .search-bar form .form-group .form-button .btn-search {
+  padding: 8px 30px;
+  bottom: 0;
+  background-color: #204051;
+  color: #e2e0e0;
+  border: none;
+  font-size: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+main .section-four .search-bar form .form-group .form-button input {
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: #e2e0e0;
+}
+
+main .section-four .search-bar form .form-group .form-button label {
+  font-weight: 600;
+  color: #204051;
+}
+
+main .section-five .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #204051;
+}
+
+main .section-five .container form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
+}
+
+main .section-five .container form button {
+  padding: 7px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #204051;
+  margin-left: 10px;
+  color: #e2e0e0;
+}
+
+main .section-five .container form button:focus {
+  outline: none;
+}
+
+main .section-five .container form input {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #204051;
+  text-align: center;
+}
+
+main .section-five .container form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #204051;
+}
+
+main .section-six .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  padding: 50px 0;
+}
+
+main .section-six .container .results {
+  flex-basis: 40%;
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 70px);
+}
+
+main .section-six .container .results .result img {
+  width: 100%;
+}
+
+main .section-six .container .map {
+  flex-basis: 60%;
+}
+
+main .section-six .container .map #map-container #map {
+  width: 100%;
+  height: calc(100vh - 70px);
 }
 
 footer {

@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         var rooms = parseInt($('#rooms').val()); // Prendo i valori degli input per letti e stanze
         var beds = parseInt($('#beds').val());
-        $('.result').addClass('d-none'); // Nascondo tutti gli appartamenti
+        $('.result').addClass('hidden'); // Nascondo tutti gli appartamenti
 
         $('.result').each(function(){ // Per ogni appartamento
             var apartmentRooms = parseInt($(this).find('.rooms').text()); // Prendo i suoi valori di letti e stanze
@@ -37,7 +37,7 @@ $(document).ready(function () {
             var check = isTrue(filters, services); // Richiamo funzione di intersezione tra due array
 
             if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) { // Se l'appartamento soddisfa tutti i criteri della ricerca lo visualizzo
-                $(this).removeClass('d-none');
+                $(this).removeClass('hidden');
             };
         });
         $('#map').remove(); // Rimuovo e reinserisco la mappa per aggiornare tutti i markers
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 addApartmentToMap(apartment);
             }
 
-            map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+            map.setView(new L.LatLng(latlng.lat, latlng.lng), 14);
 
             map.addLayer(osmLayer);
 

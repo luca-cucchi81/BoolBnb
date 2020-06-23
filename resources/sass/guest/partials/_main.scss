@@ -115,4 +115,125 @@ main {
             }
         }
     }
+    .section-four{
+        background-image: url('../../../img/city.jpg');
+        background-size: cover;
+        height: 300px;
+        filter: saturate(50%);
+        .search-bar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            form {
+                display: flex;
+                .form-group {
+                    position: relative;
+                    #address {
+                        width: 50vw;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 0 0 10px 0 black;
+                    }
+                    .form-button {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        padding-left: 10px;
+                        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, $color4 50%);
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        .btn-search {
+                            padding: 8px 30px;
+                            bottom: 0;
+                            background-color: $color4;
+                            color: $color1;
+                            border: none;
+                            font-size: 20px;
+                            border-top-right-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        }
+                        input {
+                            background: transparent;
+                            border: none;
+                            padding: 8px 0;
+                            font-size: 16px;
+                            font-weight: 700;
+                            text-align: center;
+                            color: $color1;
+                        }
+                        label {
+                            font-weight: 600;
+                            color: $color4;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .section-five {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid $color4;
+            form {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 30px 0;
+                button {
+                    padding: 7px 15px;
+                    border-radius: 10px;
+                    border: none;
+                    background-color: $color4;
+                    margin-left: 10px;
+                    color: $color1;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                input {
+                    margin-left: 10px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color4;
+                    text-align: center;
+                }
+                label {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color4;
+                }
+            }
+        }
+    }
+    .section-six {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding: 50px 0;
+            .results {
+                flex-basis: 40%;
+                padding: 20px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                height: calc(100vh - 70px);
+                .result {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .map {
+                flex-basis: 60%;
+                #map-container {
+                    #map {
+                        width: 100%;
+                        height: calc(100vh - 70px);
+                    }
+                }
+            }
+        } 
+    }
 }

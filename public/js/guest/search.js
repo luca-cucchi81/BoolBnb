@@ -122,7 +122,7 @@ $(document).ready(function () {
     var rooms = parseInt($('#rooms').val()); // Prendo i valori degli input per letti e stanze
 
     var beds = parseInt($('#beds').val());
-    $('.result').addClass('d-none'); // Nascondo tutti gli appartamenti
+    $('.result').addClass('hidden'); // Nascondo tutti gli appartamenti
 
     $('.result').each(function () {
       // Per ogni appartamento
@@ -139,7 +139,7 @@ $(document).ready(function () {
 
       if (rooms <= apartmentRooms && beds <= apartmentBeds && check) {
         // Se l'appartamento soddisfa tutti i criteri della ricerca lo visualizzo
-        $(this).removeClass('d-none');
+        $(this).removeClass('hidden');
       }
 
       ;
@@ -191,7 +191,7 @@ $(document).ready(function () {
         addApartmentToMap(apartment);
       }
 
-      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+      map.setView(new L.LatLng(latlng.lat, latlng.lng), 14);
       map.addLayer(osmLayer);
 
       function addApartmentToMap(apartment) {
@@ -240,7 +240,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/final-project/BoolBnb/resources/js/guest/search.js */"./resources/js/guest/search.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto finale\BoolBnb\resources\js\guest\search.js */"./resources/js/guest/search.js");
 
 
 /***/ })
