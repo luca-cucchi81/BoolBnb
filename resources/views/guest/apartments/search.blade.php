@@ -55,7 +55,7 @@
                             <input type="number" id="rooms" min="1" max="9" name="rooms" value="1">
                             <label for="rooms">Rooms n°</label>
                             <input type="number" id="beds" min="1" max="9" name="beds" value="1">
-                            <label for="beds">Beds n°</label>       
+                            <label for="beds">Beds n°</label>
                     </div>
                     <div class="form-group">
                             @foreach ($services as $service)
@@ -79,6 +79,8 @@
                             <h3><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h3>
                             <div class="mark-lat hidden">{{$sponsored->lat}}</div>
                             <div class="mark-lng hidden">{{$sponsored->lng}}</div>
+                            <div class="rooms hidden">{{$sponsored->rooms}}</div>
+                            <div class="beds hidden">{{$sponsored->beds}}</div>
                             <p class="address-result">{{$sponsored->address}}</p>
                             <div class="services">
                                 @foreach ($sponsored->services as $service)
@@ -133,5 +135,5 @@
     <script src="{{asset('js/guest/search.js')}}" charset="utf-8"></script>
     </div>
 </main>
-    
+
 @endsection

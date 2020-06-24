@@ -30,10 +30,11 @@ $(document).ready(function () {
             var apartmentRooms = parseInt($(this).find('.rooms').text()); // Prendo i suoi valori di letti e stanze
             var apartmentBeds = parseInt($(this).find('.beds').text());
             var services = []; // Creo un array con i suoi servizi
-            $(this).find('.services').each(function(){
+            $(this).find('.service').each(function(){
                 var service = $(this).data('service');
                 services.push(service);
             });
+            console.log(services);
             var check = isTrue(filters, services); // Richiamo funzione di intersezione tra due array
 
             if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) { // Se l'appartamento soddisfa tutti i criteri della ricerca lo visualizzo
