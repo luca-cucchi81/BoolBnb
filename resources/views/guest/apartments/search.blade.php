@@ -79,10 +79,12 @@
                             <h3><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h3>
                             <div class="mark-lat hidden">{{$sponsored->lat}}</div>
                             <div class="mark-lng hidden">{{$sponsored->lng}}</div>
-                            <div class="address-result">{{$sponsored->address}}</div>
-                            @foreach ($sponsored->services as $service)
-                                <div class="services" data-service="{{$service->id}}">{!!$service->icon!!}</div>
-                            @endforeach
+                            <p class="address-result">{{$sponsored->address}}</p>
+                            <div class="services">
+                                @foreach ($sponsored->services as $service)
+                                    <div class="service" data-service="{{$service->id}}">{!!$service->icon!!}</div>
+                                @endforeach
+                            </div>
                             <div class="awarded"><i class="fas fa-award"></i></div>
                         </div>
                     @endforeach
@@ -92,10 +94,12 @@
                             <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <div class="mark-lat hidden">{{$filtered->lat}}</div>
                             <div class="mark-lng hidden">{{$filtered->lng}}</div>
-                            <div class="address-result">{{$filtered->address}}</div>
-                            @foreach ($filtered->services as $service)
-                                <div class="services" data-service="{{$service->id}}">{!!$service->icon!!}</div>
-                            @endforeach
+                            <p class="address-result">{{$filtered->address}}</p>
+                            <div class="services">
+                                @foreach ($filtered->services as $service)
+                                    <div class="service" data-service="{{$service->id}}">{!!$service->icon!!}</div>
+                                @endforeach
+                            </div>
                         </div>
                     @endforeach
                 </div>

@@ -225,6 +225,9 @@ main {
                 .result {
                     padding: 40px;
                     position: relative;
+                    &:not(:last-child) {
+                        border-bottom: 2px inset $color2;
+                    }
                     img {
                         width: 100%;
                         box-shadow: 0 0 10px 0 black;
@@ -233,17 +236,30 @@ main {
                         margin: 0 auto;
                     }
                     .services {
-                        display: inline;
+                        display: flex;
+                        justify-content: center;
+                        padding-top: 20px;
+                        .service {
+                            padding: 0 20px;
+                            color: $color4;
+                            font-size: 30px;
+                        }
                     }
                     .awarded {
                         position: absolute;
                         top: 22px;
                         right: 22px;
-                        color: $color2;
+                        color: #660000;
                         font-size: 50px;
                     }
                     h3, h4 {
                         padding-top: 20px;
+                        a {
+                            color: $color4;
+                        }
+                    }
+                    p {
+                        font-size: 14px;
                     }
                 }
             }

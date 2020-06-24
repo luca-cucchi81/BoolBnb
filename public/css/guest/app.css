@@ -419,6 +419,10 @@ main .section-six .container .results .result {
   position: relative;
 }
 
+main .section-six .container .results .result:not(:last-child) {
+  border-bottom: 2px inset #84a9ac;
+}
+
 main .section-six .container .results .result img {
   width: 100%;
   box-shadow: 0 0 10px 0 black;
@@ -428,20 +432,37 @@ main .section-six .container .results .result img {
 }
 
 main .section-six .container .results .result .services {
-  display: inline;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+main .section-six .container .results .result .services .service {
+  padding: 0 20px;
+  color: #204051;
+  font-size: 30px;
 }
 
 main .section-six .container .results .result .awarded {
   position: absolute;
   top: 22px;
   right: 22px;
-  color: #84a9ac;
+  color: #660000;
   font-size: 50px;
 }
 
 main .section-six .container .results .result h3,
 main .section-six .container .results .result h4 {
   padding-top: 20px;
+}
+
+main .section-six .container .results .result h3 a,
+main .section-six .container .results .result h4 a {
+  color: #204051;
+}
+
+main .section-six .container .results .result p {
+  font-size: 14px;
 }
 
 main .section-six .container .map {
