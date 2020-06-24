@@ -25,51 +25,49 @@
             </div>
         </div>
     </div>
-    @if (Auth::id() != $apartment->user_id)
-        <form class="form" action="{{route('guest.apartments.store')}}" method="post">
-            @csrf
-            @method('POST')
-            <div class="form-group">
-                <fieldset>
-                    <legend>Mittente</legend>
-                    <input type="email" name="sender" value="{{$userEmail}}" placeholder="Inserisci la tua e-mail">
-                    @error('sender')
-                        <span class="alert alert-danger">{{$message}}</span>
-                    @enderror
-                </fieldset>
+    <div class="section-eight">
+        <div class="container">
+            <div class="map-sx">
+                <div class="row">
+                    <input type="hidden" class='coord-lat' value="{{$apartment->lat}}">
+                    <input type="hidden" class='coord-lng' value="{{$apartment->lng}}">
+                    <input type="hidden" id="input-map" class="form-control">
+                </div>
+                <div class="row">
+                    <div id="map"></div>
+                </div>
             </div>
-            <div class="form-group">
-                <fieldset>
-                    <legend>Testo del messaggio</legend>
-                    <textarea name="body" rows="8"></textarea>
-                    @error('body')
-                        <span class="alert alert-danger">{{$message}}</span>
-                    @enderror
-                </fieldset>
+            <div class="message-dx">
+                 @if (Auth::id() != $apartment->user_id)
+                    <h2>Contact the Owner</h2>
+                    <form class="form" action="{{route('guest.apartments.store')}}" method="post">
+                        @csrf
+                        @method('POST')
+                        <div class="form-group">
+                            <label for="sender">E-mail :</label>
+                            <input type="email" name="sender" value="{{$userEmail}}" placeholder="Enter your e-mail">
+                            @error('sender')
+                                <span class="alert alert-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Body :</label>
+                            <textarea name="body" rows="8" placeholder="Type your message"></textarea>
+                            @error('body')
+                                <span class="alert alert-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-button">
+                            <input name="slug" type="hidden" class='slug' value="{{$apartment->slug}}">
+                            <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                @endif
             </div>
-            <div class="form-group">
-                <input name="slug" type="hidden" class='slug' value="{{$apartment->slug}}">
-                <input name="apartment_id" type="hidden" class='apartment-id' value="{{$apartment->id}}">
-                <button class="btn btn-primary" type="submit">CREA</button>
-            </div>
-        </form>
-    @endif
-
-    <div class="row">
-        <input type="hidden" class='coord-lat' value="{{$apartment->lat}}">
-        <input type="hidden" class='coord-lng' value="{{$apartment->lng}}">
-        <input type="hidden" id="input-map" class="form-control">
+        </div>
     </div>
-    <div class="row">
-        <div id="map"></div>
-    </div>
-    <style>
-        #map {
-            height: 400px;
-            width: 600px;
-        }
-    </style>
-
+   
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>

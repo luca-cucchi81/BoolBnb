@@ -701,6 +701,76 @@ main .section-seven .container .show-dx .card img:hover {
   transform: scale(1.4);
 }
 
+main .section-eight .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+main .section-eight .container .map-sx {
+  flex-basis: 60%;
+}
+
+main .section-eight .container .map-sx .row #map {
+  width: 100%;
+  height: 600px;
+}
+
+main .section-eight .container .message-dx {
+  flex-basis: 40%;
+  padding: 30px 50px;
+}
+
+main .section-eight .container .message-dx h2 {
+  color: #204051;
+  letter-spacing: 2px;
+  padding: 30px 0 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+main .section-eight .container .message-dx .form .form-group label {
+  display: block;
+  font-size: 20px;
+  color: #204051;
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+
+main .section-eight .container .message-dx .form .form-group input {
+  margin-bottom: 30px;
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+}
+
+main .section-eight .container .message-dx .form .form-group textarea {
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+}
+
+main .section-eight .container .message-dx .form .form-button {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+main .section-eight .container .message-dx .form .form-button button {
+  border: none;
+  border-radius: 50%;
+  background-color: #204051;
+  color: #e7dfd5;
+  padding: 20px;
+  box-shadow: 0 0 3px 0 black;
+}
+
+main .section-eight .container .message-dx .form .form-button button i {
+  font-size: 30px;
+}
+
 footer {
   background-color: #204051;
 }
