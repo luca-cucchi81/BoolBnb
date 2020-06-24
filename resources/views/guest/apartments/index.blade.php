@@ -53,18 +53,12 @@
                         <div class="card">
                             <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
                             <h3>{{$apartment->title}}</h3>
-                            {{-- <p>{{$apartment->address}}</p> --}}
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
 
     <script src="{{asset('js/guest/owl.carousel.js')}}" type="text/javascript" src="" charset="utf-8"></script>
     <script src="{{asset('js/guest/main.js')}}" charset="utf-8"></script>

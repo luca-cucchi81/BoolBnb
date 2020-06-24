@@ -165,7 +165,6 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where('slug', $slug)->first();
-
         if (isset(Auth::user()->email)) { // Se l'utente è loggato assegno a una variabile la sue email altrimenti è vuota
             $userEmail = Auth::user()->email;
         } else {

@@ -1,7 +1,20 @@
-@extends('layouts.app')
-@section('content')
-    <h1>{{$apartment->title}}</h1>
-    <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
+@extends('layouts.guest.app')
+@section('main')
+<main>
+    <div class="section-seven">
+        <div class="container">
+            <div class="box">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($apartment->images as $image)
+                        <div class="card">
+                            <img src="{{asset('storage/'. $image->path)}}" alt="{{$apartment->title}}">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <h1>{{$apartment->title}}</h1>
+        </div>
+    </div>
     @if (Auth::id() != $apartment->user_id)
         <form class="form" action="{{route('guest.apartments.store')}}" method="post">
             @csrf
@@ -51,4 +64,7 @@
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="{{asset('js/guest/show.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/guest/owl.carousel.js')}}" type="text/javascript" src="" charset="utf-8"></script>
+    <script src="{{asset('js/guest/main.js')}}" charset="utf-8"></script>
+</main>
 @endsection

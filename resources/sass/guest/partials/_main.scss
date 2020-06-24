@@ -274,4 +274,37 @@ main {
             }
         }
     }
+    .section-seven {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            .box {
+                padding: 50px 0;
+                .owl-stage-outer {
+                    .owl-item {
+                        transition-duration: 0.3s;
+                        .card {
+                            img {
+                                box-shadow: 0px 3px 3px 0 black;
+                            }
+                        }
+                    }
+                    &.active {
+                        width: 50vw;
+                    }
+                }
+                .owl-nav {
+                    display: none;
+                }
+                .owl-dots {
+                    padding-top: 100px;
+                    span {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
 }
