@@ -23,6 +23,10 @@ ul {
   list-style: none;
 }
 
+button {
+  outline: none;
+}
+
 button:hover {
   cursor: pointer;
 }
@@ -342,6 +346,10 @@ main .section-four .search-bar form .form-group .form-button input {
   color: #e2e0e0;
 }
 
+main .section-four .search-bar form .form-group .form-button #radius {
+  width: 25px;
+}
+
 main .section-four .search-bar form .form-group .form-button label {
   font-weight: 600;
   color: #204051;
@@ -379,6 +387,7 @@ main .section-five .container form input {
   font-weight: 600;
   color: #204051;
   text-align: center;
+  width: 20px;
 }
 
 main .section-five .container form label {
