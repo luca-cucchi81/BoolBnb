@@ -241,7 +241,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto finale\BoolBnb\resources\js\guest\search.js */"./resources/js/guest/search.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/final-project/BoolBnb/resources/js/guest/search.js */"./resources/js/guest/search.js");
 
 
 /***/ })

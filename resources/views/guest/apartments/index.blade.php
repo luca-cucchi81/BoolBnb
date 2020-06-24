@@ -70,79 +70,73 @@
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Roma, Lazio, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="41.8948">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="12.4853">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>ROME</p></div>
-                                    <img src="{{asset('img/roma.jpg')}}" alt="roma">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Roma, Lazio, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="41.8948">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="12.4853">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <img src="{{asset('img/roma.jpg')}}" alt="roma">
+                        <div class="overlay hidden"><p>ROME</p></div>
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Bologna, Emilia-Romagna, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="44.4937">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="11.343">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>BOLOGNA</p></div>
-                                    <img src="{{asset('img/bologna.jpg')}}" alt="bologna">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Bologna, Emilia-Romagna, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="44.4937">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="11.343">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <img src="{{asset('img/bologna.jpg')}}" alt="bologna">
+                        <div class="overlay hidden"><p>BOLOGNA</p></div>
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Milano, Lombardia, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="45.4668">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="9.1905">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>MILAN</p></div>
-                                    <img src="{{asset('img/milano.jpg')}}" alt="milano">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Milano, Lombardia, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="45.4668">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="9.1905">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <img src="{{asset('img/milano.jpg')}}" alt="milano">
+                        <div class="overlay hidden"><p>MILAN</p></div>
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Venezia, Veneto, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="45.4372">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="12.3346">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>VENICE</p></div>
-                                    <img src="{{asset('img/venezia.jpg')}}" alt="venezia">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Venezia, Veneto, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="45.4372">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="12.3346">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <div class="overlay hidden"><p>VENICE</p></div>
+                        <img src="{{asset('img/venezia.jpg')}}" alt="venezia">
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Firenze, Toscana, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="43.7698">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="11.2555">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>FLORENCE</p></div>
-                                    <img src="{{asset('img/firenze.jpg')}}" alt="firenze">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Firenze, Toscana, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="43.7698">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="11.2555">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <img src="{{asset('img/firenze.jpg')}}" alt="firenze">
+                        <div class="overlay hidden"><p>FLORENCE</p></div>
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
                             @csrf
                             @method('GET')
-                                <input type="hidden" id="address" name="address" value="Palermo, Sicilia, Italia">
-                                <input type="hidden" id="lat" name="lat" class="form-control" value="38.1112">
-                                <input type="hidden" id="lng" name="lng" class="form-control" value="13.3524">
-                                <button class="btn-search" type="submit">
-                                    <div class="overlay hidden"><p>PALERMO</p></div>
-                                    <img src="{{asset('img/palermo.jpg')}}" alt="palermo">
-                                </button>
+                            <input type="hidden" id="address" name="address" value="Palermo, Sicilia, Italia">
+                            <input type="hidden" id="lat" name="lat" class="form-control" value="38.1112">
+                            <input type="hidden" id="lng" name="lng" class="form-control" value="13.3524">
+                            <button class="btn-search" type="submit"></button>
                         </form>
+                        <img src="{{asset('img/palermo.jpg')}}" alt="palermo">
+                        <div class="overlay hidden"><p>PALERMO</p></div>
                     </div>
                 </div>
             </div>

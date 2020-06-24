@@ -294,7 +294,7 @@ main .section-two .container .box .owl-dots span {
 }
 
 main .section-three {
-  height: calc(100vh - 70px);
+  height: 900px;
 }
 
 main .section-three .container {
@@ -339,10 +339,9 @@ main .section-three .container .grid .title h2:after {
 }
 
 main .section-three .container .grid .gallery {
-  position: relative;
-  height: auto;
+  height: 100%;
   margin: auto;
-  padding: 0 0 100px;
+  padding: 0 20px 100px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 2vmin;
@@ -367,7 +366,6 @@ main .section-three .container .grid .gallery .img img {
   width: 100%;
   -webkit-filter: saturate(60%);
           filter: saturate(60%);
-  position: relative;
 }
 
 main .section-three .container .grid .gallery .img:nth-child(1) {
@@ -392,6 +390,7 @@ main .section-three .container .grid .gallery .img .overlay {
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
+  transition-duration: 0.3s;
 }
 
 main .section-three .container .grid .gallery .img .overlay p {
@@ -407,6 +406,17 @@ main .section-three .container .grid .gallery .img .overlay p {
   letter-spacing: 2px;
   color: white;
   z-index: 1;
+}
+
+main .section-three .container .grid .gallery .img form button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
 }
 
 @media (max-width: 991px) {
@@ -830,5 +840,88 @@ footer .container .end .contact i {
 
 footer .container .end .contact i:hover {
   color: #84a9ac;
+}
+
+.auth {
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+  background-color: #e7dfd5;
+}
+
+.auth .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.auth .container .form {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.auth .container .form h2 {
+  font-size: 25px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #204051;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+.auth .container .form form {
+  padding: 30px 0;
+}
+
+.auth .container .form form .form-group label {
+  display: block;
+  font-size: 16px;
+  color: #204051;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.auth .container .form form .form-group input {
+  width: 100%;
+  margin-bottom: 30px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.auth .container .form form .form-group #remember {
+  width: 30px;
+  margin-top: 30px;
+}
+
+.auth .container .form form .form-group .check-label {
+  display: inline;
+  font-size: 16px;
+}
+
+.auth .container .form form .form-group #password {
+  margin-bottom: 5px;
+}
+
+.auth .container .form form .form-group .forgot {
+  color: #3b6978;
+  font-size: 12px;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.auth .container .form form .form-button {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.auth .container .form form .form-button button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #204051;
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 3px 0 black;
 }
 
