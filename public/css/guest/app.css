@@ -65,6 +65,10 @@ input[type=number] {
   display: none;
 }
 
+.leaflet-top {
+  z-index: 800 !important;
+}
+
 header {
   background: linear-gradient(270deg, #84a9ac 0%, #204051 75%);
   height: 70px;
@@ -358,7 +362,6 @@ main .section-four .search-bar form .form-group .form-button label {
 main .section-five .container {
   max-width: 1200px;
   margin: 0 auto;
-  border-bottom: 1px solid #204051;
 }
 
 main .section-five .container form {
@@ -400,7 +403,7 @@ main .section-six .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  padding: 50px 0;
+  padding: 0 0 50px;
 }
 
 main .section-six .container .results {
@@ -411,8 +414,34 @@ main .section-six .container .results {
   height: calc(100vh - 70px);
 }
 
+main .section-six .container .results .result {
+  padding: 40px;
+  position: relative;
+}
+
 main .section-six .container .results .result img {
   width: 100%;
+  box-shadow: 0 0 10px 0 black;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+main .section-six .container .results .result .services {
+  display: inline;
+}
+
+main .section-six .container .results .result .awarded {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  color: #84a9ac;
+  font-size: 50px;
+}
+
+main .section-six .container .results .result h3,
+main .section-six .container .results .result h4 {
+  padding-top: 20px;
 }
 
 main .section-six .container .map {

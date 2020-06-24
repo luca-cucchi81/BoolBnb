@@ -54,3 +54,7 @@ input[type=number] {
 .hidden {
     display: none;
 }
+
+.leaflet-top {
+    z-index: 800 !important;
+}

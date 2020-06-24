@@ -178,7 +178,6 @@ main {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            border-bottom: 1px solid $color4;
             form {
                 display: flex;
                 justify-content: space-around;
@@ -216,7 +215,7 @@ main {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            padding: 50px 0;
+            padding: 0 0 50px;
             .results {
                 flex-basis: 40%;
                 padding: 20px;
@@ -224,8 +223,27 @@ main {
                 overflow-x: hidden;
                 height: calc(100vh - 70px);
                 .result {
+                    padding: 40px;
+                    position: relative;
                     img {
                         width: 100%;
+                        box-shadow: 0 0 10px 0 black;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    .services {
+                        display: inline;
+                    }
+                    .awarded {
+                        position: absolute;
+                        top: 22px;
+                        right: 22px;
+                        color: $color2;
+                        font-size: 50px;
+                    }
+                    h3, h4 {
+                        padding-top: 20px;
                     }
                 }
             }

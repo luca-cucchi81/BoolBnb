@@ -75,27 +75,26 @@
                 <div class="results">
                     @foreach ($sponsoredApartments as $sponsored)
                         <div class="result">
-                            <h2><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h2>
                             <img src="{{asset('storage/'. $sponsored->main_img)}}" alt="{{$sponsored->title}}">
+                            <h3><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h3>
                             <div class="mark-lat hidden">{{$sponsored->lat}}</div>
                             <div class="mark-lng hidden">{{$sponsored->lng}}</div>
-                            <div class="rooms">{{$sponsored->rooms}}</div>
-                            <div class="beds">{{$sponsored->beds}}</div>
+                            <div class="address-result">{{$sponsored->address}}</div>
                             @foreach ($sponsored->services as $service)
-                                <p class="services" data-service="{{$service->id}}">{{$service->name}}</p>
+                                <div class="services" data-service="{{$service->id}}">{!!$service->icon!!}</div>
                             @endforeach
+                            <div class="awarded"><i class="fas fa-award"></i></div>
                         </div>
                     @endforeach
                     @foreach ($filteredApartments as $filtered)
                         <div class="result">
-                            <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <img src="{{asset('storage/'. $filtered->main_img)}}" alt="{{$filtered->title}}">
+                            <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <div class="mark-lat hidden">{{$filtered->lat}}</div>
                             <div class="mark-lng hidden">{{$filtered->lng}}</div>
-                            <div class="rooms">{{$filtered->rooms}}</div>
-                            <div class="beds">{{$filtered->beds}}</div>
+                            <div class="address-result">{{$filtered->address}}</div>
                             @foreach ($filtered->services as $service)
-                                <p class="services" data-service="{{$service->id}}">{{$service->name}}</p>
+                                <div class="services" data-service="{{$service->id}}">{!!$service->icon!!}</div>
                             @endforeach
                         </div>
                     @endforeach
