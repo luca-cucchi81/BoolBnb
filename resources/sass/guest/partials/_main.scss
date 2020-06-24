@@ -115,6 +115,122 @@ main {
             }
         }
     }
+    .section-three {
+        height: calc(100vh - 70px);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            .grid {
+                .title {
+                    padding: 100px 0;
+                    h2 {
+                        text-align: center;
+                        position: relative;
+                        z-index: 1;
+                        overflow: hidden;
+                        margin: 0 10px;
+                        color: $color4;
+                        font-size: 30px;
+                        font-weight: 800;
+                        letter-spacing: 3px;
+                        &:before,
+                        &:after {
+                            position: absolute;
+                            top: 51%;
+                            overflow: hidden;
+                            width: 50%;
+                            height: 1px;
+                            content: '\a0';
+                            background-color: $color4;
+                        }
+                        &:before {
+                            margin-left: -52%;
+                            text-align: right;
+                        }
+                        &:after {
+                            margin-left: 2%;
+                        }
+                    }
+                }
+                .gallery {
+                    position: relative;
+                    height: auto;
+                    margin: auto;
+                    padding: 0 0 100px;
+                    display: grid;
+                    grid-template-columns: auto auto auto auto;
+                    grid-gap: 2vmin;
+                    grid-auto-flow: dense;
+                    background-size: cover;
+                    .img {
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+                        overflow: hidden;
+                        object-fit: cover;
+                        img {
+                            object-fit: cover;
+                            display: block;
+                            height: 100%;
+                            width: 100%;
+                            filter: saturate(60%);
+                            position: relative;
+                        }
+                        &:nth-child(1) {
+                            grid-column-start: span 2;
+                            grid-row-start: span 1;
+                        }
+                        &:nth-child(2) {
+                            grid-column-start: span 1;
+                            grid-row-start: span 2;
+                        }
+                        &:nth-child(4) {
+                            grid-column-start: span 1;
+                            grid-row-start: span 1;
+                        }
+                        .overlay {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            background-color: rgba(0, 0, 0, 0.6);
+                            p {
+                                position: relative;
+                                height: auto;
+                                width: 100%;
+                                transform: translate(-50%, -50%);
+                                top: 50%;
+                                left: 50%;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 600;
+                                letter-spacing: 2px;
+                                color: white;
+                                z-index: 1;
+                            }
+                        }
+                    }
+                }
+            }
+            @media (max-width: 991px) {
+                .grid {
+                    .gallery {
+                        grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+                        grid-template-rows: minmax(auto, auto);
+                    }
+                }
+            }
+            @media (max-width: 791px) {
+                .grid {
+                    .gallery {
+                        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+                        grid-template-rows: minmax(auto, auto);
+                    }
+                }
+            }
+        } 
+    }
     .section-four{
         background-image: url('../../../img/city.jpg');
         background-size: cover;
