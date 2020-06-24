@@ -3,16 +3,26 @@
 <main>
     <div class="section-seven">
         <div class="container">
-            <div class="box">
-                <div class="owl-carousel owl-theme">
-                    @foreach ($apartment->images as $image)
-                        <div class="card">
-                            <img src="{{asset('storage/'. $image->path)}}" alt="{{$apartment->title}}">
-                        </div>
+            <div class="show-sx">
+                <h2>{{$apartment->title}}</h2>
+                <p id="show-address"><span id="show-sqm">{{$apartment->square_meters}} sqm.</span> {{$apartment->address}}</p>
+                <p id="show-description">{{$apartment->description}}</p>
+                <span class="show-info">Rooms: {{$apartment->rooms}}</span>
+                <span class="show-info">Beds: {{$apartment->beds}}</span>
+                <span class="show-info">Bathrooms: {{$apartment->bathrooms}}</span>
+                <div class="services">
+                    @foreach ($apartment->services as $service)
+                        <div class="service" data-service="{{$service->id}}">{!!$service->icon!!}{{$service->name}}</div>
                     @endforeach
                 </div>
             </div>
-            <h1>{{$apartment->title}}</h1>
+            <div class="show-dx">
+                @foreach ($apartment->images as $image)
+                    <div class="card">
+                        <img src="{{asset('storage/'. $image->path)}}" alt="{{$apartment->title}}">
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     @if (Auth::id() != $apartment->user_id)

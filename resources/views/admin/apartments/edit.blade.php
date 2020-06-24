@@ -84,8 +84,8 @@
                                 @error('address')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
-                                <input type="hidden" id="lat" name="lat" class="form-control">
-                                <input type="hidden" id="lng" name="lng" class="form-control">
+                                <input type="hidden" id="lat" name="lat" class="form-control" value="{{$apartment->lat}}">
+                                <input type="hidden" id="lng" name="lng" class="form-control" value="{{$apartment->lng}}">
                                 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
                                 <script>
                                     (function() {

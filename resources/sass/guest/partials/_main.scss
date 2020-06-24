@@ -276,32 +276,79 @@ main {
     }
     .section-seven {
         .container {
+            display: flex;
             max-width: 1200px;
             margin: 0 auto;
-            .box {
-                padding: 50px 0;
-                .owl-stage-outer {
-                    .owl-item {
-                        transition-duration: 0.3s;
-                        .card {
-                            img {
-                                box-shadow: 0px 3px 3px 0 black;
-                            }
+            padding: 50px 0;
+            .show-sx {
+                width: 50%;
+                padding-right: 50px;
+                h2 {
+                    letter-spacing: 3px;
+                    color: $color4;
+                    font-size: 35px;
+                    padding: 10px 0;
+                }
+                #show-address {
+                    padding-bottom: 50px;
+                    color: $color4;
+                    #show-sqm {
+                        color: $color4;
+                        font-weight: 600;
+                        padding-right: 5px;
+                    }
+                }
+                #show-description {
+                    color: $color4;
+                    text-align: justify;
+                    padding-bottom: 20px;
+                    font-size: 15px;
+                }
+                .show-info {
+                    padding-right: 10px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color4;
+                }
+                .services {
+                    width: 80%;
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 30px;
+                    flex-wrap: wrap;
+                    .service {
+                        padding-bottom: 20px;
+                        padding-right: 20px;
+                        color: $color4;
+                        flex-basis: 50%;
+                        font-size: 14px;
+                        i {
+                            font-size: 30px;
+                            padding-right: 20px;
+                        }
+                        .fa-parking {
+                            padding-left: 7px;
+                            padding-right: 25px;
                         }
                     }
-                    &.active {
-                        width: 50vw;
-                    }
                 }
-                .owl-nav {
-                    display: none;
-                }
-                .owl-dots {
-                    padding-top: 100px;
-                    span {
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 50%;
+            }
+            .show-dx {
+                display: flex;
+                flex-wrap: wrap;
+                width: 50%;
+                height: 400px;
+                .card {
+                    width: 50%;
+                    border-radius: 5px;
+                    padding: 10px;
+                    img {
+                        width: 100%;
+                        border-radius: 5px;
+                        transition-duration: 0.3s;
+                        &:hover {
+                            transform: scale(1.4);
+                        }
                     }
                 }
             }

@@ -479,38 +479,96 @@ main .section-six .container .map #map-container #map {
 }
 
 main .section-seven .container {
+  display: flex;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-main .section-seven .container .box {
   padding: 50px 0;
 }
 
-main .section-seven .container .box .owl-stage-outer .owl-item {
+main .section-seven .container .show-sx {
+  width: 50%;
+  padding-right: 50px;
+}
+
+main .section-seven .container .show-sx h2 {
+  letter-spacing: 3px;
+  color: #204051;
+  font-size: 35px;
+  padding: 10px 0;
+}
+
+main .section-seven .container .show-sx #show-address {
+  padding-bottom: 50px;
+  color: #204051;
+}
+
+main .section-seven .container .show-sx #show-address #show-sqm {
+  color: #204051;
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+main .section-seven .container .show-sx #show-description {
+  color: #204051;
+  text-align: justify;
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+
+main .section-seven .container .show-sx .show-info {
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #204051;
+}
+
+main .section-seven .container .show-sx .services {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  flex-wrap: wrap;
+}
+
+main .section-seven .container .show-sx .services .service {
+  padding-bottom: 20px;
+  padding-right: 20px;
+  color: #204051;
+  flex-basis: 50%;
+  font-size: 14px;
+}
+
+main .section-seven .container .show-sx .services .service i {
+  font-size: 30px;
+  padding-right: 20px;
+}
+
+main .section-seven .container .show-sx .services .service .fa-parking {
+  padding-left: 7px;
+  padding-right: 25px;
+}
+
+main .section-seven .container .show-dx {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 400px;
+}
+
+main .section-seven .container .show-dx .card {
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+main .section-seven .container .show-dx .card img {
+  width: 100%;
+  border-radius: 5px;
   transition-duration: 0.3s;
 }
 
-main .section-seven .container .box .owl-stage-outer .owl-item .card img {
-  box-shadow: 0px 3px 3px 0 black;
-}
-
-main .section-seven .container .box .owl-stage-outer.active {
-  width: 50vw;
-}
-
-main .section-seven .container .box .owl-nav {
-  display: none;
-}
-
-main .section-seven .container .box .owl-dots {
-  padding-top: 100px;
-}
-
-main .section-seven .container .box .owl-dots span {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+main .section-seven .container .show-dx .card img:hover {
+  transform: scale(1.4);
 }
 
 footer {
