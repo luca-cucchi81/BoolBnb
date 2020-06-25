@@ -196,6 +196,10 @@ class ApartmentController extends Controller
             }
         }
 
+        if (!isset($data['services'])) {
+            $data['services'] = [];
+        }
+
         $validator = Validator::make($data, [
             'title' => 'max:100',
             'rooms' => 'integer',
