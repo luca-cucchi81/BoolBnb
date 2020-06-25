@@ -1,37 +1,44 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.admin.app')
+@section('main')
+<div class="container">
+    <div class="row menu-row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{route('admin.apartments.show', $apartment->id)}}">{{$apartment->title}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sponsorship</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <form action={{route('admin.sponsorships.store')}} method="post">
         @csrf
         @method("POST")
-        <div class="container plan-container">
-            <div class="row">
-                <div class="col-md-12 plan-card-col">
-                @foreach ($sponsorships as $sponsorship)
-                    <div class="card plan-standard-card">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">EUR {{$sponsorship["price"]}}</h6>
-                            <p class="card-text">DURATA: {{$sponsorship["duration"]}} GIORNI</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship["id"]}}">
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+        <div class="row payment-row">
+        @foreach ($sponsorships as $sponsorship)
+            <div class="col-4 card-container">
+                <div class="spn-card text-center">
+                    <h6 class="">€ {{$sponsorship["price"]}}</h6>
+                    <p class="">{{$sponsorship["duration"]}} Day/s</p>
+                    <input class="" type="radio" name="sponsorship" value="{{$sponsorship["id"]}}">
                 </div>
             </div>
+        @endforeach
         </div>
         <input type="hidden" name="apartment" value="{{$apartment->id}}">
-        <button type="submit" class="d-none" id="invia">Conferma pagamento</button>
+        <div class="text-center final-button">
+            <button type="submit" class="d-none btn btn-success" id="invia">Confirm Payment</button>
+        </div>
     </form>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src='https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js'></script>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div id="dropin-container"></div>
-                <button id="submit-button">Verifica metodo di pagamento</button>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div id="dropin-container"></div>
+            <div class="text-center final-button">
+                <button id="submit-button" class="btn btn-secondary">Verify Payment Method</button>
             </div>
         </div>
     </div>
+</div>
     <script src="{{asset('js/admin/sponsor.js')}}" charset="utf-8"></script>
 @endsection

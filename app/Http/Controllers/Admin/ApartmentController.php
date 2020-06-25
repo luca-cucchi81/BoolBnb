@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -126,6 +126,12 @@ class ApartmentController extends Controller
             }
         }
 
+        $total = 0;
+        foreach ($sponsorships as $sponsorship) {
+            $price = $sponsorship->price; // Assegno a una variabile il valore price della sponsorizzazione ciclata
+            $total = $total + $price; // Aggiungo questo valore al valore esistente nella chiave dell'appartamento corrispondente
+        }
+
         foreach($apartment->messages as $message){ // Ciclo su ogni messaggio dell'appartmento
             $messages = Message::where('apartment_id', $apartment->id)->get();
             foreach ($messages as $singleMessage){ // Ad ogni messaggio cambio il campo read in 1 per capire che è stato letto dall'utente
@@ -134,7 +140,7 @@ class ApartmentController extends Controller
             }
         }
 
-        return view('admin.apartments.show', compact('apartment', 'hide'));
+        return view('admin.apartments.show', compact('apartment', 'hide', 'total'));
     }
 
     /**

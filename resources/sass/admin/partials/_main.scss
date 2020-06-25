@@ -13,3 +13,143 @@
 .table-index {
     margin-bottom: 100px;
 }
+
+.img-show {
+    width: 100%;
+}
+
+.img-show-main {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.menu-row {
+    margin-bottom: 60px;
+}
+
+h2 {
+    letter-spacing: 3px;
+    font-size: 30px;
+}
+
+#show-address {
+    padding-bottom: 10px;
+    #show-sqm {
+        font-weight: 600;
+        padding-right: 5px;
+    }
+}
+
+#show-description {
+    text-align: justify;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.show-info {
+    padding-right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.services {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    flex-wrap: wrap;
+    .service {
+        padding-bottom: 10px;
+        padding-right: 10px;
+        flex-basis: 50%;
+        font-size: 14px;
+        i {
+            font-size: 20px;
+            padding-right: 20px;
+        }
+        .fa-parking {
+            padding-left: 2px;
+            padding-right: 23px;
+        }
+    }
+}
+
+.button-show {
+    margin-bottom: 60px;
+    .btn-success {
+        margin-right: 30px;
+    }
+}
+
+.statistics {
+    margin-top: 60px;
+}
+
+.stats-card {
+    margin: 30px 0 30px 30px;
+    display: flex;
+    border-radius: 10px;
+    .stats-sx {
+        padding-left: 20px;
+        h3 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    .stats-dx {
+        align-self: center;
+        text-align: center;
+        padding-left: 30px;
+        i {
+            font-size: 30px;
+            color: lightgrey;
+        }
+    }
+}
+
+#stat-1 {
+    border-left: 5px solid orange;
+    h3 {
+        color: orange;
+    }
+}
+
+#stat-2 {
+    border-left: 5px solid turquoise;
+    h3 {
+        color: turquoise;
+    }
+}
+
+#stat-3 {
+    border-left: 5px solid mediumorchid;
+    h3 {
+        color: mediumorchid;
+    }
+}
+
+.payment-row {
+    margin: 60px 0;
+    .card-container {
+        padding: 30px;
+        .spn-card {
+            border: 2px solid grey;
+            border-radius: 5px;
+            padding: 30px 0;
+            box-shadow: 0 0px 3px 5px lightgrey;
+            h6 {
+                font-size: 40px;
+            }
+            input {
+                transform: scale(1.5);
+            }
+        }
+    }
+}
+
+#invia {
+    
+}

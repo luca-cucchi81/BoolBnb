@@ -111,41 +111,6 @@ $(document).ready(function () {
   var visitsUrl = "http://127.0.0.1:8000/api/visits/apartment/" + apartmentId;
   apiCallGet();
 
-  (function () {
-    // Funzione di creazione Mapp
-    var latlng = {
-      // Oggetto con lat e lng presi dai due input nascosti
-      lat: $('.coord-lat').val(),
-      lng: $('.coord-lng').val()
-    };
-    var placesAutocomplete = places({
-      appId: 'plLSMIJCIUJH',
-      apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
-      container: document.querySelector('#input-map')
-    }).configure({
-      aroundLatLng: latlng.lat + ',' + latlng.lng,
-      type: 'address'
-    });
-    var map = L.map('map', {
-      // Controlli sullo zoom con la rotellina e barra di zoom
-      scrollWheelZoom: false,
-      zoomControl: true
-    });
-    var osmLayer = new L.TileLayer( // Impostazione zoom minimo e massimo
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 1,
-      maxZoom: 19
-    });
-    var markers = []; // Creazione array di markers per andare a inserire il marker nella pazza
-
-    var marker = L.marker(latlng);
-    marker.addTo(map);
-    markers.push(marker);
-    map.setView(new L.LatLng(latlng.lat, latlng.lng), 16); // Impostazione dello zoom ed epicentro inziale
-
-    map.addLayer(osmLayer);
-  })();
-
   function apiCallGet() {
     $.ajax({
       url: visitsUrl,
@@ -177,7 +142,7 @@ $(document).ready(function () {
       type: 'bar',
       data: {
         datasets: [{
-          label: 'Analisi Visite',
+          label: 'Periodically Visits',
           backgroundColor: 'lightgreen',
           data: data
         }],
