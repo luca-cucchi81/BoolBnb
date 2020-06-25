@@ -49,7 +49,7 @@
                 <p>{{$spnCount}}</p>
             </div>
             <div class="stats-dx">
-                <i class="fas fa-coins"></i>
+                <i class="fas fa-chart-line"></i>
             </div>
         </div>
     </div>
