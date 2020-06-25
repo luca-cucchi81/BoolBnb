@@ -63,7 +63,7 @@
         <div class="container">
             <div class="grid">
                 <div class="title">
-                    <h2>Dream your next trip</h2>
+                    <h2>Our best destinations</h2>
                 </div>
                 <div class="gallery">
                     <div class="img">
@@ -111,8 +111,8 @@
                             <input type="hidden" id="lng" name="lng" class="form-control" value="12.3346">
                             <button class="btn-search" type="submit"></button>
                         </form>
-                        <div class="overlay hidden"><p>VENICE</p></div>
                         <img src="{{asset('img/venezia.jpg')}}" alt="venezia">
+                        <div class="overlay hidden"><p>VENICE</p></div>
                     </div>
                     <div class="img">
                         <form action="{{route('guest.apartments.search')}}" method="post">
