@@ -162,6 +162,14 @@ h2 {
   color: mediumorchid;
 }
 
+#stat-4 {
+  border-left: 5px solid lightgreen;
+}
+
+#stat-4 h3 {
+  color: lightgreen;
+}
+
 .payment-row {
   margin: 60px 0;
 }
@@ -183,5 +191,21 @@ h2 {
 
 .payment-row .card-container .spn-card input {
   transform: scale(1.5);
+}
+
+#show-message {
+  margin: 60px 0;
+}
+
+#hide-message {
+  margin: 60px 0;
+}
+
+#message-container {
+  padding-bottom: 60px;
+}
+
+.stats-card.dashboard-card {
+  margin: 100px 0 150px 0;
 }
 

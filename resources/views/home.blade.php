@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.admin.app')
+@section('main')
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -10,41 +10,66 @@
             </nav>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <a class="btn btn-primary" href="{{route('admin.apartments.index')}}">Vai agli Appartamenti</a>
-                    <a class="btn btn-primary" href="{{route('admin.messages.index')}}">Vai ai messaggi</a>
-
-                </div>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    <div class="row">
+        <div class="stats-card dashboard-card col-3" id="stat-1">
+            <div class="stats-sx">
+                <h5>Messages Count</h5>
+                <p>{{$messagesCount}}</p>
+            </div>
+            <div class="stats-dx">
+                <i class="fas fa-comments"></i>
+            </div>
+        </div>
+        <div class="stats-card dashboard-card col-3" id="stat-2">
+            <div class="stats-sx">
+                <h5>Visits Count</h5>
+                <p>{{$visitsCount}}</p>
+            </div>
+            <div class="stats-dx">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+        <div class="stats-card dashboard-card col-3" id="stat-3">
+            <div class="stats-sx">
+                <h5>Sponsors Amount</h5>
+                <p>€ {{$totalAmountSp}}</p>
+            </div>
+            <div class="stats-dx">
+                <i class="fas fa-coins"></i>
+            </div>
+        </div>
+        <div class="stats-card dashboard-card col-3" id="stat-4">
+            <div class="stats-sx">
+                <h5>Sponsors Count</h5>
+                <p>{{$spnCount}}</p>
+            </div>
+            <div class="stats-dx">
+                <i class="fas fa-coins"></i>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="chart col-4">
+            <h6 class="text-center">Messagges Received for Each Apartment</h6>
+            <canvas id="messages-chart"></canvas>
+        </div>
+        <div class="chart col-4">
+            <h6 class="text-center">Visit for Each Apartment</h6>
+            <canvas id="visits-chart"></canvas>
+        </div>
+        <div class="chart col-4">
+            <h6 class="text-center">Total Amount for each Apartment</h6>
+            <canvas id="sponsorships-chart"></canvas>
+        </div>
+    </div>
+
+    <input type="hidden" id="user-id" value="{{$userId}}">
 </div>
-
- <div class="chart col-4">
-     <h2 class="text-center">Messaggi Ricevuti per Appartamento</h2>
-     <canvas id="messages-chart"></canvas>
- </div>
- <div class="chart col-4">
-     <h2 class="text-center">Visite per Appartamento</h2>
-     <canvas id="visits-chart"></canvas>
- </div>
- <div class="chart col-4">
-     <h2 class="text-center">Totale speso per Sponsorizzazioni per Appartamento</h2>
-     <canvas id="sponsorships-chart"></canvas>
- </div>
- <input type="hidden" id="user-id" value="{{$userId}}">
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" charset="utf-8"></script>
@@ -118,68 +143,13 @@
         });
     }
 
-    function createLineChart(id, labels, data) { // Funzione che crea un grafico tipo line dato un id di destinazione e due array labels e data
-        var ctx = $(id);
-        var chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Vendite Mensili',
-                    borderColor: 'darkblue',
-                    lineTension: 0,
-                    data: data
-                }]
-            }
-        });
-    };
-
-    function createBarChart(id, labels, data) { // Funzione che crea un grafico tipo line dato un id di destinazione e due array labels e data
-        var ctx = $(id);
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Vendite Trimestrali',
-                    backgroundColor: 'darkred',
-                    data: data
-                }]
-            }
-        });
-    };
-
-    function createPieChart(id, labels, data) { // Funzione che crea un grafico tipo pie dato un id di destinazione e due array labels e data
-        var ctx = $(id);
-        var chart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: data,
-                    backgroundColor: ['pink', 'orange', 'lightblue', 'lightgreen']
-                }],
-                labels: labels
-            },
-            options: {
-                responsive: true,
-                tooltips: {
-                  callbacks: {
-                    label: function(tooltipItem, data) {
-                      return data['labels'][tooltipItem['index']] + ': ' + data['datasets'][0]['data'][tooltipItem['index']] + '%';
-                    }
-                  }
-                }
-            }
-        });
-    };
-
     function createMessagesChart(id, labels, data) { // Funzione che crea un grafico tipo line dato un id di destinazione e due array labels e data
         var ctx = $(id);
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 datasets: [{
-                    label: 'Tot. Messaggi',
+                    label: 'Tot. Messages',
                     backgroundColor: '#ff6666',
                     data: data,
                 }],
@@ -204,7 +174,7 @@
             type: 'bar',
             data: {
                 datasets: [{
-                    label: 'Tot. Speso',
+                    label: 'Tot. Spent',
                     backgroundColor: 'lightgreen',
                     data: data,
                 }],

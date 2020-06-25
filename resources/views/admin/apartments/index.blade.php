@@ -15,7 +15,7 @@
             @if ($apartments->contains('user_id', $userId))
                 {{-- <div class="row"> --}}
                 <div class="v-50 mx-auto">
-                    <a class="btn btn-success" id="create-apt" href="{{route('admin.apartments.create')}}">Insert a new apartment</a>
+                    <a class="btn btn-success" id="create-apt" href="{{route('admin.apartments.create')}}">Insert a new Apartment</a>
                 </div>
                 {{-- </div> --}}
                 <table class="table table-index">
@@ -56,7 +56,9 @@
                 </table>
             @else
                 <div class="row">
-                    <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Inserisci il tuo primo Appartamento</a>
+                    <div class="v-50 mx-auto">
+                        <a class="btn btn-success" id="create-apt" href="{{route('admin.apartments.create')}}">Insert your first Apartment</a>
+                    </div>
                 </div>
             @endif
         </div>

@@ -131,6 +131,13 @@ h2 {
     }
 }
 
+#stat-4 {
+    border-left: 5px solid lightgreen;
+    h3 {
+        color: lightgreen;
+    }
+}
+
 .payment-row {
     margin: 60px 0;
     .card-container {
@@ -150,6 +157,18 @@ h2 {
     }
 }
 
-#invia {
-    
+#show-message {
+    margin: 60px 0;
+}
+
+#hide-message {
+    margin: 60px 0;
+}
+
+#message-container {
+    padding-bottom: 60px;
+}
+
+.stats-card.dashboard-card {
+    margin: 100px 0 150px 0;
 }

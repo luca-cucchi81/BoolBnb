@@ -15,9 +15,9 @@
         <div class="row button-show">
             <div class="v-50 mx-auto">
                 @if ($hide == false)
-                    <a class="btn btn-success" href="{{route('admin.sponsorships.show', $apartment->id)}}">Sponsors</a>
+                    <a class="btn btn-success" href="{{route('admin.sponsorships.show', $apartment->id)}}">SPONSORS</a>
                 @endif
-                <a class="btn btn-warning" href="{{route('admin.apartments.edit', $apartment->id)}}">Edit</a>
+                <a class="btn btn-warning" href="{{route('admin.apartments.edit', $apartment->id)}}">EDIT</a>
             </div>
         </div>
         <div class="row">
@@ -86,18 +86,32 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <button type="button" class="btn btn-primary" id="show-message">Show Messages</button>
-    <button type="button" class="btn btn-primary d-none" id="hide-message">Hide Messages</button>
-    <div class="d-none" id="message-container">
-        @foreach ($apartment->messages as $message)
-            <div>
-                <p>{{$apartment->title}}</p>
-                <p>{{$message->sender}}</p>
-                <p>{{$message->body}}</p>
+        <div class="row">
+            <div class="v-50 mx-auto">
+                <button type="button" class="btn btn-primary" id="show-message">Show Messages</button>
+                <button type="button" class="btn btn-primary d-none" id="hide-message">Hide Messages</button>
             </div>
-        @endforeach
+        </div>
+        <div class="row d-none" id="message-container">
+            <table class="table table-striped">
+                <thead class="table-success">
+                    <tr>
+                        <th class="text-center">APARTMENT</th>
+                        <th class="text-center">SENDER</th>
+                        <th class="text-center">MESSAGE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($apartment->messages as $message)
+                    <tr>
+                        <td>{{$apartment->title}}</td>
+                        <td>{{$message->sender}}</td>
+                        <td>{{$message->body}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
