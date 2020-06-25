@@ -242,7 +242,7 @@ class ApartmentController extends Controller
         $apartment->services()->detach();
         $apartment->images()->delete();
         $apartment->messages()->delete();
-        $apartment->views()->delete();
+        $apartment->visits()->delete();
         $deleted = Storage::disk('public')->delete($apartment->main_img);
 
         $deleted = $apartment->delete();
