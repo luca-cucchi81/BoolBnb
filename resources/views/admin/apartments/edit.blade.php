@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Description</legend>
-                                <input type="text" name="description" class="form-control" value="{{old('description') ?? $apartment->description}}">
+                                <textarea class="form-control" name="description" rows="4" value="{{old('description') ?? $apartment->description}}"></textarea>
                                 @error('description')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror

@@ -34,7 +34,6 @@ $(document).ready(function () {
                 var service = $(this).data('service');
                 services.push(service);
             });
-            console.log(services);
             var check = isTrue(filters, services); // Richiamo funzione di intersezione tra due array
 
             if ((rooms <= apartmentRooms) && (beds <= apartmentBeds) && (check)) { // Se l'appartamento soddisfa tutti i criteri della ricerca lo visualizzo

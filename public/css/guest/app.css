@@ -33,7 +33,7 @@ button:hover {
 
 .alert {
   position: fixed;
-  z-index: 99;
+  z-index: 999;
   top: 75px;
   left: 5px;
   opacity: 0.8;
@@ -773,12 +773,12 @@ main .section-eight .container .message-dx .form .form-button button {
   border-radius: 50%;
   background-color: #204051;
   color: #e7dfd5;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 0 3px 0 black;
 }
 
 main .section-eight .container .message-dx .form .form-button button i {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 footer {

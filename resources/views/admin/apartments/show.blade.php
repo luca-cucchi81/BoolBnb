@@ -6,7 +6,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('admin.apartments.index')}}">Appartaments</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('admin.apartments.index')}}">Apartments</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{$apartment->title}}</li>
                     </ol>
                 </nav>
@@ -53,13 +53,13 @@
         </div>
         <div class="row statistics">
             <div class="chart col-7">
-                <h2 class="text-center">Visit Stats</h2>
+                <h4 class="text-center">Visit Stats</h4>
                 <canvas id="visits-chart"></canvas>
             </div>
             <div class="col-5">
                 <div class="stats-card" id="stat-1">
                     <div class="stats-sx">
-                        <h3>Messages Count</h3>
+                        <h5>Messages Count</h5>
                         <p>{{$apartment->messages->count()}}</p>
                     </div>
                     <div class="stats-dx">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="stats-card" id="stat-2">
                     <div class="stats-sx">
-                        <h3>Sponsorships Amount</h3>
+                        <h5>Sponsorships Amount</h5>
                         <p>€ {{$total}}</p>
                     </div>
                     <div class="stats-dx">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="stats-card" id="stat-3">
                     <div class="stats-sx">
-                        <h3>Sponsorships Count</h3>
+                        <h5>Sponsorships Count</h5>
                         <p>{{$apartment->sponsorships->count()}}</p>
                     </div>
                     <div class="stats-dx">
@@ -96,7 +96,6 @@
             <table class="table table-striped">
                 <thead class="table-success">
                     <tr>
-                        <th class="text-center">APARTMENT</th>
                         <th class="text-center">SENDER</th>
                         <th class="text-center">MESSAGE</th>
                     </tr>
@@ -104,7 +103,6 @@
                 <tbody>
                     @foreach ($apartment->messages as $message)
                     <tr>
-                        <td>{{$apartment->title}}</td>
                         <td>{{$message->sender}}</td>
                         <td>{{$message->body}}</td>
                     </tr>

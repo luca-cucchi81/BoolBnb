@@ -105,21 +105,17 @@ h2 {
 }
 
 .statistics {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 .stats-card {
-  margin: 30px 0 30px 30px;
+  margin: 30px 0 30px 80px;
   display: flex;
   border-radius: 10px;
 }
 
 .stats-card .stats-sx {
   padding-left: 20px;
-}
-
-.stats-card .stats-sx h3 {
-  font-size: 30px;
 }
 
 .stats-card .stats-sx p {
@@ -139,35 +135,35 @@ h2 {
 }
 
 #stat-1 {
-  border-left: 5px solid orange;
-}
-
-#stat-1 h3 {
-  color: orange;
-}
-
-#stat-2 {
   border-left: 5px solid turquoise;
 }
 
-#stat-2 h3 {
+#stat-1 h5 {
   color: turquoise;
 }
 
+#stat-2 {
+  border-left: 5px solid orange;
+}
+
+#stat-2 h5 {
+  color: orange;
+}
+
 #stat-3 {
-  border-left: 5px solid mediumorchid;
-}
-
-#stat-3 h3 {
-  color: mediumorchid;
-}
-
-#stat-4 {
   border-left: 5px solid lightgreen;
 }
 
-#stat-4 h3 {
+#stat-3 h5 {
   color: lightgreen;
+}
+
+#stat-4 {
+  border-left: 5px solid mediumorchid;
+}
+
+#stat-4 h5 {
+  color: mediumorchid;
 }
 
 .payment-row {

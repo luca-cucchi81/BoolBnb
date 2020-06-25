@@ -96,6 +96,8 @@
                             <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <div class="mark-lat hidden">{{$filtered->lat}}</div>
                             <div class="mark-lng hidden">{{$filtered->lng}}</div>
+                            <div class="rooms hidden">{{$filtered->rooms}}</div>
+                            <div class="beds hidden">{{$filtered->beds}}</div>
                             <p class="address-result">{{$filtered->address}}</p>
                             <div class="services">
                                 @foreach ($filtered->services as $service)

@@ -174,7 +174,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\phpboolean\Lezione_99\BoolBnb\resources\js\admin\show.js */"./resources/js/admin/show.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/final-project/BoolBnb/resources/js/admin/show.js */"./resources/js/admin/show.js");
 
 
 /***/ })

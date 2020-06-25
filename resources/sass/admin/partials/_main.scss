@@ -82,18 +82,15 @@ h2 {
 }
 
 .statistics {
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 .stats-card {
-    margin: 30px 0 30px 30px;
+    margin: 30px 0 30px 80px;
     display: flex;
     border-radius: 10px;
     .stats-sx {
         padding-left: 20px;
-        h3 {
-            font-size: 30px;
-        }
         p {
             font-size: 20px;
             font-weight: 600;
@@ -111,30 +108,30 @@ h2 {
 }
 
 #stat-1 {
-    border-left: 5px solid orange;
-    h3 {
-        color: orange;
-    }
-}
-
-#stat-2 {
     border-left: 5px solid turquoise;
-    h3 {
+    h5 {
         color: turquoise;
     }
 }
 
+#stat-2 {
+    border-left: 5px solid orange;
+    h5 {
+        color: orange;
+    }
+}
+
 #stat-3 {
-    border-left: 5px solid mediumorchid;
-    h3 {
-        color: mediumorchid;
+    border-left: 5px solid lightgreen;
+    h5 {
+        color: lightgreen;
     }
 }
 
 #stat-4 {
-    border-left: 5px solid lightgreen;
-    h3 {
-        color: lightgreen;
+    border-left: 5px solid mediumorchid;
+    h5 {
+        color: mediumorchid;
     }
 }
 

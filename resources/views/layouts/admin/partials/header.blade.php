@@ -27,10 +27,13 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a class="btn btn-light" href="{{route('admin.messages.index')}}">Messages</a>
+                        <a class="btn btn-outline-light" href="{{route('home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="{{route('admin.messages.index')}}">Messages</a>
                     </li>
                     <li>
-                        <a class="btn btn-light" href="{{route('admin.apartments.index')}}">Apartments</a>
+                        <a class="btn btn-outline-light" href="{{route('admin.apartments.index')}}">Apartments</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
