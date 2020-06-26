@@ -13,6 +13,7 @@ $(document).ready(function () {
             });
             instance.requestPaymentMethod(function (err, payload) {
                 $.get("{{'route('admin.payment.make')}}", {payload}, function (response) {
+                    console.log({response});
                     if (response.success) {
 
                     } else {

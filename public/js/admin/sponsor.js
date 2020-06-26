@@ -112,6 +112,10 @@ $(document).ready(function () {
         $.get("{{'route('admin.payment.make')}}", {
           payload: payload
         }, function (response) {
+          console.log({
+            response: response
+          });
+
           if (response.success) {} else {
             alert('Payment failed');
           }

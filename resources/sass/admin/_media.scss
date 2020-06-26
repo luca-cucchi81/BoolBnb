@@ -1,0 +1,32 @@
+@media only screen and (max-width: 992px) {
+    .container {
+        padding: 0 30px;
+        .stats-card {
+            float: left;
+        }
+        .stats-card.dashboard-card {
+            margin: 20px 0;
+        }
+    }
+    .services {
+        margin-bottom: 50px;
+    }
+}
+@media only screen and (max-width: 768px) {
+
+}
+@media only screen and (max-width: 576px) {
+    .stats-card {
+        .stats-dx {
+            i {
+                font-size: 15px;
+            }
+        }
+    }
+    .mobile-hidden {
+        display: none;
+    }
+    .img-show {
+        margin: 20px 0;
+    }
+}

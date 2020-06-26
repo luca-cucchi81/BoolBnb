@@ -19,7 +19,7 @@
                         <a class="nav-link btn btn-primary m-3" href="{{route('admin.apartments.index')}}">&#8592; Back to Index</a>
                     </li>
                 </ul>
-                <div class="col-8 offset-2">
+                <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
                     <form action="{{route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data" class="md-form">
                         @csrf
                         @method('POST')
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend>Description</legend>
-                                <textarea class="form-control" name="description" rows="4" value="{{old('description')}}"></textarea>
+                                <textarea class="form-control" name="description" rows="4">{{old('description')}}</textarea>
                                 @error('description')
                                     <span class="alert alert-danger">{{$message}}</span>
                                 @enderror
@@ -132,8 +132,10 @@
                             <fieldset>
                                 <legend>Services</legend>
                                 @foreach ($services as $service)
-                                    <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
-                                    <label class="input-services" for="services-{{$service->id}}">{{$service->name}}</label>
+                                    <div class="float-left">
+                                        <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+                                        <label class="input-services" for="services-{{$service->id}}">{{$service->name}}</label>
+                                    </div>
                                 @endforeach
                             </fieldset>
                         </div>

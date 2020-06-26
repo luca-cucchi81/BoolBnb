@@ -15,7 +15,7 @@
             <table class="table table-striped">
                 <thead class="table-success">
                     <tr>
-                        <th class="text-center">APARTMENT</th>
+                        <th class="text-center mobile-hidden">APARTMENT</th>
                         <th class="text-center">SENDER</th>
                         <th class="text-center">MESSAGE</th>
                     </tr>
@@ -24,7 +24,7 @@
                     @foreach ($arrayMessages as $arrayMessage)
                         @foreach ($arrayMessage as $message)
                             <tr>
-                                <td>{{$message->apartment->title}}</td>
+                                <td class="mobile-hidden">{{$message->apartment->title}}</td>
                                 <td>{{$message->sender}}</td>
                                 <td>{{$message->body}}</td>
                             </tr>

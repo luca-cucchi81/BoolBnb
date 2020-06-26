@@ -17,7 +17,7 @@
         @method("POST")
         <div class="row payment-row">
         @foreach ($sponsorships as $sponsorship)
-            <div class="col-4 card-container">
+            <div class="col-12 col-md-4 card-container">
                 <div class="spn-card text-center">
                     <h6 class="">€ {{$sponsorship["price"]}}</h6>
                     <p class="">{{$sponsorship["duration"]}} Day/s</p>
@@ -32,7 +32,7 @@
         </div>
     </form>
     <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-10 offset-1 col-md-6 offset-md-3">
             <div id="dropin-container"></div>
             <div class="text-center final-button">
                 <button id="submit-button" class="btn btn-secondary">Verify Payment Method</button>

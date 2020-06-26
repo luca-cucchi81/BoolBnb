@@ -23,7 +23,7 @@
                         <tr>
                             <th class="text-center">TITLE</th>
                             <th class="text-center">ADDRESS</th>
-                            <th class="text-center">VISIBILITY</th>
+                            <th class="text-center mobile-hidden">VISIBILITY</th>
                             <th colspan="3" class="text-center">ACTIONS</th>
                         </tr>
                     </thead>
@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{$apartment->title}}</td>
                                 <td>{{$apartment->address}}</td>
-                                <td class="text-center">
+                                <td class="text-center mobile-hidden">
                                     @if ($apartment->visibility == 1)
                                         <i class="fas fa-eye"></i>
                                     @else

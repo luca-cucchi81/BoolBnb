@@ -16,7 +16,7 @@
         </div>
     @endif
     <div class="row">
-        <div class="stats-card dashboard-card col-3" id="stat-1">
+        <div class="stats-card dashboard-card col-6 col-sm-6 col-lg-3" id="stat-1">
             <div class="stats-sx">
                 <h5>Messages Count</h5>
                 <p>{{$messagesCount}}</p>
@@ -25,7 +25,7 @@
                 <i class="fas fa-comments"></i>
             </div>
         </div>
-        <div class="stats-card dashboard-card col-3" id="stat-2">
+        <div class="stats-card dashboard-card col-6 col-sm-6 col-lg-3" id="stat-2">
             <div class="stats-sx">
                 <h5>Visits Count</h5>
                 <p>{{$visitsCount}}</p>
@@ -34,7 +34,7 @@
                 <i class="fas fa-users"></i>
             </div>
         </div>
-        <div class="stats-card dashboard-card col-3" id="stat-3">
+        <div class="stats-card dashboard-card col-6 col-sm-6 col-lg-3" id="stat-3">
             <div class="stats-sx">
                 <h5>Sponsors Amount</h5>
                 <p>€ {{$totalAmountSp}}</p>
@@ -43,7 +43,7 @@
                 <i class="fas fa-coins"></i>
             </div>
         </div>
-        <div class="stats-card dashboard-card col-3" id="stat-4">
+        <div class="stats-card dashboard-card col-6 col-sm-6 col-lg-3" id="stat-4">
             <div class="stats-sx">
                 <h5>Sponsors Count</h5>
                 <p>{{$spnCount}}</p>
@@ -54,15 +54,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="chart col-4">
+        <div class="chart col-12 col-lg-4">
             <h6 class="text-center">Messages Received for Each Apartment</h6>
             <canvas id="messages-chart"></canvas>
         </div>
-        <div class="chart col-4">
+        <div class="chart col-12 col-lg-4">
             <h6 class="text-center">Visits for Each Apartment</h6>
             <canvas id="visits-chart"></canvas>
         </div>
-        <div class="chart col-4">
+        <div class="chart col-12 col-lg-4">
             <h6 class="text-center">Total Amount for each Apartment</h6>
             <canvas id="sponsorships-chart"></canvas>
         </div>

@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-7">
+            <div class="col-12 col-lg-7">
                 <h2>{{$apartment->title}}</h2>
                 <p id="show-address"><span id="show-sqm">{{$apartment->square_meters}} sqm.</span> {{$apartment->address}}</p>
                 <p id="show-description">{{$apartment->description}}</p>
@@ -34,13 +34,13 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-lg-5">
                 <img class="img-show-main" src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
             </div>
         </div>
         <div class="row">
             @foreach ($apartment->images as $image)
-                <div class="col-3">
+                <div class="col-6 col-sm-3">
                     <img class="img-show" src="{{asset('storage/'. $image->path)}}" alt="{{$apartment->title}}">
                 </div>
             @endforeach
@@ -52,11 +52,11 @@
             <input type="hidden" id="apartment_id" class='apartment' value="{{$apartment->id}}">
         </div>
         <div class="row statistics">
-            <div class="chart col-7">
+            <div class="chart col-12 col-lg-7">
                 <h4 class="text-center">Visit Stats</h4>
                 <canvas id="visits-chart"></canvas>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-lg-5">
                 <div class="stats-card" id="stat-1">
                     <div class="stats-sx">
                         <h5>Messages Count</h5>

@@ -370,13 +370,18 @@ main {
                         margin: 0 auto;
                     }
                     .services {
+                        width: 70%;
+                        margin: 0 auto;
                         display: flex;
+                        flex-wrap: wrap;
                         justify-content: center;
                         padding-top: 20px;
                         .service {
-                            padding: 0 20px;
+                            flex-basis: 33%;
+                            padding: 10px;
                             color: $color4;
                             font-size: 30px;
+                            text-align: center;
                         }
                     }
                     .awarded {

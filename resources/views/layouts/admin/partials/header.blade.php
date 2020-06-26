@@ -6,16 +6,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
+        <div class="collapse navbar-collapse navbar-nav float-right text-right" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-
             </ul>
-
-            <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -36,7 +30,7 @@
                         <a class="btn btn-outline-light" href="{{route('admin.apartments.index')}}">Apartments</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="name-navbar" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <span class="btn btn-light">{{ Auth::user()->info->name }} &#8629;</span>
                         </a>
 
@@ -47,7 +41,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>

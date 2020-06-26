@@ -106,6 +106,9 @@ h2 {
         }
     }
 }
+.stats-card.dashboard-card {
+    margin: 100px 0 150px 0;
+}
 
 #stat-1 {
     border-left: 5px solid turquoise;
@@ -133,6 +136,10 @@ h2 {
     h5 {
         color: mediumorchid;
     }
+}
+
+.chart {
+    margin: 20px 0;
 }
 
 .payment-row {
@@ -164,8 +171,4 @@ h2 {
 
 #message-container {
     padding-bottom: 60px;
-}
-
-.stats-card.dashboard-card {
-    margin: 100px 0 150px 0;
 }

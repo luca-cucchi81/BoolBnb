@@ -91,7 +91,7 @@ $(document).ready(function () {
                 addApartmentToMap(apartment);
             }
 
-            map.setView(new L.LatLng(latlng.lat, latlng.lng), 14);
+            map.setView(new L.LatLng(latlng.lat, latlng.lng), 13);
 
             map.addLayer(osmLayer);
 

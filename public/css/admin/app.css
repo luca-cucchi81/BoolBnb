@@ -134,6 +134,10 @@ h2 {
   color: lightgrey;
 }
 
+.stats-card.dashboard-card {
+  margin: 100px 0 150px 0;
+}
+
 #stat-1 {
   border-left: 5px solid turquoise;
 }
@@ -164,6 +168,10 @@ h2 {
 
 #stat-4 h5 {
   color: mediumorchid;
+}
+
+.chart {
+  margin: 20px 0;
 }
 
 .payment-row {
@@ -201,7 +209,35 @@ h2 {
   padding-bottom: 60px;
 }
 
-.stats-card.dashboard-card {
-  margin: 100px 0 150px 0;
+@media only screen and (max-width: 992px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .container .stats-card {
+    float: left;
+  }
+
+  .container .stats-card.dashboard-card {
+    margin: 20px 0;
+  }
+
+  .services {
+    margin-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .stats-card .stats-dx i {
+    font-size: 15px;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
+
+  .img-show {
+    margin: 20px 0;
+  }
 }
 

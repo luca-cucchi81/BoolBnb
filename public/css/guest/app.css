@@ -590,15 +590,20 @@ main .section-six .container .results .result img {
 }
 
 main .section-six .container .results .result .services {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
 }
 
 main .section-six .container .results .result .services .service {
-  padding: 0 20px;
+  flex-basis: 33%;
+  padding: 10px;
   color: #204051;
   font-size: 30px;
+  text-align: center;
 }
 
 main .section-six .container .results .result .awarded {
@@ -971,6 +976,10 @@ footer .container .end .contact i:hover {
   main .section-seven .container .show-sx #show-sqm {
     display: block;
   }
+
+  .auth .container .form {
+    width: 40%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1008,7 +1017,7 @@ footer .container .end .contact i:hover {
   }
 
   main .section-six .container .results .result {
-    flex-basis: 50%;
+    width: 50%;
   }
 
   main .section-six .container .results .result:not(:last-child) {
@@ -1018,6 +1027,10 @@ footer .container .end .contact i:hover {
   main .section-six .container .map {
     flex-basis: 100%;
     padding: 30px;
+  }
+
+  main .section-six .container .map #map-container #map {
+    height: 600px;
   }
 
   main .section-seven .container .show-sx {
@@ -1031,6 +1044,10 @@ footer .container .end .contact i:hover {
 
   main .section-seven .container .show-dx .card {
     width: 25%;
+  }
+
+  main .section-eight .container {
+    padding-bottom: 50px;
   }
 
   main .section-eight .container .map-sx {
@@ -1063,9 +1080,17 @@ footer .container .end .contact i:hover {
   footer .container .tools .tls h4 {
     padding-top: 20px;
   }
+
+  .auth .container .form {
+    width: 60%;
+  }
 }
 
 @media only screen and (max-width: 520px) {
+  main .section-one .search-bar form .form-group #address {
+    font-size: 14px;
+  }
+
   main .section-three {
     height: 1230px;
   }
@@ -1078,6 +1103,18 @@ footer .container .end .contact i:hover {
   main .section-four .search-bar form .form-group #address {
     width: 95vw;
     font-size: 12px;
+  }
+
+  main .section-four .search-bar form .form-group .form-button label {
+    font-size: 13px;
+  }
+
+  main .section-four .search-bar form .form-group .form-button input {
+    font-size: 14px;
+  }
+
+  main .section-four .search-bar form .form-group .form-button #radius {
+    width: 20px;
   }
 
   main .section-five .container form .form-group.form-input {
@@ -1126,6 +1163,10 @@ footer .container .end .contact i:hover {
 
   footer .container .tools .tls {
     padding-left: 20px;
+  }
+
+  .auth .container .form {
+    width: 80%;
   }
 }
 

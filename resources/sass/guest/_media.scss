@@ -36,6 +36,13 @@
             }
         }
     }
+    .auth {
+        .container {
+            .form {
+                width: 40%;
+            }
+        }
+    }
 }
 @media only screen and (max-width: 768px) {
     main {
@@ -97,7 +104,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     .result {
-                        flex-basis: 50%;
+                        width: 50%;
                         &:not(:last-child) {
                             border-bottom: none;
                         }
@@ -106,6 +113,11 @@
                 .map {
                     flex-basis: 100%;
                     padding: 30px;
+                    #map-container {
+                        #map {
+                            height: 600px;
+                        }
+                    }
                 }
             }
         }
@@ -125,6 +137,7 @@
         }
         .section-eight {
             .container {
+                padding-bottom: 50px;
                 .map-sx {
                     flex-basis: 100%;
                     .row {
@@ -161,10 +174,28 @@
             }
         }
     }
+    .auth {
+        .container {
+            .form {
+                width: 60%;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 520px) {
     main {
+        .section-one {
+            .search-bar {
+                form {
+                    .form-group {
+                        #address {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
         .section-three {
             height: 1230px;
             .container {
@@ -183,6 +214,17 @@
                         #address {
                             width: 95vw;
                             font-size: 12px;
+                        }
+                        .form-button {
+                            label {
+                                font-size: 13px;
+                            }
+                            input {
+                                font-size: 14px;
+                            }
+                            #radius {
+                                width: 20px;
+                            }
                         }
                     }
                 }
@@ -260,6 +302,13 @@
                 .tls {
                     padding-left: 20px;
                 }
+            }
+        }
+    }
+    .auth {
+        .container {
+            .form {
+                width: 80%;
             }
         }
     }
