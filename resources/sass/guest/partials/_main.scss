@@ -414,9 +414,11 @@ main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 50px 0;
+            flex-wrap: wrap;
             .show-sx {
                 width: 50%;
                 padding-right: 50px;
+                padding-left: 20px;
                 h2 {
                     letter-spacing: 3px;
                     color: $color4;
@@ -434,7 +436,6 @@ main {
                 }
                 #show-description {
                     color: $color4;
-                    text-align: justify;
                     padding-bottom: 20px;
                     font-size: 15px;
                 }
@@ -445,24 +446,30 @@ main {
                     color: $color4;
                 }
                 .services {
-                    width: 80%;
                     display: flex;
                     justify-content: center;
                     padding-top: 30px;
                     flex-wrap: wrap;
-                    .service {
-                        padding-bottom: 20px;
-                        padding-right: 20px;
-                        color: $color4;
+                    div {
                         flex-basis: 50%;
-                        font-size: 14px;
-                        i {
-                            font-size: 30px;
+                        padding-bottom: 10px;
+                        display: flex;
+                        .service {
+                            padding-bottom: 20px;
                             padding-right: 20px;
+                            color: $color4;
+                            font-size: 14px;
+                            i {
+                                font-size: 30px;
+                                padding-right: 20px;
+                            }
+                            .fa-parking {
+                                padding-left: 7px;
+                                padding-right: 25px;
+                            }
                         }
-                        .fa-parking {
-                            padding-left: 7px;
-                            padding-right: 25px;
+                        .service-icon {
+                            flex-basis: 10%;
                         }
                     }
                 }
@@ -470,6 +477,7 @@ main {
             .show-dx {
                 display: flex;
                 flex-wrap: wrap;
+                align-items: flex-end;
                 width: 50%;
                 height: 400px;
                 .card {
@@ -493,6 +501,7 @@ main {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
+            flex-wrap: wrap;
             padding-top: 50px;
             padding-bottom: 100px;
             .map-sx {

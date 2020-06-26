@@ -12,7 +12,10 @@
                 <span class="show-info">Bathrooms: {{$apartment->bathrooms}}</span>
                 <div class="services">
                     @foreach ($apartment->services as $service)
-                        <div class="service" data-service="{{$service->id}}">{!!$service->icon!!}{{$service->name}}</div>
+                        <div>
+                            <div class="service service-icon" data-service="{{$service->id}}">{!!$service->icon!!}</div>
+                            <div class="service">{{$service->name}}</div>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -44,14 +47,14 @@
                         @csrf
                         @method('POST')
                         <div class="form-group">
-                            <label for="sender">E-mail :</label>
+                            <label for="sender">E-mail</label>
                             <input type="email" name="sender" value="{{$userEmail}}" placeholder="Enter your e-mail">
                             @error('sender')
                                 <span class="alert alert-danger">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="body">Body :</label>
+                            <label for="body">Body</label>
                             <textarea name="body" rows="8" placeholder="Type your message"></textarea>
                             @error('body')
                                 <span class="alert alert-danger">{{$message}}</span>
@@ -67,7 +70,7 @@
             </div>
         </div>
     </div>
-   
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>

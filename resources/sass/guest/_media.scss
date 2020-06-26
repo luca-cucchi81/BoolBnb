@@ -25,6 +25,16 @@
                 }
             }
         }
+        .section-seven {
+            .container {
+                .show-sx {
+                    padding-right: 20px;
+                    #show-sqm {
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }
 @media only screen and (max-width: 768px) {
@@ -99,6 +109,44 @@
                 }
             }
         }
+        .section-seven {
+            .container {
+                .show-sx {
+                    width: 100%;
+                }
+                .show-dx {
+                    width: 100%;
+                    height: auto;
+                    .card {
+                        width: 25%;
+                    }
+                }
+            }
+        }
+        .section-eight {
+            .container {
+                .map-sx {
+                    flex-basis: 100%;
+                    .row {
+                        #map {
+                            width: 90%;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+                .message-dx {
+                    flex-basis: 100%;
+                    .form {
+                        .form-group {
+                            text-align: center;
+                            input, textarea {
+                                width: 60%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     footer {
         .container {
@@ -165,6 +213,43 @@
                 .map {
                     flex-basis: 100%;
                     padding: 30px;
+                }
+            }
+        }
+        .section-seven {
+            .container {
+                .show-sx {
+                    h2, #show-address, #show-sqm {
+                        text-align: center;
+                    }
+                    .services {
+                        div {
+                            .service {
+                                font-size: 13px;
+                                i {
+                                    font-size: 24px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .show-dx {
+                    .card {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+        .section-eight {
+            .container {
+                .message-dx {
+                    .form {
+                        .form-group {
+                            input, textarea {
+                                width: 80%;
+                            }
+                        }
+                    }
                 }
             }
         }

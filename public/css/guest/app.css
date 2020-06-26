@@ -83,7 +83,7 @@ header {
   bottom: 0;
   left: 0;
   box-shadow: 0 0 10px 0 black;
-  z-index: 999;
+  z-index: 99999;
 }
 
 header .container {
@@ -637,11 +637,13 @@ main .section-seven .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 0;
+  flex-wrap: wrap;
 }
 
 main .section-seven .container .show-sx {
   width: 50%;
   padding-right: 50px;
+  padding-left: 20px;
 }
 
 main .section-seven .container .show-sx h2 {
@@ -664,7 +666,6 @@ main .section-seven .container .show-sx #show-address #show-sqm {
 
 main .section-seven .container .show-sx #show-description {
   color: #204051;
-  text-align: justify;
   padding-bottom: 20px;
   font-size: 15px;
 }
@@ -677,34 +678,43 @@ main .section-seven .container .show-sx .show-info {
 }
 
 main .section-seven .container .show-sx .services {
-  width: 80%;
   display: flex;
   justify-content: center;
   padding-top: 30px;
   flex-wrap: wrap;
 }
 
-main .section-seven .container .show-sx .services .service {
+main .section-seven .container .show-sx .services div {
+  flex-basis: 50%;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+main .section-seven .container .show-sx .services div .service {
   padding-bottom: 20px;
   padding-right: 20px;
   color: #204051;
-  flex-basis: 50%;
   font-size: 14px;
 }
 
-main .section-seven .container .show-sx .services .service i {
+main .section-seven .container .show-sx .services div .service i {
   font-size: 30px;
   padding-right: 20px;
 }
 
-main .section-seven .container .show-sx .services .service .fa-parking {
+main .section-seven .container .show-sx .services div .service .fa-parking {
   padding-left: 7px;
   padding-right: 25px;
+}
+
+main .section-seven .container .show-sx .services div .service-icon {
+  flex-basis: 10%;
 }
 
 main .section-seven .container .show-dx {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
   width: 50%;
   height: 400px;
 }
@@ -729,6 +739,7 @@ main .section-eight .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   padding-top: 50px;
   padding-bottom: 100px;
 }
@@ -952,6 +963,14 @@ footer .container .end .contact i:hover {
   main .section-four .search-bar form .form-group #address {
     width: 70vw;
   }
+
+  main .section-seven .container .show-sx {
+    padding-right: 20px;
+  }
+
+  main .section-seven .container .show-sx #show-sqm {
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1001,6 +1020,41 @@ footer .container .end .contact i:hover {
     padding: 30px;
   }
 
+  main .section-seven .container .show-sx {
+    width: 100%;
+  }
+
+  main .section-seven .container .show-dx {
+    width: 100%;
+    height: auto;
+  }
+
+  main .section-seven .container .show-dx .card {
+    width: 25%;
+  }
+
+  main .section-eight .container .map-sx {
+    flex-basis: 100%;
+  }
+
+  main .section-eight .container .map-sx .row #map {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  main .section-eight .container .message-dx {
+    flex-basis: 100%;
+  }
+
+  main .section-eight .container .message-dx .form .form-group {
+    text-align: center;
+  }
+
+  main .section-eight .container .message-dx .form .form-group input,
+  main .section-eight .container .message-dx .form .form-group textarea {
+    width: 60%;
+  }
+
   footer .container .tools .tls {
     flex-basis: 50%;
     padding-left: 50px;
@@ -1045,6 +1099,29 @@ footer .container .end .contact i:hover {
   main .section-six .container .map {
     flex-basis: 100%;
     padding: 30px;
+  }
+
+  main .section-seven .container .show-sx h2,
+  main .section-seven .container .show-sx #show-address,
+  main .section-seven .container .show-sx #show-sqm {
+    text-align: center;
+  }
+
+  main .section-seven .container .show-sx .services div .service {
+    font-size: 13px;
+  }
+
+  main .section-seven .container .show-sx .services div .service i {
+    font-size: 24px;
+  }
+
+  main .section-seven .container .show-dx .card {
+    width: 50%;
+  }
+
+  main .section-eight .container .message-dx .form .form-group input,
+  main .section-eight .container .message-dx .form .form-group textarea {
+    width: 80%;
   }
 
   footer .container .tools .tls {
