@@ -51,21 +51,23 @@
         <div class="section-five">
             <div class="container">
                 <form>
-                    <div class="form-group">
+                    <div class="form-group form-input">
                             <input type="number" id="rooms" min="1" max="9" name="rooms" value="1">
-                            <label for="rooms">Rooms n°</label>
+                            <label for="rooms">Rooms</label>
                             <input type="number" id="beds" min="1" max="9" name="beds" value="1">
-                            <label for="beds">Beds n°</label>
+                            <label for="beds">Beds</label>
                     </div>
-                    <div class="form-group">
-                            @foreach ($services as $service)
-                                <input type="checkbox" id='service-{{$service->id}}' class="check-filter" value="{{$service->id}}">
-                                <label for="service-{{$service->id}}">{{$service->name}}</label>
-                            @endforeach
-                    </div>
-                    <div class="form-group">
+                    <div class="form-group form-button">
                         <button id="filtra" type="button">Filter</button>
                         <button id="clear" type="button">Reset</button>
+                    </div>
+                    <div class="form-group form-services">
+                            @foreach ($services as $service)
+                                <div>
+                                    <input type="checkbox" id='service-{{$service->id}}' class="check-filter" value="{{$service->id}}">
+                                    <label for="service-{{$service->id}}">{{$service->name}}</label>
+                                </div>
+                            @endforeach
                     </div>
                 </form>
             </div>

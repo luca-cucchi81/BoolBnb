@@ -496,12 +496,17 @@ main .section-five .container {
 
 main .section-five .container form {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 30px 0;
 }
 
-main .section-five .container form button {
+main .section-five .container form .form-group {
+  flex-basis: 50%;
+}
+
+main .section-five .container form .form-group button {
   padding: 7px 15px;
   border-radius: 10px;
   border: none;
@@ -510,11 +515,11 @@ main .section-five .container form button {
   color: #e2e0e0;
 }
 
-main .section-five .container form button:focus {
+main .section-five .container form .form-group button:focus {
   outline: none;
 }
 
-main .section-five .container form input {
+main .section-five .container form .form-group input {
   margin-left: 10px;
   font-size: 16px;
   font-weight: 600;
@@ -523,16 +528,39 @@ main .section-five .container form input {
   width: 20px;
 }
 
-main .section-five .container form label {
+main .section-five .container form .form-group label {
   font-size: 16px;
   font-weight: 600;
   color: #204051;
+}
+
+main .section-five .container form .form-group.form-services {
+  flex-basis: 100%;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+main .section-five .container form .form-group.form-services div {
+  padding-bottom: 10px;
+}
+
+main .section-five .container form .form-group.form-input {
+  text-align: right;
+  padding-right: 30px;
+}
+
+main .section-five .container form .form-group.form-button {
+  padding-left: 30px;
 }
 
 main .section-six .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   padding: 0 0 50px;
 }
 
@@ -920,6 +948,10 @@ footer .container .end .contact i:hover {
   main .section-three {
     height: 730px;
   }
+
+  main .section-four .search-bar form .form-group #address {
+    width: 70vw;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -946,6 +978,29 @@ footer .container .end .contact i:hover {
     grid-template-rows: minmax(auto, auto);
   }
 
+  main .section-four .search-bar form .form-group #address {
+    width: 80vw;
+  }
+
+  main .section-six .container .results {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  main .section-six .container .results .result {
+    flex-basis: 50%;
+  }
+
+  main .section-six .container .results .result:not(:last-child) {
+    border-bottom: none;
+  }
+
+  main .section-six .container .map {
+    flex-basis: 100%;
+    padding: 30px;
+  }
+
   footer .container .tools .tls {
     flex-basis: 50%;
     padding-left: 50px;
@@ -964,6 +1019,32 @@ footer .container .end .contact i:hover {
   main .section-three .container .grid .gallery {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     grid-template-rows: minmax(auto, auto);
+  }
+
+  main .section-four .search-bar form .form-group #address {
+    width: 95vw;
+    font-size: 12px;
+  }
+
+  main .section-five .container form .form-group.form-input {
+    padding-right: 0;
+  }
+
+  main .section-five .container form .form-group.form-button {
+    padding-left: 0;
+  }
+
+  main .section-six .container .results .result {
+    flex-basis: 100%;
+  }
+
+  main .section-six .container .results .result:not(:last-child) {
+    border-bottom: 2px inset #84a9ac;
+  }
+
+  main .section-six .container .map {
+    flex-basis: 100%;
+    padding: 30px;
   }
 
   footer .container .tools .tls {
