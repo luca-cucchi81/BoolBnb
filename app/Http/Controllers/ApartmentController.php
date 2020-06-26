@@ -105,7 +105,7 @@ class ApartmentController extends Controller
 
         if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) { // Se tutti e due questi array risultano vuoti la ricerca fallisce
             return redirect()->route('guest.apartments.index')
-                ->with('failure', 'Nessun Appartamento disponibile in zona');
+                ->with('failure', 'No Apartments Available');
         }
 
         return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services', 'oldAddress', 'oldLat', 'oldLng'));
@@ -149,11 +149,11 @@ class ApartmentController extends Controller
 
         if (!$saved) {
             return redirect()->route('guest.apartments.show', $data['slug'])
-                ->with('failure', 'Messaggio non inviato.');
+                ->with('failure', 'Message not sent.');
         }
 
         return redirect()->route('guest.apartments.show', $data['slug'])
-            ->with('success', 'Messaggio inviato correttamente.');
+            ->with('success', 'Message sent.');
     }
 
     /**

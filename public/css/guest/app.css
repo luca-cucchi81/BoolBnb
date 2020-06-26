@@ -419,20 +419,6 @@ main .section-three .container .grid .gallery .img form button {
   background-color: transparent;
 }
 
-@media (max-width: 991px) {
-  main .section-three .container .grid .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
-    grid-template-rows: minmax(auto, auto);
-  }
-}
-
-@media (max-width: 791px) {
-  main .section-three .container .grid .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-    grid-template-rows: minmax(auto, auto);
-  }
-}
-
 main .section-four {
   background-image: url(/images/city.jpg?b998202d68c88f8e95adfe9eb7a848a2);
   background-size: cover;
@@ -793,6 +779,7 @@ footer .container {
 
 footer .container .tools {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 50px 0;
 }
@@ -923,5 +910,64 @@ footer .container .end .contact i:hover {
   color: #fff;
   border: none;
   box-shadow: 0 0 3px 0 black;
+}
+
+@media screen and (max-width: 992px) {
+  main .section-one .search-bar form .form-group #address {
+    width: 70vw;
+  }
+
+  main .section-three {
+    height: 730px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  main .section-one .search-bar form .form-group #address {
+    width: 80vw;
+  }
+
+  main .section-two .container .title h2:before,
+  main .section-two .container .title h2:after {
+    display: none;
+  }
+
+  main .section-three {
+    height: 1450px;
+  }
+
+  main .section-three .container .title h2:before,
+  main .section-three .container .title h2:after {
+    display: none;
+  }
+
+  main .section-three .container .grid .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-template-rows: minmax(auto, auto);
+  }
+
+  footer .container .tools .tls {
+    flex-basis: 50%;
+    padding-left: 50px;
+  }
+
+  footer .container .tools .tls h4 {
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  main .section-three {
+    height: 1230px;
+  }
+
+  main .section-three .container .grid .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    grid-template-rows: minmax(auto, auto);
+  }
+
+  footer .container .tools .tls {
+    padding-left: 20px;
+  }
 }
 

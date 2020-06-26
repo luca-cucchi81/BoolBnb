@@ -100,11 +100,11 @@ class ApartmentController extends Controller
 
         if (!$saved) {
             return redirect()->route('admin.apartments.create')
-                ->with('failure', 'Appartamento non inserito.');
+                ->with('failure', 'Apartment not created.');
         }
 
         return redirect()->route('admin.apartments.show', $apartment->id)
-            ->with('success', 'Appartamento ' . $apartment->id . ' inserito correttamente.');
+            ->with('success', 'Apartment ' . $apartment->id . ' created.');
     }
 
     /**
@@ -177,7 +177,7 @@ class ApartmentController extends Controller
 
         if($userId != $author) {
             return redirect()->route('admin.apartments.index')
-                ->with('failure', 'Non puoi modificare un appartamento che non hai inserito tu');
+                ->with('failure', 'Edit denied');
         }
 
         if (!isset($data['visibility'])){ // Solito check sulla visibilità
@@ -231,11 +231,11 @@ class ApartmentController extends Controller
 
         if (!$updated) {
             return redirect()->route('admin.apartments.edit', $apartment->id)
-                ->with('failure', 'Appartamento non modificato.');
+                ->with('failure', 'Apartment not updated.');
         }
 
         return redirect()->route('admin.apartments.show', $apartment->id)
-            ->with('success', 'Appartamento ' . $apartment->id . ' modificato correttamente.');
+            ->with('success', 'Apartment ' . $apartment->id . ' updated.');
     }
 
     /**
@@ -259,10 +259,10 @@ class ApartmentController extends Controller
 
         if(!$deleted){
             return redirect()->route('admin.apartments.index')
-                ->with('failure', 'Appartamento ' . $apartment->id . ' non eliminato.');
+                ->with('failure', 'Apartment ' . $apartment->id . ' not removed.');
         }
 
         return redirect()->route('admin.apartments.index')
-            ->with('success', 'Appartamento ' . $apartment->id . ' eliminato correttamente.');
+            ->with('success', 'Apartment ' . $apartment->id . ' removed.');
     }
 }

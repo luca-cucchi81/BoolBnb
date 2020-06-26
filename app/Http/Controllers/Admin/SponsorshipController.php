@@ -45,7 +45,7 @@ class SponsorshipController extends Controller
 
         if (!isset($data['sponsorship'])) { // Check se hai selezionato nel form il tipo di sponsorizzazione
             return redirect()->route('admin.apartments.sponsor', $apartment)
-                ->with('failure', 'Seleziona piano di sponsorizzazione');
+                ->with('failure', 'Select Sponsorship Plan');
         }
 
         $sponsorship = Sponsorship::findOrFail($data['sponsorship']);
@@ -54,7 +54,7 @@ class SponsorshipController extends Controller
         $attached = $sponsorship->apartments()->attach($apartment, ['start_date' => $startDate, 'end_date' => $endDate]); // Creazione del campo nella tabella pivot con data di inizio e fine della sponsorizzazione
 
         return redirect()->route('admin.apartments.show', $apartment)
-            ->with('success', 'Appartamento ' . $apartment . ' sponsorizzato correttamente.');
+            ->with('success', 'Apartment ' . $apartment . ' sponsored.');
     }
 
     /**

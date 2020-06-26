@@ -224,22 +224,6 @@ main {
                     }
                 }
             }
-            @media (max-width: 991px) {
-                .grid {
-                    .gallery {
-                        grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
-                        grid-template-rows: minmax(auto, auto);
-                    }
-                }
-            }
-            @media (max-width: 791px) {
-                .grid {
-                    .gallery {
-                        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-                        grid-template-rows: minmax(auto, auto);
-                    }
-                }
-            }
         }
     }
     .section-four{

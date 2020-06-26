@@ -233,7 +233,7 @@ $(document).ready(function () {
       data: {
         datasets: [{
           data: data,
-          backgroundColor: ['lightblue', 'lightgreen', 'yellow', 'pink']
+          backgroundColor: ['lightblue', 'lightgreen', 'yellow', 'pink', 'orange', 'lightgrey', 'mediumpurple', 'olive', 'tomato', 'teal']
         }],
         labels: labels
       },
