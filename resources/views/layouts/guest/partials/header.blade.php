@@ -23,7 +23,7 @@
                         <li>
                             <button id="btn-username">
                                 <a href="#">
-                                    {{ Auth::user()->info->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <i class="fas fa-caret-down"></i>
                                 <i class="fas fa-caret-left"></i>

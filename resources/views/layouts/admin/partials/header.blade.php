@@ -31,7 +31,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="name-navbar" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <span class="btn btn-light">{{ Auth::user()->info->name }} &#8629;</span>
+                            <span class="btn btn-light">{{ Auth::user()->name }} &#8629;</span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
