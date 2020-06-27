@@ -77,7 +77,7 @@
                 <div class="results">
                     @foreach ($sponsoredApartments as $sponsored)
                         <div class="result">
-                            <img src="{{asset('storage/'. $sponsored->main_img)}}" alt="{{$sponsored->title}}">
+                            <a href="{{route('guest.apartments.show', $sponsored->slug)}}"><img src="{{asset('storage/'. $sponsored->main_img)}}" alt="{{$sponsored->title}}"></a>
                             <h3><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h3>
                             <div class="mark-lat hidden">{{$sponsored->lat}}</div>
                             <div class="mark-lng hidden">{{$sponsored->lng}}</div>
@@ -94,7 +94,7 @@
                     @endforeach
                     @foreach ($filteredApartments as $filtered)
                         <div class="result">
-                            <img src="{{asset('storage/'. $filtered->main_img)}}" alt="{{$filtered->title}}">
+                            <a href="{{route('guest.apartments.show', $filtered->slug)}}"><img src="{{asset('storage/'. $filtered->main_img)}}" alt="{{$filtered->title}}"></a>
                             <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <div class="mark-lat hidden">{{$filtered->lat}}</div>
                             <div class="mark-lng hidden">{{$filtered->lng}}</div>

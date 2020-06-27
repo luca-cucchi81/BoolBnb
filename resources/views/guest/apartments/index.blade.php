@@ -51,7 +51,7 @@
                 <div class="owl-carousel owl-theme">
                     @foreach ($apartments as $apartment)
                         <div class="card">
-                            <img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}">
+                            <a href="{{route('guest.apartments.show', $apartment->slug)}}"><img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}"></a>
                             <h3>{{$apartment->title}}</h3>
                         </div>
                     @endforeach

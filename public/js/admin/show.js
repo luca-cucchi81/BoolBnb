@@ -154,7 +154,7 @@ $(document).ready(function () {
             ticks: {
               // Definisco l'asse delle Y con punto iniziale e dimensione degli step
               beginAtZero: true,
-              stepSize: 10
+              stepSize: 50
             }
           }]
         }
