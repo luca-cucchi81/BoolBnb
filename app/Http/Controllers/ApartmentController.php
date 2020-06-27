@@ -94,14 +94,17 @@ class ApartmentController extends Controller
                     $now = Carbon::now();
                     $endDate = $sponsorship->pivot->end_date; // Faccio un check per ogni appartamento se è sposnsorizzato attualmente o no
                     if ($now < $endDate && !in_array($apartment, $sponsoredApartments)) { // Se lo è lo metto nell'array sponsorizzati
-                        $sponsoredApartments[] = $apartment;
+                        $sponsoredApartments[$result] = $apartment;
                     }
                 }
                 if (!in_array($apartment, $sponsoredApartments)) { // Altrimenti lo metto nell'array normale
-                    $filteredApartments[] = $apartment;
+                    $filteredApartments[$result] = $apartment;
                 }
             }
         }
+
+        ksort($sponsoredApartments);    //riordino l'array basato sulla key, che è la distanza, per mostrare prima gli apparmenti più vicini
+        ksort($filteredApartments);     //riordino l'array basato sulla key, che è la distanza, per mostrare prima gli apparmenti più vicini
 
         if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) { // Se tutti e due questi array risultano vuoti la ricerca fallisce
             return redirect()->route('guest.apartments.index')
