@@ -16,7 +16,7 @@
                         <input type="hidden" id="old-lng" name="oldLng" value="{{$oldLng}}">
                         <div class="form-button">
                             <label for="radius">Radius:</label>
-                            <input type="number" id="radius" min="20" max="50" name="radius" value="20">
+                            <input type="number" id="radius" min="20" max="50" name="radius" value="{{$radius}}">
                             <button class="btn-search" type="submit"><i class="fas fa-plane"></i></button>
                         </div>
                     </div>
@@ -81,6 +81,7 @@
                             <h3><a href="{{route('guest.apartments.show', $sponsored->slug)}}">{{$sponsored->title}}</a></h3>
                             <div class="mark-lat hidden">{{$sponsored->lat}}</div>
                             <div class="mark-lng hidden">{{$sponsored->lng}}</div>
+                            <div class="mark-title hidden">{{$sponsored->title}}</div>
                             <div class="rooms hidden">{{$sponsored->rooms}}</div>
                             <div class="beds hidden">{{$sponsored->beds}}</div>
                             <p class="address-result">{{$sponsored->address}}</p>
@@ -98,6 +99,7 @@
                             <h4><a href="{{route('guest.apartments.show', $filtered->slug)}}">{{$filtered->title}}</a></h4>
                             <div class="mark-lat hidden">{{$filtered->lat}}</div>
                             <div class="mark-lng hidden">{{$filtered->lng}}</div>
+                            <div class="mark-title hidden">{{$filtered->title}}</div>
                             <div class="rooms hidden">{{$filtered->rooms}}</div>
                             <div class="beds hidden">{{$filtered->beds}}</div>
                             <p class="address-result">{{$filtered->address}}</p>

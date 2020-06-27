@@ -67,6 +67,10 @@ class ApartmentController extends Controller
             $oldLat = floatval($data['lat']); // Assegno a due variabili lat e lgn che arrivano dai due input nascosti
             $oldLng = floatval($data['lng']);
         } else { // Se dal form non arriva l'indirizzo popolo indirizzo, lat e lng con i valori vecchi
+            if (!isset($data['oldAddress'])) {
+                return redirect()->route('guest.apartments.index')
+                    ->with('failure', 'Address Required');
+            }
             $data['address'] = $data['oldAddress'];
             $data['lat'] = $data['oldLat'];
             $data['lng'] = $data['oldLng'];
@@ -79,7 +83,7 @@ class ApartmentController extends Controller
         $dataLng = floatval($data['lng']);
 
         if (isset($data['radius'])) { // Se dal form arriva il radius la variabile prenderà quel valore altrimenti gli diamo 20 di default
-            $radius = $data['radius'];
+            $radius = (int)$data['radius'];
         } else {
             $radius = 20;
         }
@@ -108,7 +112,7 @@ class ApartmentController extends Controller
                 ->with('failure', 'No Apartments Available');
         }
 
-        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services', 'oldAddress', 'oldLat', 'oldLng'));
+        return view('guest.apartments.search', compact('sponsoredApartments', 'filteredApartments', 'dataLat', 'dataLng', 'services', 'oldAddress', 'oldLat', 'oldLng', 'radius'));
     }
 
     /**

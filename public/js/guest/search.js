@@ -166,6 +166,7 @@ $(document).ready(function () {
 
         apartment.lat = $(this).find('.mark-lat').text();
         apartment.lng = $(this).find('.mark-lng').text();
+        apartment.title = $(this).find('.mark-title').text();
         apartments.push(apartment);
       });
       var placesAutocomplete = places({
@@ -191,7 +192,14 @@ $(document).ready(function () {
         addApartmentToMap(apartment);
       }
 
-      map.setView(new L.LatLng(latlng.lat, latlng.lng), 13);
+      if ($('#radius').val() == 20) {
+        map.setView(new L.LatLng(latlng.lat, latlng.lng), 13);
+      } else if ($('#radius').val() > 20 && $('#radius').val() <= 40) {
+        map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+      } else if ($('#radius').val() > 40 && $('#radius').val() <= 50) {
+        map.setView(new L.LatLng(latlng.lat, latlng.lng), 11);
+      }
+
       map.addLayer(osmLayer);
 
       function addApartmentToMap(apartment) {
@@ -200,9 +208,11 @@ $(document).ready(function () {
           'lat': apartment.lat,
           'lng': apartment.lng
         });
-        marker.addTo(map);
+        marker.addTo(map).bindPopup(apartment.title).openPopup();
         markers.push(marker);
       }
+
+      $('#radius').setAttribute('value', $('#radius').value);
     })();
   }
 

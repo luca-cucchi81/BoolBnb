@@ -157,7 +157,7 @@ header .container .header-right nav ul li .dropdown ul li a {
 
 main {
   margin-top: 70px;
-  background-color: #e7dfd5;
+  background-color: ghostwhite;
 }
 
 main .section-one {
@@ -734,10 +734,6 @@ main .section-seven .container .show-dx .card img {
   width: 100%;
   border-radius: 5px;
   transition-duration: 0.3s;
-}
-
-main .section-seven .container .show-dx .card img:hover {
-  transform: scale(1.4);
 }
 
 main .section-eight .container {

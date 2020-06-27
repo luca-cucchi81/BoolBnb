@@ -34,6 +34,7 @@
                 <div class="row">
                     <input type="hidden" class='coord-lat' value="{{$apartment->lat}}">
                     <input type="hidden" class='coord-lng' value="{{$apartment->lng}}">
+                    <input type="hidden" class='coord-title' value="{{$apartment->title}}">
                     <input type="hidden" id="input-map" class="form-control">
                 </div>
                 <div class="row">

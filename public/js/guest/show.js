@@ -100,6 +100,7 @@ $(document).ready(function () {
       lat: $('.coord-lat').val(),
       lng: $('.coord-lng').val()
     };
+    var title = $('.coord-title').val();
     var placesAutocomplete = places({
       appId: 'plLSMIJCIUJH',
       apiKey: 'e86892e02f2212ab0fc5e014822da6e2',
@@ -118,9 +119,9 @@ $(document).ready(function () {
     });
     var markers = [];
     var marker = L.marker(latlng);
-    marker.addTo(map);
+    marker.addTo(map).bindPopup(title).openPopup();
     markers.push(marker);
-    map.setView(new L.LatLng(latlng.lat, latlng.lng), 16);
+    map.setView(new L.LatLng(latlng.lat, latlng.lng), 17);
     map.addLayer(osmLayer);
   })();
 });
