@@ -247,9 +247,6 @@
                 .results {
                     .result {
                         flex-basis: 100%;
-                        &:not(:last-child) {
-                            border-bottom: 2px inset $color2;
-                        }
                     }
                 }
                 .map {

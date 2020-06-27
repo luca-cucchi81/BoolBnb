@@ -52,7 +52,7 @@
                     @foreach ($apartments as $apartment)
                         <div class="card">
                             <a href="{{route('guest.apartments.show', $apartment->slug)}}"><img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}"></a>
-                            <h3>{{$apartment->title}}</h3>
+                            <h3><a href="{{route('guest.apartments.show', $apartment->slug)}}">{{$apartment->title}}</a></h3>
                         </div>
                     @endforeach
                 </div>

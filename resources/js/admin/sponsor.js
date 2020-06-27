@@ -5,12 +5,14 @@ $(document).ready(function () {
         container: '#dropin-container'
     }, function (createErr, instance) {
         button.addEventListener('click', function () { // Al click del bottone verifica mi compare il bottone di invio del form
-            $('#invia').removeClass('d-none');
             $('#submit-button').addClass('d-none');
             $('.braintree-toggle').click(function(){
                 $('#submit-button').removeClass('d-none');
                 $('#invia').addClass('d-none');
             });
+            setTimeout(function () {
+                $('#invia').removeClass('d-none');
+            }, 1000);
             instance.requestPaymentMethod(function (err, payload) {
                 $.get("{{'route('admin.payment.make')}}", {payload}, function (response) {
                     console.log({response});

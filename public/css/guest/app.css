@@ -266,10 +266,13 @@ main .section-two .container .box .owl-stage-outer .owl-item .card {
 }
 
 main .section-two .container .box .owl-stage-outer .owl-item .card h3 {
-  font-size: 15px;
-  text-align: center;
-  color: #204051;
   padding: 40px 20px 0;
+  text-align: center;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item .card h3 a {
+  font-size: 15px;
+  color: #204051;
 }
 
 main .section-two .container .box .owl-stage-outer .owl-item .card img {
@@ -284,7 +287,7 @@ main .section-two .container .box .owl-nav {
 }
 
 main .section-two .container .box .owl-dots {
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 main .section-two .container .box .owl-dots span {
@@ -577,14 +580,9 @@ main .section-six .container .results .result {
   position: relative;
 }
 
-main .section-six .container .results .result:not(:last-child) {
-  border-bottom: 2px inset #84a9ac;
-}
-
 main .section-six .container .results .result img {
   width: 100%;
-  box-shadow: 0 0 10px 0 black;
-  border-radius: 5px;
+  box-shadow: 0px 3px 3px 0 black;
   display: block;
   margin: 0 auto;
 }
@@ -726,13 +724,11 @@ main .section-seven .container .show-dx {
 
 main .section-seven .container .show-dx .card {
   width: 50%;
-  border-radius: 5px;
   padding: 10px;
 }
 
 main .section-seven .container .show-dx .card img {
   width: 100%;
-  border-radius: 5px;
   transition-duration: 0.3s;
 }
 
@@ -779,12 +775,14 @@ main .section-eight .container .message-dx .form .form-group input {
   margin-bottom: 30px;
   width: 100%;
   border: none;
+  box-shadow: 0 0 3px 0 #204051;
   padding: 10px 20px;
 }
 
 main .section-eight .container .message-dx .form .form-group textarea {
   width: 100%;
   border: none;
+  box-shadow: 0 0 3px 0 #204051;
   padding: 10px 20px;
 }
 
@@ -853,6 +851,7 @@ footer .container .end .end-logo img {
 
 footer .container .end .end-logo p {
   font-size: 10px;
+  color: #84a9ac;
 }
 
 footer .container .end .contact {
@@ -872,7 +871,7 @@ footer .container .end .contact i:hover {
 .auth {
   height: calc(100vh - 70px);
   margin-top: 70px;
-  background-color: #e7dfd5;
+  background-color: ghostwhite;
 }
 
 .auth .container {
@@ -911,6 +910,7 @@ footer .container .end .contact i:hover {
   width: 100%;
   margin-bottom: 30px;
   border: none;
+  box-shadow: 0 0 3px 0 #204051;
   padding: 10px 20px;
   border-radius: 5px;
 }
@@ -918,6 +918,7 @@ footer .container .end .contact i:hover {
 .auth .container .form form .form-group #remember {
   width: 30px;
   margin-top: 30px;
+  box-shadow: none;
 }
 
 .auth .container .form form .form-group .check-label {
@@ -1123,10 +1124,6 @@ footer .container .end .contact i:hover {
 
   main .section-six .container .results .result {
     flex-basis: 100%;
-  }
-
-  main .section-six .container .results .result:not(:last-child) {
-    border-bottom: 2px inset #84a9ac;
   }
 
   main .section-six .container .map {

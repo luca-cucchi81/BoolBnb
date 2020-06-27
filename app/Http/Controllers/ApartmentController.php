@@ -93,6 +93,7 @@ class ApartmentController extends Controller
             $apartmentLng = $apartment->lng;
 
             $result = distanceResults($apartmentLat, $apartmentLng, $dataLat, $dataLng, 'k'); // Assegno a una variabile il risultato della funzione di distanza che darà un numero intero
+            $apartment['distance'] = $result;
             if ($result <= $radius) { // Se questo numero è minore del radius vado avanti
                 foreach ($apartment->sponsorships as $sponsorship) {
                     $now = Carbon::now();
@@ -106,6 +107,12 @@ class ApartmentController extends Controller
                 }
             }
         }
+
+        $distance = array_column($sponsoredApartments, 'distance');
+        array_multisort($distance, SORT_ASC, $sponsoredApartments);
+
+        $distance = array_column($filteredApartments, 'distance');
+        array_multisort($distance, SORT_ASC, $filteredApartments);
 
         if (count($filteredApartments) == 0 && count($sponsoredApartments) == 0) { // Se tutti e due questi array risultano vuoti la ricerca fallisce
             return redirect()->route('guest.apartments.index')
