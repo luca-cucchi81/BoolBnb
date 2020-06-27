@@ -33,6 +33,15 @@ class HomeController extends Controller
         $visitsCount = 0;
         $apartments = Apartment::where('user_id', $userId)->get(); // Appartmenti dello user_id in ingresso
 
+        $msgNotReadCount = 0;
+        foreach ($apartments as $apartment) {
+            foreach ($apartment->messages as $message) {
+                if ($message->read == 0) {
+                    $msgNotReadCount = $msgNotReadCount + 1;
+                }
+            }
+        }
+
         foreach ($apartments as $apartment) {
             $visits = Visit::where('secondary_key', $apartment->id)->get(); // Visite relative all'appartamento ciclato
             foreach ($visits as $visit) {
@@ -63,6 +72,6 @@ class HomeController extends Controller
             }
         }
 
-        return view('home', compact('userId', 'visitsCount', 'messagesCount', 'spnCount', 'totalAmountSp'));
+        return view('home', compact('userId', 'visitsCount', 'messagesCount', 'spnCount', 'totalAmountSp', 'msgNotReadCount'));
     }
 }

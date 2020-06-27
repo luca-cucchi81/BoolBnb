@@ -209,6 +209,18 @@ h2 {
   padding-bottom: 60px;
 }
 
+.new-messages-row h3 {
+  padding-top: 50px;
+}
+
+.new-messages-row h3 span {
+  background-color: lightgreen;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px 8px;
+  margin: 0 10px;
+}
+
 @media only screen and (max-width: 992px) {
   .container {
     padding: 0 30px;

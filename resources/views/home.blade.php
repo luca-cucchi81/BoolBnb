@@ -15,6 +15,13 @@
             {{ session('status') }}
         </div>
     @endif
+    @if ($msgNotReadCount != 0)
+        <div class="row col-12 new-messages-row">
+            <div class="mx-auto">
+                <h3>You have <span>{{$msgNotReadCount}}</span> new messages</h3>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="stats-card dashboard-card col-6 col-sm-6 col-lg-3" id="stat-1">
             <div class="stats-sx">
