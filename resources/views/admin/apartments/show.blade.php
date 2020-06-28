@@ -101,7 +101,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($apartment->messages as $message)
+                    @foreach ($messages as $message)
                     <tr>
                         <td>{{$message->sender}}</td>
                         <td>{{$message->body}}</td>

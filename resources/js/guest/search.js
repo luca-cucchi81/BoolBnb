@@ -108,7 +108,7 @@ $(document).ready(function () {
                 markers.push(marker);
             }
 
-            $('#radius').setAttribute('value', $('#radius').value);
+            // $('#radius').setAttribute('value', $('#radius').value);
         })();
     };
 

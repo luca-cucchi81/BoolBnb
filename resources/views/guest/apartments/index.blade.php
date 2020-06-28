@@ -49,10 +49,11 @@
             </div>
             <div class="box">
                 <div class="owl-carousel owl-theme">
-                    @foreach ($apartments as $apartment)
+                    @foreach ($arrayApartments as $apartment)
                         <div class="card">
                             <a href="{{route('guest.apartments.show', $apartment->slug)}}"><img src="{{asset('storage/'. $apartment->main_img)}}" alt="{{$apartment->title}}"></a>
                             <h3><a href="{{route('guest.apartments.show', $apartment->slug)}}">{{$apartment->title}}</a></h3>
+                            <small>{{$apartment->address}}</small>
                         </div>
                     @endforeach
                 </div>

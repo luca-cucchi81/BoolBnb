@@ -21,15 +21,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($arrayMessages as $arrayMessage)
-                        @foreach ($arrayMessage as $message)
+                        @foreach ($arrayMessages as $message)
                             <tr>
                                 <td class="mobile-hidden">{{$message->apartment->title}}</td>
                                 <td>{{$message->sender}}</td>
                                 <td>{{$message->body}}</td>
                             </tr>
                         @endforeach
-                    @endforeach
                 </tbody>
             </table>
         </div>

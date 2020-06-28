@@ -2,10 +2,13 @@
     <div class="container">
         <div class="header-left">
             <div id="logo">
-                <a href="{{ url('/') }}">
+                <a href="{{url('/')}}">
                     <img src="{{asset('img/logo-color2.png')}}" alt="logo">
                 </a>
             </div>
+        </div>
+        <div class="header-center">
+            <a href="{{url('/')}}"><i class="fas fa-home"></i></a>
         </div>
         <div class="header-right">
             <nav>

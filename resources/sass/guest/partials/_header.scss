@@ -24,6 +24,15 @@ header {
                 }
             }
         }
+        .header-center {
+            i {
+                font-size: 35px;
+                color: $color4;
+                &:hover {
+                    color: $color2;
+                }
+            }
+        }
         .header-right {
             nav {
                 ul {

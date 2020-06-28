@@ -132,15 +132,13 @@ class ApartmentController extends Controller
             $total = $total + $price; // Aggiungo questo valore al valore esistente nella chiave dell'appartamento corrispondente
         }
 
-        foreach($apartment->messages as $message){ // Ciclo su ogni messaggio dell'appartmento
-            $messages = Message::where('apartment_id', $apartment->id)->get();
-            foreach ($messages as $singleMessage){ // Ad ogni messaggio cambio il campo read in 1 per capire che è stato letto dall'utente
-                $singleMessage->read = 1;
-                $singleMessage->save();
-            }
+        $messages = Message::where('apartment_id', $apartment->id)->orderBy('id', 'desc')->get();
+        foreach ($messages as $message){ // Ad ogni messaggio cambio il campo read in 1 per capire che è stato letto dall'utente
+            $message->read = 1;
+            $message->save();
         }
 
-        return view('admin.apartments.show', compact('apartment', 'hide', 'total'));
+        return view('admin.apartments.show', compact('apartment', 'messages', 'hide', 'total'));
     }
 
     /**

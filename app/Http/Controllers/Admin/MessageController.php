@@ -21,18 +21,23 @@ class MessageController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where('user_id', $userId)->get();
+        $messages = Message::all();
 
+        $arrayApartments = [];
         $arrayMessages = [];
-        foreach ($apartments as $apartment){ // Ciclo su ogni messaggio di ogni appartamento e cambio il campo read di ognuno in 1 per capire che è stato letto
-            foreach($apartment->messages as $message){
-                $messages = Message::where('apartment_id', $apartment->id)->orderBy('updated_at', 'desc')->get();
-                $arrayMessages[] = $messages;
-                foreach ($messages as $singleMessage){
-                    $singleMessage->read = 1;
-                    $singleMessage->save();
-                }
+
+        foreach ($apartments as $apartment) {
+            $arrayApartments[] = $apartment->id;
+        }
+
+        foreach ($messages as $message) {
+            if (in_array($message->apartment_id, $arrayApartments)) {
+                $arrayMessages[] = $message;
+                $message->read = 1;
+                $message->save();
             }
         }
+
         $arrayMessages = array_reverse($arrayMessages);
         return view('admin.messages.index', compact('apartments', 'arrayMessages'));
 

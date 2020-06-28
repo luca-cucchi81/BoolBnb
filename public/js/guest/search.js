@@ -210,9 +210,8 @@ $(document).ready(function () {
         });
         marker.addTo(map).bindPopup(apartment.title).openPopup();
         markers.push(marker);
-      }
+      } // $('#radius').setAttribute('value', $('#radius').value);
 
-      $('#radius').setAttribute('value', $('#radius').value);
     })();
   }
 

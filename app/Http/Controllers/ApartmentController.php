@@ -27,7 +27,17 @@ class ApartmentController extends Controller
             $query->where('price', '=', '9.99')
             ->where('end_date', '>=', Carbon::now());
         })->inRandomOrder()->get();
-        return view('guest.apartments.index', compact('apartments'));
+        $arrayApartments = [];
+        foreach ($apartments as $apartment) {
+            $arrayApartments[] = $apartment;
+        }
+
+        foreach ($arrayApartments as $arrayApartment) {
+            $city = explode(', ', $arrayApartment->address);
+            $arrayApartment->address = $city[1];
+        }
+
+        return view('guest.apartments.index', compact('arrayApartments'));
     }
 
     /**
@@ -160,11 +170,11 @@ class ApartmentController extends Controller
 
         if (!$saved) {
             return redirect()->route('guest.apartments.show', $data['slug'])
-                ->with('failure', 'Message not sent.');
+                ->with('failure', 'Message not sent');
         }
 
         return redirect()->route('guest.apartments.show', $data['slug'])
-            ->with('success', 'Message sent.');
+            ->with('success', 'Message sent');
     }
 
     /**

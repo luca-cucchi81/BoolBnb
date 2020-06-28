@@ -100,6 +100,15 @@ header .container .header-left #logo img {
   height: 50px;
 }
 
+header .container .header-center i {
+  font-size: 35px;
+  color: #204051;
+}
+
+header .container .header-center i:hover {
+  color: #84a9ac;
+}
+
 header .container .header-right nav ul {
   list-style: none;
 }
@@ -273,6 +282,11 @@ main .section-two .container .box .owl-stage-outer .owl-item .card h3 {
 main .section-two .container .box .owl-stage-outer .owl-item .card h3 a {
   font-size: 15px;
   color: #204051;
+}
+
+main .section-two .container .box .owl-stage-outer .owl-item .card small {
+  color: #204051;
+  padding-top: 10px;
 }
 
 main .section-two .container .box .owl-stage-outer .owl-item .card img {
