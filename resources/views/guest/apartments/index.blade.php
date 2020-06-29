@@ -1,4 +1,7 @@
 @extends('layouts.guest.app')
+@section('title')
+    Home
+@endsection
 @section('main')
 <main>
     <div class="section-one">

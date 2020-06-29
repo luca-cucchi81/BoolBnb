@@ -1,4 +1,7 @@
 @extends('layouts.guest.app')
+@section('title')
+    Search
+@endsection
 @section('main')
 <main>
     <div class="container">

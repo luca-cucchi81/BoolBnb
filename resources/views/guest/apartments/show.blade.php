@@ -1,4 +1,7 @@
 @extends('layouts.guest.app')
+@section('title')
+    {{$apartment->title}}
+@endsection
 @section('main')
 <main>
     <div class="section-seven">

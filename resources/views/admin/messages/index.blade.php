@@ -1,4 +1,7 @@
 @extends('layouts.admin.app')
+@section('title')
+    Messages
+@endsection
 @section('main')
     <div class="container">
         <div class="row">

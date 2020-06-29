@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/guest/owl.carousel.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/guest/owl.theme.default.css')}}" type="text/css">
+    <title>BoolBnb | @yield('title')</title>
 </head>
 <body>
     @include('layouts.guest.partials.header')
