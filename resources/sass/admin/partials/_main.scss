@@ -171,6 +171,11 @@ h2 {
 
 #message-container {
     padding-bottom: 60px;
+    table {
+        .table-date {
+            font-size: 12px;
+        }
+    }
 }
 
 .new-messages-row {

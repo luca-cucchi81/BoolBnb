@@ -142,6 +142,11 @@ header .container .header-right nav ul li button:focus {
   outline: none;
 }
 
+header .container .header-right nav ul li button:hover a,
+header .container .header-right nav ul li button:hover i {
+  color: #84a9ac;
+}
+
 header .container .header-right nav ul li .dropdown {
   position: absolute;
   right: 5px;

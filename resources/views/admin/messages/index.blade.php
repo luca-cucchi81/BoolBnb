@@ -15,6 +15,7 @@
             <table class="table table-striped">
                 <thead class="table-success">
                     <tr>
+                        <th class="text-center mobile-hidden">DATE</th>
                         <th class="text-center mobile-hidden">APARTMENT</th>
                         <th class="text-center">SENDER</th>
                         <th class="text-center">MESSAGE</th>
@@ -23,6 +24,7 @@
                 <tbody>
                         @foreach ($arrayMessages as $message)
                             <tr>
+                                <td class="mobile-hidden table-date">{{substr($message->created_at, 0, 4) . ' ' . substr($message->created_at, 5, 6)}}</td>
                                 <td class="mobile-hidden">{{$message->apartment->title}}</td>
                                 <td>{{$message->sender}}</td>
                                 <td>{{$message->body}}</td>

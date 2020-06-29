@@ -7,12 +7,12 @@
                 </a>
             </div>
         </div>
-        <div class="header-center">
-            <a href="{{url('/')}}"><i class="fas fa-home"></i></a>
-        </div>
         <div class="header-right">
             <nav>
                 <ul>
+                    <li>
+                        <button><a href="{{url('/')}}"><i class="fas fa-home"></i></a></button>
+                    </li>
                     @guest
                         <li>
                             <button><a href="{{ route('login') }}">{{ __('Login') }}</a></button>

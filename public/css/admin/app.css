@@ -209,6 +209,10 @@ h2 {
   padding-bottom: 60px;
 }
 
+#message-container table .table-date {
+  font-size: 12px;
+}
+
 .new-messages-row h3 {
   padding-top: 50px;
 }

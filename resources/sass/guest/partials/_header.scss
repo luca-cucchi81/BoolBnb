@@ -58,6 +58,11 @@ header {
                             &:focus {
                                 outline: none;
                             }
+                            &:hover {
+                                a, i {
+                                    color: $color2;
+                                }
+                            }
                         }
                         .dropdown {
                             position: absolute;

@@ -27,6 +27,7 @@ class ApartmentController extends Controller
             $query->where('price', '=', '9.99')
             ->where('end_date', '>=', Carbon::now());
         })->inRandomOrder()->get();
+
         $arrayApartments = [];
         foreach ($apartments as $apartment) {
             $arrayApartments[] = $apartment;

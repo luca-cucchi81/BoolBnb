@@ -110,7 +110,6 @@ $(document).ready(function () {
     // Funzione di pulizia che riporta tutti gli input ai valori di default
     $('#beds').val(1);
     $('#rooms').val(1);
-    $('#radius').val(20);
     $('.check-filter').prop('checked', false);
   }
 
