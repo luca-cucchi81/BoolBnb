@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container .card {
+  flex-basis: 33%;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.container .card img {
+  width: 150px;
+}
+

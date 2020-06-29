@@ -37,7 +37,7 @@
                    <li><a href="#">BoolBnb Partners</a></li>
                    <li><a href="#">Join a Local User Group</a></li>
                    <li><a href="#">Get a Free Website Report</a></li>
-                   <li><a href="#">BoolBnb Team1</a></li>
+                   <li><a href="{{url('/egg')}}">BoolBnb Team1</a></li>
                </ul>
            </div>
        </div>

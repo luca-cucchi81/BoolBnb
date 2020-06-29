@@ -19,4 +19,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/guest/show.js', 'public/js/guest')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/admin/app.scss', 'public/css/admin')
-    .sass('resources/sass/guest/app.scss', 'public/css/guest');
+    .sass('resources/sass/guest/app.scss', 'public/css/guest')
+    .sass('resources/sass/egg.scss', 'public/css');

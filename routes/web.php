@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ApartmentController@index')->name('guest.apartments.index'); // Rotta Home page del sito
 Route::get('/search', 'ApartmentController@search')->name('guest.apartments.search'); // Rotta alla pagina di ricerca
 Route::get('/home', 'HomeController@index')->name('home'); // Rotta alla Home di un Utente Loggato
+Route::get('/egg', function () {
+    return view('egg');
+});
 
 Route::prefix('admin') // Insieme di rotte di un Utente Loggato
 ->namespace('Admin')

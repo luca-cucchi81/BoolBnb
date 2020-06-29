@@ -6,6 +6,7 @@
     "/css/app.css": "/css/app.css",
     "/css/admin/app.css": "/css/admin/app.css",
     "/css/guest/app.css": "/css/guest/app.css",
+    "/css/egg.css": "/css/egg.css",
     "/js/guest/search.js": "/js/guest/search.js",
     "/js/guest/show.js": "/js/guest/show.js"
 }
