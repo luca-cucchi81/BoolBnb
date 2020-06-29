@@ -1,3 +1,3 @@
 <p align=center>
-    <img src="/Applications/MAMP/htdocs/final-project/BoolBnb/resources/img/screen1.png" alt="screen1">
+    <img src="https://imgur.com/a/VIty5S9" alt="screen1">
 </p>
